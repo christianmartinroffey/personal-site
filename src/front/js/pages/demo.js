@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import DarkModeSwitch from "./darkModeSwitch";
 
 import { Context } from "../store/appContext";
 
@@ -7,7 +8,9 @@ export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
+		
 		<div className="container">
+			 <div id='dark-page'>
 			<ul className="list-group">
 				{store.demo.map((item, index) => {
 					return (
@@ -36,6 +39,8 @@ export const Demo = () => {
 			<Link to="/">
 				<button className="btn btn-primary">Back home</button>
 			</Link>
+			<p>Curabitur hendrerit ut augue sit amet feugiat. Morbi condimentum nec ligula ut dictum. Morbi in diam vel orci blandit finibus. In lobortis ligula ac ex dictum rutrum. Fusce eros sem, facilisis nec mauris sed, ornare molestie libero. Vestibulum lobortis lacus nibh, vel mollis elit condimentum et. In ac accumsan sapien, ut tincidunt enim. Pellentesque eget risus non nulla dapibus volutpat. Cras tempus dolor quis ipsum egestas consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec eget arcu sem. Integer sapien justo, sagittis sit amet elit ac, accumsan gravida sem. Sed auctor ante vel felis eleifend elementum. Nam blandit mi sit amet pharetra hendrerit. Morbi vitae sollicitudin nunc.</p>
+		</div>
 		</div>
 	);
 };
