@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import BackToTop from "../component/BackToTop";
 
 export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center">
-		<div id='dark-page'>
+		<div id='dark-page' className="container d-flex">
 		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
+			Website design, animation and code by Christian M-R
 		</p>
+		<BackToTop></BackToTop>
 		</div>
 	</footer>
 );
