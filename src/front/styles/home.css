@@ -5,3 +5,13 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.social-icons{
+    transform: scale(1);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
+}
+
+.social-icons :hover{
+    transform: rotate(15deg);
+    transform-origin: 50% 50%;
+    transition-duration: 1s;
+};

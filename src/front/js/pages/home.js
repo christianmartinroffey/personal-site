@@ -15,13 +15,15 @@ export const Home = () => {
   return (
 	<div className="">
 		<div id='dark-page' className="text-center">
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a volutpat nulla. Nunc sed mattis odio. Mauris a nunc turpis. Nunc tristique est eget erat cursus gravida. Proin varius gravida nisl. Nullam sodales augue at venenatis venenatis. Duis ac molestie nisi. Maecenas sit amet imperdiet massa, imperdiet facilisis erat. Sed pellentesque, lectus et tincidunt maximus, sapien tortor consectetur ipsum, at vehicula risus mi a libero.</p>
+		<p className="pop-in">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a volutpat nulla. Nunc sed mattis odio. Mauris a nunc turpis. Nunc tristique est eget erat cursus gravida. Proin varius gravida nisl. Nullam sodales augue at venenatis venenatis. Duis ac molestie nisi. Maecenas sit amet imperdiet massa, imperdiet facilisis erat. Sed pellentesque, lectus et tincidunt maximus, sapien tortor consectetur ipsum, at vehicula risus mi a libero.</p>
 		<p>Curabitur hendrerit ut augue sit amet feugiat. Morbi condimentum nec ligula ut dictum. Morbi in diam vel orci blandit finibus. In lobortis ligula ac ex dictum rutrum. Fusce eros sem, facilisis nec mauris sed, ornare molestie libero. Vestibulum lobortis lacus nibh, vel mollis elit condimentum et. In ac accumsan sapien, ut tincidunt enim. Pellentesque eget risus non nulla dapibus volutpat. Cras tempus dolor quis ipsum egestas consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec eget arcu sem. Integer sapien justo, sagittis sit amet elit ac, accumsan gravida sem. Sed auctor ante vel felis eleifend elementum. Nam blandit mi sit amet pharetra hendrerit. Morbi vitae sollicitudin nunc.</p>
-		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a volutpat nulla. Nunc sed mattis odio. Mauris a nunc turpis. Nunc tristique est eget erat cursus gravida. Proin varius gravida nisl. Nullam sodales augue at venenatis venenatis. Duis ac molestie nisi. Maecenas sit amet imperdiet massa, imperdiet facilisis erat. Sed pellentesque, lectus et tincidunt maximus, sapien tortor consectetur ipsum, at vehicula risus mi a libero.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a volutpat nulla. Nunc sed mattis odio. Mauris a nunc turpis. Nunc tristique est eget erat cursus gravida. Proin varius gravida nisl. Nullam sodales augue at venenatis venenatis. Duis ac molestie nisi. Maecenas sit amet imperdiet massa, imperdiet facilisis erat. Sed pellentesque, lectus et tincidunt maximus, sapien tortor consectetur ipsum, at vehicula risus mi a libero.</p>
 		</div>
 		<Social/>
 		<UnsplashAPIIMG/>
+		<img className="pop-in" src="https://images.unsplash.com/photo-1661565882777-5c132e11167f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"></img>
+
 	</div>
 
     

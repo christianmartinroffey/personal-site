@@ -7,7 +7,8 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import  DarkModeSwitch from "./pages/darkModeSwitch.js";
 import injectContext from "./store/appContext";
-
+import Avatars from "./component/Avatars.js";
+import PreviousExperience from "./component/PreviousExperience.js";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -35,6 +36,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/avatars">
+							<Avatars />
+						</Route>
+						<Route exact path="/experience">
+							<PreviousExperience />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
