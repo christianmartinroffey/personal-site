@@ -2,17 +2,18 @@ import React from 'react'
 import "../../styles/customstyles.css/experience.css"
 import LogoUscreen from "../../../front/img/logouscreen.png"
 import SQSPLogo from "../../../front/img/SQSPLogo.png"
+import logo4geeks from "../../img/logo4geeks.png"
 
 function PreviousExperience() {
 
 
   return (
     <div className="container">
-    <div className="row justify-content-center">
+    <div className="row  justify-content-center">
       <div className="col-12 col-sm-8 col-lg-6">
         {/* <!-- Section Heading--> */}
         <div className="section_heading text-center wow fadeInUp inline-styling" data-wow-delay="0.2s">
-          <h3>Previous Experience</h3>
+          <h2>Previous Experience</h2>
           <p>Here you can find a little more about my experience and expertise.</p>
           <div className="line"></div>
         </div>
@@ -20,53 +21,86 @@ function PreviousExperience() {
     </div>
     <div className="row">
       {/* <!-- Single Advisor--> */}
-      <div className="col-12 col-sm-6 col-lg-3">
-        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.2s">
-          {/* <!-- Team Thumb--> */}
-          <div className="advisor_thumb"><img className="w-100" src={LogoUscreen} alt=""></img>
-            {/* <!-- Social Info--> */}
-            <div className="social-info"><a href="#"><i className="fa fa-facebook"></i></a><a href="#"><i className="fa fa-twitter"></i></a><a href="#"><i className="fa fa-linkedin"></i></a></div>
-          </div>
-          {/* <!-- Team Details--> */}
-          <div className="single_advisor_details_info">
-            <h6>Uscreen.tv</h6>
-            <p className="designation">Customer Success Team Lead</p>
-            <a>Find out more</a>
-          </div>
-        </div>
-      </div>
-      {/* <!-- Single Advisor--> */}
-      <div className="col-12 col-sm-6 col-lg-3">
-        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.3s" >
-          {/* <!-- Team Thumb--> */}
-          <div className="advisor_thumb"><img className="w-100"  src={SQSPLogo} alt=""></img>
-            {/* <!-- Social Info--> */}
-            <div className="social-info"><a href="#"><i className="fa fa-facebook"></i></a><a href="#"><i className="fa fa-twitter"></i></a><a href="#"><i className="fa fa-linkedin"></i></a></div>
-          </div>
-          {/* <!-- Team Details--> */}
-          <div className="single_advisor_details_info">
-            <h6>Squarespace Enterprise</h6>
-            <p className="designation">Senior Team Lead - Account Management</p>
-            <a>Find out more</a>
-          </div>
-        </div>
-      </div>
-      {/* <!-- Single Advisor--> */}
-      <div className="col-12 col-sm-6 col-lg-3">
+      <div className=" experience-card col-12 col-sm-6 col-lg-3">
         <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.4s">
           {/* <!-- Team Thumb--> */}
-          <div className="advisor_thumb"> <img className="w-100"  src={SQSPLogo} alt=""></img>
-            {/* <!-- Social Info--> */}
-            <div className="social-info"><a href="#"><i className="fa fa-facebook"></i></a><a href="#"><i className="fa fa-twitter"></i></a><a href="#"><i className="fa fa-linkedin"></i></a></div>
+          <div className="advisor_thumb"> <img className="w-100 pt-2"  src={logo4geeks} alt=""></img>
           </div>
           {/* <!-- Team Details--> */}
           <div className="single_advisor_details_info">
-            <h6>Squarespace</h6>
-            <p className="designation">Senior Team Lead - Customer Success</p>
-            <a>Find out more</a>
+            <h3 className="experience-text" >4Geeks Academy</h3>
+            <p className="experience-text" >Full Stack Developer</p>
+            <hr></hr>
+            <h5 className="experience-text designation">Student Full Stack Developer</h5>
+            <a className="experience-links">Find out more</a>
           </div>
         </div>
       </div>
+      {/* <!-- Single Advisor--> */}
+      <div className="  experience-card col-12 col-sm-6 col-lg-3">
+        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.2s">
+          {/* <!-- Team Thumb--> */}
+          <div className="advisor_thumb"><img className="w-100 pt-2" src={LogoUscreen} alt=""></img>
+          </div>
+          {/* <!-- Team Details--> */}
+          <div className="single_advisor_details_info">
+            <h3 className="experience-text">Uscreen.tv</h3>
+            <p className="experience-text">Video Monetization</p>
+            <hr></hr>
+            <h4 className="experience-text designation">Customer Success Team Lead</h4>
+            <a className="experience-links">Find out more</a>
+          </div>
+        </div>
+      </div>
+      {/* <!-- Single Advisor--> */}
+      <div className=" experience-card col-12 col-sm-6 col-lg-3">
+        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.3s" >
+          {/* <!-- Team Thumb--> */}
+          <div className="advisor_thumb"><img className="w-100 pt-2"  src={SQSPLogo} alt=""></img>
+          </div>
+          {/* <!-- Team Details--> */}
+          <div className="single_advisor_details_info">
+            <h3 className="experience-text">Squarespace Enterprise</h3>
+            <p className="experience-text" >Enterprise and Premium SAAS</p>
+            <hr></hr>
+            <h5 className="experience-text designation">Senior Team Lead Account Management</h5>
+            <a className="experience-links">Find out more</a>
+          </div>
+        </div>
+      </div>
+      {/* <!-- Single Advisor--> */}
+      <div className="  experience-card col-12 col-sm-6 col-lg-3">
+        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.4s">
+          {/* <!-- Team Thumb--> */}
+          <div className="advisor_thumb"> <img className="w-100 pt-2"  src={SQSPLogo} alt=""></img>
+          </div>
+          {/* <!-- Team Details--> */}
+          <div className="single_advisor_details_info">
+            <h3 className="experience-text" >Squarespace</h3>
+            <p className="experience-text" >Website SAAS</p>
+            <hr></hr>
+            <h5 className="experience-text designation">Senior Team Lead Customer Success</h5>
+            <a className="experience-links">Find out more</a>
+          </div>
+        </div>
+      </div>
+      {/* <!-- Single Advisor--> */}
+      <div className="  experience-card col-12 col-sm-6 col-lg-3">
+        <div className="single_advisor_profile wow fadeInUp inline-styling" data-wow-delay="0.4s">
+          {/* <!-- Team Thumb--> */}
+          <div className="advisor_thumb"> <img className="w-100 pt-2"  src={SQSPLogo} alt=""></img>
+          </div>
+          {/* <!-- Team Details--> */}
+          <div className="single_advisor_details_info">
+            <h3 className="experience-text" >Squarespace</h3>
+            <p className="experience-text" >Website SAAS</p>
+            <hr></hr>
+            <h5 className="experience-text designation">Senior Team Lead Customer Support</h5>
+            <a className="experience-links">Find out more</a>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
   )
