@@ -8,9 +8,9 @@ import { Single } from "./pages/single";
 import  DarkModeSwitch from "./pages/darkModeSwitch.js";
 import injectContext from "./store/appContext";
 import Avatars from "./component/Avatars.js";
-import PreviousExperience from "./component/PreviousExperience.js";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import Modal  from "./component/Modal.js";
 
 
 //create your first component
@@ -40,8 +40,8 @@ const Layout = () => {
 						<Route exact path="/avatars">
 							<Avatars />
 						</Route>
-						<Route exact path="/experience">
-							<PreviousExperience />
+						<Route exact path="/modal">
+							<Modal />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
