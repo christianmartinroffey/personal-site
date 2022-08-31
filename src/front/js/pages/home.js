@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect} from "react";
 import { Context } from "../store/appContext";
 import anime from 'animejs/lib/anime.es.js';
 import "../../styles/home.css";
-import BackToTop from "../component/BackToTop";
+
 import Social from "../component/Social";
 import UnsplashAPIIMG from "../component/UnsplashAPIIMG";
 import PreviousExperience from "../component/PreviousExperience";
@@ -26,7 +26,7 @@ export const Home = () => {
 		<PreviousExperience/>
 		<UnsplashAPIIMG/>
 		</div>
-		<BackToTop></BackToTop>
+	
 		<Social/>
 	</div>
 

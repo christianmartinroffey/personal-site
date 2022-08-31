@@ -37,7 +37,7 @@ export const Footer = () => (
 		<p>
 			Website design, animation and code by Christian M-R
 		</p>
-		
+		<BackToTop></BackToTop>
 		</div>
 		</div>
 	</footer>
