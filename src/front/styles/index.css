@@ -1,6 +1,14 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+
+*{
+  font-family: 'Didact Gothic';
+  font-weight: bold!important;
+}
+ 
 a {
     position: relative; 
     

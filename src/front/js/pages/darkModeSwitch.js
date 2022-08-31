@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import anime from 'animejs/lib/anime.es.js';
-import "../../styles/customstyles.css/darkmode.css";
+
 
 const DarkModeSwitch = () => {
 
@@ -27,8 +27,8 @@ const DarkModeSwitch = () => {
         },"-=350")
         .add({
             targets: "#dark-page",
-            backgroundColor: toggle ? 'rgba(255,255,255, 0.9)' : 'rgba(22,22,22, 0.9)',
-            color: toggle ? 'rgba(22,22,22, 0.9)' : 'rgba(255,255,255, 0.9)'
+            backgroundColor: toggle ? 'rgba(255,255,255, 0.9)' : 'rgba(22,22,22)',
+            color: toggle ? 'rgba(22,22,22)' : 'rgba(255,255,255, 0.9)'
         },"-=700");
         
         if(!toggle){

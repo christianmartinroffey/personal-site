@@ -6,6 +6,7 @@ import BackToTop from "../component/BackToTop";
 import Social from "../component/Social";
 import UnsplashAPIIMG from "../component/UnsplashAPIIMG";
 import PreviousExperience from "../component/PreviousExperience";
+import AboutMe from "../component/AboutMe";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -15,10 +16,13 @@ export const Home = () => {
 		
   return (
 	<div className="">
-		<UnsplashAPIIMG/>
+		
 		<div id='dark-page' className="text-center">
+		<AboutMe/>
 		<PreviousExperience/>
+		<UnsplashAPIIMG/>
 		</div>
+	
 		<Social/>
 	</div>
 

@@ -35,7 +35,7 @@ loadModalText4Geeks()
     <div className="row  justify-content-center">
       <div className="col-12 col-sm-8 col-lg-6">
         {/* <!-- Section Heading--> */}
-        <div className="section_heading text-center wow fadeInUp inline-styling" data-wow-delay="0.2s">
+        <div className="section_heading text-center fadeInUp inline-styling" data-wow-delay="0.2s">
           <h2 className='p-4'>Previous Experience</h2>
           <p className='pb-4'>Here you can find an overview of my experience and expertise.</p>
           <div className="line"></div>

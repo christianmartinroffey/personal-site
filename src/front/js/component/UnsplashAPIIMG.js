@@ -47,8 +47,8 @@ useEffect(() => {
 }, []);
   
   return (
-    <div className="container-flex">
-   {res == undefined ? (<img className="pop-in" src="https://images.unsplash.com/photo-1661565882777-5c132e11167f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"></img> ) : <img src ={res}></img>
+    <div className="text-center">
+   {res == undefined ? (<img className="pop-in img-fluid banner" src="https://images.unsplash.com/photo-1661565882777-5c132e11167f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"></img> ) : <img className="pop-in img-fluid banner" src ={res}></img>
 }
 {/* <button onClick={onClickImage}>Click for image</button>    */}
     </div>
