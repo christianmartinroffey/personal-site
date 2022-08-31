@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import { Context } from "../store/appContext";
 import anime from 'animejs/lib/anime.es.js';
 import "../../styles/home.css";
@@ -14,6 +14,10 @@ export const Home = () => {
 	const toggle = store.toggle;
 	console.log(toggle);
 		
+ 
+  
+
+
   return (
 	<div className="">
 		
@@ -22,7 +26,7 @@ export const Home = () => {
 		<PreviousExperience/>
 		<UnsplashAPIIMG/>
 		</div>
-	
+		<BackToTop></BackToTop>
 		<Social/>
 	</div>
 
