@@ -7,7 +7,9 @@ function AboutMe() {
         <h1>AboutMe</h1>
         <div className='container d-flex'>
         <img src= {profileCircle} style={{height:200}}></img>
-        <p>Some text about me</p>
+        <p>I've spent over 7 years in software SAAS companies learning and understanding customers' needs on various levels. 
+          technical, mission, business etc. 
+        </p>
         </div>
         </div>
   )

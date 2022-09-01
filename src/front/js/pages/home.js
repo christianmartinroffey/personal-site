@@ -7,6 +7,7 @@ import Social from "../component/Social";
 import UnsplashAPIIMG from "../component/UnsplashAPIIMG";
 import PreviousExperience from "../component/PreviousExperience";
 import AboutMe from "../component/AboutMe";
+import SkillsAndExpertise from "../component/SkillsAndExpertise";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -23,6 +24,9 @@ export const Home = () => {
 		
 		<div id='dark-page' className="text-center">
 		<AboutMe/>
+		<hr></hr>
+		<SkillsAndExpertise/>
+		<hr></hr>
 		<PreviousExperience/>
 		<UnsplashAPIIMG/>
 		</div>
