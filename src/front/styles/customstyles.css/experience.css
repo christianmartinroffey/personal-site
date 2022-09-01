@@ -153,9 +153,10 @@ transform: scale(1.06) translateZ(0);
 transition: transform 0.5s;
 
 }
+
 .wow:hover{
-    -webkit-box-shadow: 0 0.25rem 1rem 0.5rem rgba(225, 25, 25, 0.9);
-    box-shadow: 0 0.25rem 1rem 0.5rem rgba(225, 25, 25, 0.9);
+    -webkit-box-shadow: 0 0.25rem 0.5rem 0.5rem rgba(182, 49, 160, 0.8);
+    box-shadow: 0 0.25rem 0.5rem 0.5rem rgba(182, 49, 160, 0.8);
 }
 .experience-text{
     color: #000000;

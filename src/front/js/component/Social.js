@@ -7,7 +7,7 @@ function Social() {
     <div className="container ">
       <hr></hr>
       <h3 className="social-text">
-        Social<span className="text-danger social-text">.</span>
+        Social<span className="dot-color social-text">.</span>
       </h3>
       <ul className="icon-wrapper container d-flex pt-3 ">
         <li className="social-icons">

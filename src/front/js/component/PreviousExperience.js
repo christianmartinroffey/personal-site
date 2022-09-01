@@ -3,34 +3,57 @@ import "../../styles/customstyles.css/experience.css"
 import LogoUscreen from "../../../front/img/logouscreen.png"
 import SQSPLogo from "../../../front/img/SQSPLogo.png"
 import logo4geeks from "../../img/logo4geeks.png"
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal'
 
 function PreviousExperience() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const [modalState, setModalState] = useState(false);
-  const [company, SetCompany] = useState();
-  const fourGeeks = "4geeks";
+  // const [modalState, setModalState] = useState(false);
+  
+  const [company, setCompany] = useState();
  
   const onClickEvent4Geeks = (e) =>{
-    setModalState(true);
-    SetCompany(e);
+    // setModalState(true);
+    setShow(true);
+    setCompany(e);
+
+    // setModal(true);
   };
   
-  const loadModalText4Geeks = () =>{
-    company == "4geeks" ? (alert("this should only show for 4geeks")) :
-    company == "SQSPENT" ? (alert("Enterprise") ):
-    company == "Uscreen" ? (alert("uscreen")) :
-    company == "SQSPCS" ? (alert("Success")) :
-    company == "SQSPSup" ? (alert("support")) :
-    company == "SQSPAdv" ? (alert("advisor")) : ("")
-};
-  
+//   const loadModalText4Geeks = () =>{
+//     company == "4geeks" ? (alert("this should only show for 4geeks")) :
+//     company == "SQSPENT" ? (alert("Enterprise") ):
+//     company == "Uscreen" ? (alert("uscreen")) :
+//     company == "SQSPCS" ? (alert("Success")) :
+//     company == "SQSPSup" ? (alert("support")) :
+//     company == "SQSPAdv" ? (alert("advisor")) : ("")
+// };
 
-loadModalText4Geeks()
+// loadModalText4Geeks()
+// console.log(modalState,"modal", company, "company")
 
-  console.log(modalState, company, "the state")
+{/* <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button> */}
 
   return (
     <div id='dark-page' >
+      
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+       {company == "4geeks" ? <Modal.Body><h1>Woohoo, you're reading this text in a modal!</h1></Modal.Body> : <Modal.Body>Not Uscreen</Modal.Body> }
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     <div className="container">
     <div className="row  justify-content-center">
       <div className="col-12 col-sm-8 col-lg-6">
@@ -55,7 +78,7 @@ loadModalText4Geeks()
             <p className="experience-text" >Full Stack Developer</p>
             <hr></hr>
             <h5 className="experience-text designation">Student, Full Stack Developer</h5>
-            <a className="experience-links" id="4geeks" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Find out more</a>
+            <a className="experience-links" id="4geeks" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Click to find out more</a>
           </div>
         </div>
       </div>
@@ -71,7 +94,7 @@ loadModalText4Geeks()
             <p className="experience-text">Video Monetization</p>
             <hr></hr>
             <h5 className="experience-text designation">Customer Success, Team Lead</h5>
-            <a className="experience-links" id="Uscreen" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Find out more</a>
+            <a className="experience-links" id="Uscreen" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Click to find out more</a>
           </div>
         </div>
       </div>
@@ -87,7 +110,7 @@ loadModalText4Geeks()
             <p className="experience-text" >Enterprise and Premium SAAS</p>
             <hr></hr>
             <h5 className="experience-text designation">Senior Team Lead, Account Management</h5>
-            <a className="experience-links" id="SQSPENT" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Find out more</a>
+            <a className="experience-links" id="SQSPENT" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Click to find out more</a>
           </div>
         </div>
       </div>
@@ -103,7 +126,7 @@ loadModalText4Geeks()
             <p className="experience-text" >Website SAAS</p>
             <hr></hr>
             <h5 className="experience-text designation">Senior Team Lead, Customer Success</h5>
-            <a className="experience-links" id="SQSPCS" onClick={(e) => onClickEvent4Geeks(e.target.id)} >Find out more</a>
+            <a className="experience-links" id="SQSPCS" onClick={(e) => onClickEvent4Geeks(e.target.id)} >Click to find out more</a>
           </div>
         </div>
       </div>
@@ -119,7 +142,7 @@ loadModalText4Geeks()
             <p className="experience-text" >Website SAAS</p>
             <hr></hr>
             <h5 className="experience-text designation">Senior Team Lead, Customer Support</h5>
-            <a className="experience-links" id="SQSPSup" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Find out more</a>
+            <a className="experience-links" id="SQSPSup" onClick={(e) => onClickEvent4Geeks(e.target.id)}>Click to find out more</a>
           </div>
         </div>
       </div>
@@ -139,7 +162,7 @@ loadModalText4Geeks()
             <ul>
               <li>Troubleshooting technical issues</li>
             </ul>
-            <a className="experience-links" id="SQSPAdv" onClick={(e) => onClickEvent4Geeks(e.target.id)} >Find out more</a>
+            <a className="experience-links" id="SQSPAdv" onClick={(e) => onClickEvent4Geeks(e.target.id)} >Click to find out more</a>
           </div>
         </div>
       </div>

@@ -35,6 +35,10 @@ li{
     font-size: 80px;
 }
 
+.dot-color{
+    color: rgba(182, 49, 160); 
+}
+
 .github{
     height: 100px;
     width: 100px;
