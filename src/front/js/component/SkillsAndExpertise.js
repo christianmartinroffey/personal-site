@@ -41,11 +41,15 @@ function SkillsAndExpertise() {
 findSkills()
 
 
-const [open, setOpen] = useState(false)
+const [open, setOpen] = useState(false);
+const [listID, setListID] = useState();
 
 const openClickHandler = (e) =>{
-  setOpen(true);
-  console.log(e);
+  if(open == false){
+    setOpen(true)}
+  else( setOpen(false));
+  setListID(e);
+  console.log(e, open, "clickhandler");
 }
 
   return (
@@ -56,7 +60,8 @@ const openClickHandler = (e) =>{
         <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed"   onClick={(e) => openClickHandler(e.target.id)} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id={index}>
+    {/* <button class={!open ? 'accordion-button collapsed' : 'accordion-button collapse'}   onClick={(e) => openClickHandler(e.target.id)} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id={index}> */}
+      <button class={skillOption[index] == listID && open == true ? "accordion-button expanded" : "accordion-button collapsed"} data-bs-toggle="collapse" data-bs-target={listID} onClick={(e) => openClickHandler(e.target.id)} id={index}>
         {skillOption.skillName}
       </button>
     </h2>
