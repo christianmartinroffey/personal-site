@@ -34,11 +34,11 @@ function SkillsAndExpertise() {
     }
   ];
   
- const findSkills = () => {
-  skillsOptions.map((skillOption, index)=>{
-    console.log(skillOption.skillName, "skill name")
-  })};
-findSkills()
+//  const findSkills = () => {
+//   skillsOptions.map((skillOption, index)=>{
+//     console.log(skillOption.skillName, "skill name")
+//   })};
+// findSkills()
 
 
 const [open, setOpen] = useState(false);
@@ -52,22 +52,23 @@ const openClickHandler = (e) =>{
   console.log(e, open, "clickhandler");
 }
 
+console.log(listID, "index", open, "status");
+
   return (
     <div className='container-fluid '>
       <h2 className='p-3'>Skills & Expertise</h2>
       {
-              skillsOptions.map((skillOption, index)=>{ return(
+              skillsOptions.map((skillOption)=>{ return(
         <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
     {/* <button class={!open ? 'accordion-button collapsed' : 'accordion-button collapse'}   onClick={(e) => openClickHandler(e.target.id)} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id={index}> */}
-      <button class={skillOption[index] == listID && open == true ? "accordion-button expanded" : "accordion-button collapsed"} data-bs-toggle="collapse" data-bs-target={listID} onClick={(e) => openClickHandler(e.target.id)} id={index}>
+      <button class={skillOption.id == listID && open == true ? "accordion-button expanded bg-secondary show" : skillOption.id == listID && open == false ? "accordion-button collapsed bg-primary" : "accordion-button expanded bg-warning" } data-bs-toggle="collapse" data-bs-target={listID} onClick={(e) => openClickHandler(e.target.id)} id={skillOption.id}>
         {skillOption.skillName}
       </button>
     </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      
-      <div class="accordion-body">
+    <div id={listID} class={skillOption.id == listID ? "accordion-collapse collapsed" : "accordion-collapse collapsed"} aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body" id={listID}>
         <p>{skillOption.languages}</p>
         <p>{skillOption.description}.</p>
         <p>{skillOption.projectExamples}.</p>
