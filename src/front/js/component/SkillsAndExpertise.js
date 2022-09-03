@@ -63,11 +63,11 @@ console.log(listID, "index", open, "status");
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
     {/* <button class={!open ? 'accordion-button collapsed' : 'accordion-button collapse'}   onClick={(e) => openClickHandler(e.target.id)} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id={index}> */}
-      <button class={skillOption.id == listID && open == true ? "accordion-button expanded bg-secondary show" : skillOption.id == listID && open == false ? "accordion-button collapsed bg-primary" : "accordion-button expanded bg-warning" } data-bs-toggle="collapse" data-bs-target={listID} onClick={(e) => openClickHandler(e.target.id)} id={skillOption.id}>
+      <button class={skillOption.id == listID && open == true ? "accordion-button expanded show" : skillOption.id == listID && open == false ? "accordion-button collapsed" : "accordion-button collapsed" } data-bs-toggle="collapse" data-bs-target={skillOption.id} onClick={(e) => openClickHandler(e.target.id)} id={skillOption.id}>
         {skillOption.skillName}
       </button>
     </h2>
-    <div id={listID} class={skillOption.id == listID ? "accordion-collapse collapsed" : "accordion-collapse collapsed"} aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+    <div id={skillOption.id} class="accordion-collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body" id={listID}>
         <p>{skillOption.languages}</p>
         <p>{skillOption.description}.</p>
@@ -78,6 +78,28 @@ console.log(listID, "index", open, "status");
 </div>
                 )  })
             }   
+
+<h2>Collapsibles</h2>
+
+<p>A Collapsible:</p>
+<button type="button" className="collapsible">Open Collapsible</button>
+<div className="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<p>Collapsible Set:</p>
+<button type="button" className="collapsible">Open Section 1</button>
+<div className="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button type="button" className="collapsible">Open Section 2</button>
+<div className="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button type="button" className="collapsible">Open Section 3</button>
+<div className="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
  
     </div>
   )
