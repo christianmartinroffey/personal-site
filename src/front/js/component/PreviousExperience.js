@@ -80,7 +80,7 @@ function PreviousExperience() {
         </div>
         <div className="row">
           {/* <!-- Single Advisor--> */}
-          <div className=" experience-card col-12 col-sm-6 col-lg-3">
+          <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.4s"
@@ -109,7 +109,7 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className="  experience-card col-12 col-sm-6 col-lg-3">
+          <div className="  experience-card  experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.2s"
@@ -137,7 +137,7 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className=" experience-card col-12 col-sm-6 col-lg-3">
+          <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.3s"
@@ -165,7 +165,7 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className="  experience-card col-12 col-sm-6 col-lg-3">
+          <div className="  experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.4s"
@@ -194,7 +194,7 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className="  experience-card col-12 col-sm-6 col-lg-3">
+          <div className="  experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.4s"
@@ -223,7 +223,7 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className="  experience-card col-12 col-sm-6 col-lg-3">
+          <div className="  experience-card  experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.4s"

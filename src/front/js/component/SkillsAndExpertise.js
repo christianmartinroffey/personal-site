@@ -63,9 +63,9 @@ console.log(listID, "index", open, "status");
       <div className='col-8' >
 {
               skillsOptions.map((skillOption, index)=>{ return(
-      <Accordion className="p-1" flush >
-      <Accordion.Item  eventKey={skillOption.id}>
-        <Accordion.Header>{skillOption.skillName}</Accordion.Header>
+      <Accordion className="p-1" id="dark-page" flush >
+      <Accordion.Item  className="" id="dark-page" eventKey={skillOption.id}>
+        <Accordion.Header className="" id="dark-page">{skillOption.skillName}</Accordion.Header>
         <Accordion.Body>
         <p>{skillOption.languages}</p>
         <p>{skillOption.description}.</p>
