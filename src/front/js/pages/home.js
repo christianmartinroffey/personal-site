@@ -24,7 +24,6 @@ export const Home = () => {
 		
 		<div id='dark-page' className="text-center">
 		<AboutMe/>
-		<hr></hr>
 		<SkillsAndExpertise/>
 		<hr></hr>
 		<PreviousExperience/>
