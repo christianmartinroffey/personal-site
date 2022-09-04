@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import anime from 'animejs/lib/anime.es.js';
 import "../../styles/home.css";
 
 

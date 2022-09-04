@@ -17,7 +17,7 @@ function SkillsAndExpertise() {
     {
       id: 1,
       skillName: "Backend",
-      languages: "Languages: Python, Flask",
+      languages: "Languages: Python, Flask, API",
       description: "More details on languages",
       projectExamples: "Worked on X project"
     },
