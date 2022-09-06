@@ -31,7 +31,7 @@ function AboutMe() {
         </div>
       </div>
       <LanguageIcons/>
-      <a href="https://3000-christianma-personalsit-930c68xkbqz.ws-eu63.gitpod.io/#portfolio-section">
+      <a className="no-decoration" href="https://3000-christianma-personalsit-930c68xkbqz.ws-eu63.gitpod.io/#portfolio-section">
       <div className="container arrows-container">
           <div className="arrow" > 
             <span></span>
