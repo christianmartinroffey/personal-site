@@ -2,8 +2,15 @@ import React from "react";
 import profileCircle from "../../img/profile-circle.png";
 import "../../styles/customstyles.css/aboutMe.css";
 import LanguageIcons from "./languageIcons";
+import PreviousExperience from "./PreviousExperience";
 
 function AboutMe() {
+
+// const linkToNextSection = () =>{
+//https://3000-christianma-personalsit-930c68xkbqz.ws-eu63.gitpod.io/#yourAnchorTag">Your link text</Link> */}
+// console.log("button clicked")
+// };
+
   return (
     <div className="justify-content-center pt-5 " id="dark-page">
       <div className="container center-all d-flex pt-5 pb-5">
@@ -24,14 +31,17 @@ function AboutMe() {
         </div>
       </div>
       <LanguageIcons/>
+      <a href="https://3000-christianma-personalsit-930c68xkbqz.ws-eu63.gitpod.io/#portfolio-section">
       <div className="container arrows-container">
-          <div className="arrow">
+          <div className="arrow" > 
             <span></span>
             <span></span>
             <span></span>
           </div>
+          
         </div>
-      <h2>What you'll find in this portfolio site:</h2>
+        </a>
+      <h2 id="portfolio-section">What you'll find in this portfolio site:</h2>
       <div className="container d-flex center-all">
         <ul>
           <li>
