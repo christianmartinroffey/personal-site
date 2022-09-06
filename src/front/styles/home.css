@@ -60,3 +60,7 @@ li{
 .align-right{
     justify-content: flex-end; 
 }
+
+.icon-size{
+width: 50px;
+}
