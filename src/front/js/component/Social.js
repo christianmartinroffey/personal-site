@@ -7,7 +7,7 @@ function Social() {
   return (
     <div className="container " >
       <hr></hr>
-      <div className="container d-flex">
+      <div className="container">
       <h3 className="social-text">
         Social<span className="dot-color social-text">.</span>
       </h3>
