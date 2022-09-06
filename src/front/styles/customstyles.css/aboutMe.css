@@ -93,7 +93,7 @@ h1{
 .diamond-animation {
   
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
-  animation: clipUp6 4s infinite;
+  animation: clipUp6 8s
 }
 
 @keyframes clipUp6 {
