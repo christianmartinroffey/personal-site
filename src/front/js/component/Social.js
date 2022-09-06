@@ -1,17 +1,19 @@
 import React from "react";
 import "../../styles/home.css"
 import GitHubLogo from "../../img/GitHubLogo.svg"
+import BackToTop from "./BackToTop";
 
 function Social() {
   return (
     <div className="container " >
       <hr></hr>
+      <div className="container d-flex">
       <h3 className="social-text">
         Social<span className="dot-color social-text">.</span>
       </h3>
+      
       <ul className="icon-wrapper container d-flex pt-3 ">
         <li className="social-icons">
-       
         <a
           className=" p-2"
           href="https://github.com/christianmartinroffey"
@@ -39,8 +41,10 @@ function Social() {
           </svg>
         </a>
         </li>
+        
       </ul>
-      <hr></hr>
+      </div>
+      <hr></hr>  
     </div>
   );
 }

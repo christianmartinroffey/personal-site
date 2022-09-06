@@ -38,10 +38,9 @@ function AboutMe() {
             <span></span>
             <span></span>
           </div>
-          
         </div>
         </a>
-      <h2 id="portfolio-section">What you'll find in this portfolio site:</h2>
+      <h2 className="pb-4" id="portfolio-section">What you'll find in this portfolio site:</h2>
       <div className="container d-flex center-all">
         <ul>
           <li>

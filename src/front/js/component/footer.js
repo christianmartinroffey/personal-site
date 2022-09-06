@@ -31,14 +31,22 @@ export const Footer = () => (
 
 
 	
-	<footer className="container d-flex align-right">
+	<footer className="container d-flex text-center">
+		 <div id="bottom-right" className='container d-flex text-center'>
+      
+	  <div className='row'>
+	  <h2 className='col-6'>C.</h2>
+	  
+	  </div>
+  </div>
 		<div className=" footer mt-auto py-3 ">
 		<div id='' className="">
 		<p>
 			Website design, animation and code by Christian M-R
 		</p>
+		</div>
+		
+		</div>
 		<BackToTop></BackToTop>
-		</div>
-		</div>
 	</footer>
 );

@@ -4,12 +4,17 @@ function BackToTop() {
 
   
   return (
-    <div id="bottom-right" className='container d-flex'>
-        <div className='row'>
-        <h2 className='col-6'>C.</h2>
-        <a href="#" className='col-6'>BACK TO TOP</a>
+    <>
+      <a href="#" className='col-6 to-top no-decoration '>
+        <div className="container arrows-container-up arrow-rotated-up">
+          <div className="arrow-up" > 
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-    </div>
+      </a>
+    </>
   )
 }
 

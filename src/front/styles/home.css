@@ -5,8 +5,6 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
-
-
 li{
     list-style-type: none;
 }
@@ -14,17 +12,15 @@ li{
 .social-icons{
     transform: scale(1);
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
-   
-   
 }
 
 .social-icons :hover{
     /* transform: scale(1.06) translateZ(0); */
     /* transition-duration: 1s; */
     text-decoration: none;
-    /* border: 80px; */
-    
+    /* border: 80px; */  
 };
+
 .banner-container{
     width: 48px;
    height: 48px;
@@ -67,7 +63,7 @@ li{
 width: 50px;
 }
 
-/* arrows animation */
+/* down arrows animation */
 
 .arrows-container {
     height: 20vh;
@@ -111,4 +107,50 @@ width: 50px;
       transform: rotate(45deg) translate(20px, 20px);
     }
   }
+
+   /* back to top  */
+
+   .arrows-container-up {
+    width: 50%;
+    bottom: 100px;
   
+  }
+  
+  .arrow-up {
+    top: 0%;
+    bottom: 100%;
+    transform: translate(-50%, -50%);
+  }
+  .arrow-up span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #f07d6e;
+    border-right: 5px solid #f07d6e;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+  }
+  .arrow-up span:nth-child(2) {
+    animation-delay: -0.2s;
+  }
+  .arrow-up span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  @keyframes animate {
+    0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(20px, 20px);
+    }
+  }
+
+   .arrow-rotated-up{
+    transform: rotate(-180deg);
+   }
