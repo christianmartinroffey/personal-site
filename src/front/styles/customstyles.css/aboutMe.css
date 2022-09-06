@@ -89,3 +89,15 @@ h1{
     0% {transform: translateX(0)}
     100% {transform: translateX(200%)}
 }
+
+.diamond-animation {
+  
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
+  animation: clipUp6 4s infinite;
+}
+
+@keyframes clipUp6 {
+  from {
+    clip-path: polygon(25% 25%, 50% 50%, 75% 75%, 100% 100%);
+  }
+}

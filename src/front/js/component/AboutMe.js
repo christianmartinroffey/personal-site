@@ -13,7 +13,7 @@ function AboutMe() {
           <span className="">A Full Stack Software Engineer.</span>
         </h1>
         <img
-          className="mx-auto d-block img-fluid "
+          className="mx-auto d-block img-fluid diamond-animation "
           src={profileCircle}
           style={{ height: 300 }}
         ></img>

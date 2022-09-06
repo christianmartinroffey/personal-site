@@ -18,6 +18,12 @@ export const Navbar = () => {
 				<Link to="/">
 					<span className="navbar-brand mb-0 h1">Welcome</span>
 				</Link>
+				<Link to="/wip">
+					<span className="navbar-brand mb-0 h1">Work In Progress</span>
+				</Link>
+				<Link to="/contact">
+					<span className="navbar-brand mb-0 h1">Contact</span>
+				</Link>
 				<div id=''>
 				<Link to="/time">
 					<span className="navbar-brand mb-0 h1">Time To Waste?</span>
