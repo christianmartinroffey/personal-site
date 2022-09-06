@@ -3,9 +3,9 @@ import "../../styles/home.css"
 
 function LanguageIcons() {
   return (
-    <div>
-         <div className="container mt-4 mb-3 p-4">
-          <h2 className='pb-3'>Languages</h2>
+    
+         <div className="container mt-4 mb-3 p-4" id="dark-page">
+          <h2 className='pb-3'>Languages & Tools</h2>
 		  <div className=" container d-flex justify-content-center">
           <img
 		  className="img-fluid icon-size m-4"
@@ -32,7 +32,7 @@ function LanguageIcons() {
             alt="Python"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
           />
-          <img className="img-fluid m-4 icon-size"
+          <img className="img-fluid m-4 icon-size bg-white rounded-circle"
             alt="Flask"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
           />
@@ -41,7 +41,7 @@ function LanguageIcons() {
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
           />
 
-          <img className="img-fluid m-4 icon-size"
+          <img className="img-fluid m-4 icon-size bg-white rounded-circle"
             alt="GitHub"
             src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png"
           />
@@ -51,7 +51,7 @@ function LanguageIcons() {
           />
         </div>
 		</div>
-        </div>
+
   )
 }
 

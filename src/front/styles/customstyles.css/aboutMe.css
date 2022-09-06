@@ -7,3 +7,14 @@
     display: inline-block;
     line-height: 1em;
   }
+
+  .vertical-line {
+    border-left: 3px solid rgb(162, 162, 162);
+    height:250px;
+   margin-right: 40px; 
+   margin-left: 40px;
+  }
+
+  .center-all{
+    align-items: center;
+  }
