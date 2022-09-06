@@ -1,6 +1,7 @@
 import React from "react";
 import profileCircle from "../../img/profile-circle.png";
 import "../../styles/customstyles.css/aboutMe.css";
+import LanguageIcons from "./languageIcons";
 
 function AboutMe() {
   return (
@@ -22,6 +23,14 @@ function AboutMe() {
         ></img>
         </div>
       </div>
+      <LanguageIcons/>
+      <div className="container arrows-container">
+          <div className="arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       <h2>What you'll find in this portfolio site:</h2>
       <div className="container d-flex center-all">
         <ul>

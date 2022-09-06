@@ -21,9 +21,9 @@ export const Home = () => {
     <div className="">
       <div id="dark-page" className="text-center">
         <AboutMe />
-        <LanguageIcons/>
+        
+        {/* <LanguageIcons/> */}
         <SkillsAndExpertise />
-        <hr></hr>
         <PreviousExperience />
         <UnsplashAPIIMG />
       </div>
