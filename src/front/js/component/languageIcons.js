@@ -4,8 +4,8 @@ import "../../styles/home.css"
 function LanguageIcons() {
   return (
     
-         <div className="container mt-4 mb-3 p-4" id="dark-page">
-          <h2 className='pb-3'>Languages & Tools</h2>
+         <div className="container-fluid pt-4 pb-4" id="dark-page">
+          {/* <h2 className='pb-3'>Languages & Tools</h2> */}
 		  <div className=" container d-flex justify-content-center">
           <img
 		  className="img-fluid icon-size m-4"

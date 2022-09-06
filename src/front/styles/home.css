@@ -60,7 +60,8 @@ li{
 .align-right{
     justify-content: flex-end; 
 }
-
+/* // language icons on main home page */
 .icon-size{
 width: 50px;
 }
+
