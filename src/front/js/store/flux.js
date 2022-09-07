@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			toggle: false,
+			toggle: true,
 			darkModeText: "Click below to switch between Light and Dark mode",
 		},
 
@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				timeline
 				.add({
 					targets:".moon",
-					d:[{value: store.toggle ? moonPath: sunPath}] //moonPath ->sunpath
+					d:[{value: store.toggle ?  sunPath: moonPath}] //moonPath ->sunpath
 				})
 				.add({
 					targets:'#dark_mode',

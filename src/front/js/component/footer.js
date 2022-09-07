@@ -31,7 +31,7 @@ export const Footer = () => (
 
 
 	
-	<footer className="container d-flex text-center">
+	<footer className="container-fluid d-flex text-center" id="dark-page">
 		 <div id="bottom-right" className='container d-flex text-center'>
       
 	  <div className='row'>
