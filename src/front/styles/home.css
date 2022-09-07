@@ -156,3 +156,8 @@ width: 50px;
    .arrow-rotated-up{
     transform: rotate(-180deg);
    }
+
+   /* ///// logo animation//// */
+   .logo:hover :first-child{
+    background-color: #f07d6e;
+   }
