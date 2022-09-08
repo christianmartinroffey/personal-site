@@ -25,7 +25,7 @@ export const Home = () => {
         {/* <LanguageIcons/> */}
         <SkillsAndExpertise />
         <PreviousExperience />
-        <UnsplashAPIIMG />
+        {/* <UnsplashAPIIMG /> */}
       </div>
 
       <Social />

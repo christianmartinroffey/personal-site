@@ -71,10 +71,9 @@ function PreviousExperience() {
   }
 
   return (
+
     <div id="dark-page">
-      {roleDetails.map((role) => {
-        return (
-          <Modal show={show} onHide={handleClose}>
+          <Modal className="text-black" show={show} onHide={handleClose}>
             {/* section for 4geeks */}
             {company == "4geeks" ? (
               <Modal.Body>
@@ -216,8 +215,8 @@ function PreviousExperience() {
               </Button>
             </Modal.Footer>
           </Modal>
-        );
-      })}
+        
+      
       <div className="container">
         <div className="row  justify-content-center">
           <div className="col-12 col-sm-8 col-lg-6">

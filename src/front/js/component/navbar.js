@@ -14,7 +14,7 @@ export const Navbar = () => {
   const initScrollBehaviour = () => {
     let y = window.scrollY;
     setScrolled(y);
-    console.log(y, "scrolled");
+    // console.log(y, "scrolled");
   };
 
   useEffect(() => {
