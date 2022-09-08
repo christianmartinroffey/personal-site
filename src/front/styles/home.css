@@ -158,6 +158,24 @@ width: 50px;
    }
 
    /* ///// logo animation//// */
-   .logo:hover :first-child{
-    background-color: #f07d6e;
-   }
+  
+
+   .sunglasses {
+    opacity: 1;
+    animation: fadeIn 3s ;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 1;
+      transform: translate3d(0, -70%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 100px, 50%);
+    }
+  }
+
