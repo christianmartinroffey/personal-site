@@ -156,7 +156,11 @@ a {
 }
 
 
-
+/* ////// MODAL styles //// */
 .bold-text{
-  text-decoration: solid;
+  font-weight: bold;
+}
+
+.modal-list::before {
+  content: "•"; color: rgb(135, 7, 108)
 }

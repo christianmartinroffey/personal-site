@@ -76,73 +76,70 @@ function PreviousExperience() {
         {/* section for 4geeks */}
         {company == "4geeks" ? (
           <Modal.Body>
-            <h1>Full Stack Engineer Bootcamp</h1>
-            <a href="https://4geeks.com/">4Geeks</a>
-            <h3>Part-time Full Stack Engineer bootcamp.</h3>
-            <h4>
-              Final project included building out the sign up, login and
-              password recovery process using a variety of different tools and
-              languages across front and back-end language. This project also
-              included implementing two APIs, YouTube search as well as fetching
-              a random quote.{" "}
-            </h4>
+            <h2>Full Stack Engineer Bootcamp</h2>
+            <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
+            <h3 className="bold-text pb-2">Mission: Develop a portfolio of Front, Back and Full Stack applications, demonstrating coding proficiency. 
+            </h3>
+            <h4 className="pb-2">Final project: <a href="https://chore-manager-app.herokuapp.com/">Chore Manager</a> </h4>
+              <h4> Specific areas built included:</h4>
+                <ul>
+                  <li className="modal-list"> Sign up, Login and Password recovery views, logic and functionality, both back and front. Showcasing ability to work across Full Stack languages.</li>
+                  <li className="modal-list"> YouTube Search API integration allowing the user to search and play the first resulting video on the site whilst logging a chore. </li>
+                  <li className="modal-list"> Random quote generator API, also demonstrating REST API knowledge.</li>
+                  <li className="modal-list"> Landing page design and animations.</li>
+                </ul>
+                <h4>Skills and Languages learned:</h4>
             <ul>
-              <h4>Included:</h4>
-              <li>Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
-              <li>Backend: Python, Flask, API, SQL</li>
-              <li>Test Driven Development: Jest</li>
-              <li>Git: Terminal, Github, Gitpod, Heroku </li>
+            
+              <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+              <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
+              <li className="modal-list"> Test Driven Development: Jest</li>
+              <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
             </ul>
+            <h4>Main Projects</h4>
             <ul>
-              <h3>Projects</h3>
-              <li>Chore Manager</li>
-              <li>StarWars API blog</li>
-              <li>Todo List with React</li>
+              <li className="modal-list"><a href="https://chore-manager-app.herokuapp.com/"> Chore Manager </a></li>
+              <li className="modal-list"><a href="https://github.com/christianmartinroffey/Authentication-JWT-exercise"> JWT Authentication </a></li>
+              <li className="modal-list"><a href="https://github.com/christianmartinroffey/Star-Wars-Blog-Reading-List"> StarWars API blog</a></li>
+              <li className="modal-list"><a href="https://github.com/christianmartinroffey/ReactTodoListLocal"> React To-Do List</a></li>
             </ul>
           </Modal.Body>
         ) : company == "Uscreen" ? (
           <Modal.Body>
             <h2>Team Lead Customer Success Organization</h2>
-            <a href="https://www.uscreen.tv/">Uscreen.tv</a>
-            <p>
-              Overview: Lead the Customer Success department, including both
-              Customer Success Managers and Onboarding Specialists. </p>
-            <p className="bold-text">Mission: To retain, upsell and ensure customers are seeing success on the
+            <p>Website: <a href="https://www.uscreen.tv/">Uscreen.tv</a></p>
+            <h3 className="bold-text pb-2">Mission: To retain, upsell and ensure customers are seeing success on the
               platform. 
-            </p>
-            <p>
-              Set the retention & upsell strategy for low, mid and
-              Enterprise-level companies, while growing and expanding the team
-              to support the needs of our customers, from 2 to 7 team members
-              across Onboarding and Customer Success Managers.
-            </p>
-            <ul>
-              Highlights:
-              <li>- Set and delivered on department OKRs, ensuring operational
+            </h3>
+            <h4>Responisbilities: </h4>
+              <p className="modal-list"> Retention & upsell strategy for SMBs and
+              Enterprise-level companies</p>
+              <p className="modal-list"> Team growth, expantion and retention to support the needs of our customers.</p>
+           
+            <ul className="container p-1"><h4>
+              Highlights:</h4>
+              <li className="modal-list"> Set and delivered on department OKRs, ensuring operational
                 efficiency and company-wide revenue targets.
               </li>
-              <li>- Established SLA, internal processes</li>
-              <li>- Owned company-wide churn retrospectives, highlightin improvement
+              <li className="modal-list"> Established SLA, internal processes</li>
+              <li className="modal-list"> Owned company-wide churn retrospectives, highlightin improvement
                 areas across all parts of the company; Product, Sales, CS,
                 Support
               </li>
-              <li>- Developed and launched Failed/Delinquent churn recovery,
-                decreasing the % of lost revenuw from failed payments by over
+              <li className="modal-list"> Developed and launched Failed/Delinquent churn recovery,
+                decreasing the % of lost revenue from failed payments by over
                 60%.
               </li>
-              <li>
-                Implemented the company's first expansion/upsell initiative
+              <li className="modal-list"> Implemented the company's first expansion/upsell initiative
                 opening up an additional stream of revenue from the CS team.
               </li>
-              <li>
-                Created and trained the team on Quarterly business reviews aimed
+              <li className="modal-list"> Created and trained the team on Quarterly business reviews aimed
                 at demonstrating on-going platform and CSM value.
               </li>
-              <li>
-                Defined deparment wide Customer Lifecycle spanning across all
+              <li className="modal-list"> Defined deparment wide Customer Lifecycle spanning across all
                 tiers and customer types (SMB to Enterprise).
               </li>
-              <li>- Regular structured team trainings on best practices and industry
+              <li className="modal-list"> Regular structured team trainings on best practices and industry
                 standards.
               </li>
             </ul>
@@ -157,18 +154,18 @@ function PreviousExperience() {
             </p>
             <ul>
               Included:
-              <li>Quarterly business reviews</li>
-              <li>Customer Lifecycle</li>
+              <li className="modal-list">Quarterly business reviews</li>
+              <li className="modal-list">Customer Lifecycle</li>
             </ul>
             <ul>
               <h3>Achievements</h3>
-              <li>
+              <li className="modal-list">
                 <a href="https://getirelandonline.squarespace.com/">
                   Get Ireland Online
                 </a>
               </li>
-              <li>Launch of paid onboarding consultations</li>
-              <li>XXXXXX</li>
+              <li className="modal-list">Launch of paid onboarding consultations</li>
+               <li className="modal-list">XXXXXX</li>
             </ul>
           </Modal.Body>
         ) : company == "SQSPCS" ? (
