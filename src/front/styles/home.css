@@ -162,7 +162,7 @@ width: 50px;
 
    .sunglasses {
     opacity: 1;
-    animation: fadeIn 3s ;
+    animation: fadeIn 5s ;
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
     animation-duration: 5s;

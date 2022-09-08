@@ -12,11 +12,11 @@ export const Navbar = () => {
 
   return (
    
-    <nav className="navbar navbar-light bg-white sticky-top p-4">
-      <div className="container">
+    <nav className="navbar navbar-light bg-white sticky-top">
+      <div className="container-fluid">
         <Link to="/" className="no-decoration">
          
-        <svg width="40" height="40" viewBox="0 0 213 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="55" height="55" viewBox="0 0 213 185" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_1_2)">
     <rect width="213" height="185" fill="white" />
     <path d="M174.306 79.2101L179.663 66.4127L171.96 37.9273L153.429 5.50837L143.874 2.33793L134.691 1.32043L140.737 31.5656L110.64 5.80437H98.3048L92.2636 9.60381L120.43 53.3147L91.7498 61.568L48.4282 86.3164L38.9231 114.862L53.7159 118.62L27.9563 124.052V130.582L23.5818 132.233L37.9965 145.292L61.1177 151.409L87.4312 139.98L76.2034 170.452L117.033 183.749L190.369 147.353V116.136L174.306 79.2101Z" fill="#B3ADD8" />
