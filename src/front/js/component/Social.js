@@ -6,7 +6,7 @@ import BackToTop from "./BackToTop";
 function Social() {
   return (
     <div className="container-fluid " id="dark-page" >
-      <hr></hr>
+     
       <div className="container">
       <h3 className="social-text">
         Social<span className="dot-color social-text">.</span>
@@ -44,7 +44,6 @@ function Social() {
         
       </ul>
       </div>
-      <hr></hr>  
     </div>
   );
 }

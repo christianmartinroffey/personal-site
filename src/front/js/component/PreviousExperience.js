@@ -71,152 +71,190 @@ function PreviousExperience() {
   }
 
   return (
-
     <div id="dark-page">
-          <Modal className="text-black" show={show} onHide={handleClose}>
-            {/* section for 4geeks */}
-            {company == "4geeks" ? (
-              <Modal.Body>
-                <h1>Full Stack Engineer Bootcamp</h1>
-                <a href="https://4geeks.com/">4Geeks</a>
-                <h3>Part-time Full Stack Engineer bootcamp.</h3>
-                <h4>
-                  Final project included building out the sign up, login and
-                  password recovery process using a variety of different tools
-                  and languages across front and back-end language. This project
-                  also included implementing two APIs, YouTube search as well as
-                  fetching a random quote.{" "}
-                </h4>
-                <ul>
-                  <h4>Included:</h4>
-                  <li>Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
-                  <li>Backend: Python, Flask, API, SQL</li>
-                  <li>Test Driven Development: Jest</li>
-                  <li>Git: Terminal, Github, Gitpod, Heroku </li>
-                </ul>
-                <ul>
-                  <h3>Projects</h3>
-                  <li>Chore Manager</li>
-                  <li>StarWars API blog</li>
-                  <li>Todo List with React</li>
-                </ul>
-              </Modal.Body>
-            ) : company == "Uscreen" ? (
-              <Modal.Body>
-                <h1>Lead Customer Success Organization</h1>
-                <a href="https://www.uscreen.tv/">Uscreen.tv</a>
-                <p>
-                  Set the retention & upsell strategy for low, mid and
-                  Enterprise-level companies.
-                </p>
-                <ul>
-                  Included:
-                  <li>Establishing SLA, internal processes</li>
-                  <li>Ensure </li>
-                  <li>Failed/Delinquent churn recovery</li>
-                  <li>Expansion/Upsell opportunities</li>
-                  <li>Quarterly business reviews</li>
-                  <li>Customer Lifecycle</li>
-                </ul>
-                <ul>
-                  <h3>Achievements</h3>
-                  <li>XXXXXX</li>
-                  <li>XXXXXXX</li>
-                  <li>XXXXXX</li>
-                </ul>
-              </Modal.Body>
-            ) : company == "SQSPENT" ? (
-              <Modal.Body>
-                <h1>Account Management Lead: Retention, Onboarding & Conversion</h1>
-                <a href="https://www.squarespace.com/enterprise"></a>
-                <p>
-                  Set the retention strategy for Enterprise-level companies from
-                  the ground up.
-                </p>
-                <ul>
-                  Included:
-                  <li>Quarterly business reviews</li>
-                  <li>Customer Lifecycle</li>
-                </ul>
-                <ul>
-                  <h3>Achievements</h3>
-                  <li><a href="https://getirelandonline.squarespace.com/">Get Ireland Online</a></li>
-                  <li>Launch of paid onboarding consultations</li>
-                  <li>XXXXXX</li>
-                </ul>
-              </Modal.Body>
-            ) : company == "SQSPCS" ? (
-              <Modal.Body>
-                <h1>Account Management Lead: Retention, Onboarding & Sales</h1>
-                <a href="https://www.squarespace.com/"></a>
-                <p>
-                  Lead the Dublin-based Customer Success team, focusing on 3 main areas to ensure platform growth.
-                </p>
-                <ul>
-                  Included:
-                  <li>Prioritized Live Chat routing for trialers to increase conversion with more than 50% success rate. Baseline of 21%.</li>
-                  <li>Identify and implement proactive reach out for top-selling commerce merchants (by GMV) to ensure retention.</li>
-                  <li>Hired and grew the Success team globally, across 3 locations from 5 to 16.</li>
-                </ul>
-                <ul>
-                  <h3>Achievements</h3>
-                  <li><a href="https://getirelandonline.squarespace.com/">Get Ireland Online</a></li>
-                  <li>Launch of paid onboarding consultations</li>
-                  <li>XXXXXX</li>
-                </ul>
-              </Modal.Body>
-            ) 
-            : company == "SQSPSup" ? (
-              <Modal.Body>
-                <h1>Senior Team Lead: Customer Support</h1>
-                <a href="https://www.squarespace.com/"></a>
-                <p>
-                  Description.
-                </p>
-                <ul>
-                  Included:
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-                <ul>
-                  <h3>Achievements</h3>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </Modal.Body>
-            )   : company == "SQSPAdv" ? (
-              <Modal.Body>
-                <h1>Senior Team Lead: Customer Support</h1>
-                <a href="https://www.squarespace.com/"></a>
-                <p>
-                  Description.
-                </p>
-                <ul>
-                  Included:
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-                <ul>
-                  <h3>Achievements</h3>
-                  <li>Winner of the first Support organization recognition programme for productivity and quality performance by senior Leadership: Spotlight</li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </Modal.Body>
-            ) :(
-              <Modal.Body>Company does not match</Modal.Body>
-            )}
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        
-      
+      <Modal className="text-black" show={show} onHide={handleClose}>
+        {/* section for 4geeks */}
+        {company == "4geeks" ? (
+          <Modal.Body>
+            <h1>Full Stack Engineer Bootcamp</h1>
+            <a href="https://4geeks.com/">4Geeks</a>
+            <h3>Part-time Full Stack Engineer bootcamp.</h3>
+            <h4>
+              Final project included building out the sign up, login and
+              password recovery process using a variety of different tools and
+              languages across front and back-end language. This project also
+              included implementing two APIs, YouTube search as well as fetching
+              a random quote.{" "}
+            </h4>
+            <ul>
+              <h4>Included:</h4>
+              <li>Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+              <li>Backend: Python, Flask, API, SQL</li>
+              <li>Test Driven Development: Jest</li>
+              <li>Git: Terminal, Github, Gitpod, Heroku </li>
+            </ul>
+            <ul>
+              <h3>Projects</h3>
+              <li>Chore Manager</li>
+              <li>StarWars API blog</li>
+              <li>Todo List with React</li>
+            </ul>
+          </Modal.Body>
+        ) : company == "Uscreen" ? (
+          <Modal.Body>
+            <h2>Team Lead Customer Success Organization</h2>
+            <a href="https://www.uscreen.tv/">Uscreen.tv</a>
+            <p>
+              Overview: Lead the Customer Success department, including both
+              Customer Success Managers and Onboarding Specialists. </p>
+            <p className="bold-text">Mission: To retain, upsell and ensure customers are seeing success on the
+              platform. 
+            </p>
+            <p>
+              Set the retention & upsell strategy for low, mid and
+              Enterprise-level companies, while growing and expanding the team
+              to support the needs of our customers, from 2 to 7 team members
+              across Onboarding and Customer Success Managers.
+            </p>
+            <ul>
+              Highlights:
+              <li>- Set and delivered on department OKRs, ensuring operational
+                efficiency and company-wide revenue targets.
+              </li>
+              <li>- Established SLA, internal processes</li>
+              <li>- Owned company-wide churn retrospectives, highlightin improvement
+                areas across all parts of the company; Product, Sales, CS,
+                Support
+              </li>
+              <li>- Developed and launched Failed/Delinquent churn recovery,
+                decreasing the % of lost revenuw from failed payments by over
+                60%.
+              </li>
+              <li>
+                Implemented the company's first expansion/upsell initiative
+                opening up an additional stream of revenue from the CS team.
+              </li>
+              <li>
+                Created and trained the team on Quarterly business reviews aimed
+                at demonstrating on-going platform and CSM value.
+              </li>
+              <li>
+                Defined deparment wide Customer Lifecycle spanning across all
+                tiers and customer types (SMB to Enterprise).
+              </li>
+              <li>- Regular structured team trainings on best practices and industry
+                standards.
+              </li>
+            </ul>
+          </Modal.Body>
+        ) : company == "SQSPENT" ? (
+          <Modal.Body>
+            <h1>Account Management Lead: Retention, Onboarding & Conversion</h1>
+            <a href="https://www.squarespace.com/enterprise"></a>
+            <p>
+              Set the retention strategy for Enterprise-level companies from the
+              ground up.
+            </p>
+            <ul>
+              Included:
+              <li>Quarterly business reviews</li>
+              <li>Customer Lifecycle</li>
+            </ul>
+            <ul>
+              <h3>Achievements</h3>
+              <li>
+                <a href="https://getirelandonline.squarespace.com/">
+                  Get Ireland Online
+                </a>
+              </li>
+              <li>Launch of paid onboarding consultations</li>
+              <li>XXXXXX</li>
+            </ul>
+          </Modal.Body>
+        ) : company == "SQSPCS" ? (
+          <Modal.Body>
+            <h1>Account Management Lead: Retention, Onboarding & Sales</h1>
+            <a href="https://www.squarespace.com/"></a>
+            <p>
+              Lead the Dublin-based Customer Success team, focusing on 3 main
+              areas to ensure platform growth.
+            </p>
+            <ul>
+              Included:
+              <li>
+                Prioritized Live Chat routing for trialers to increase
+                conversion with more than 50% success rate. Baseline of 21%.
+              </li>
+              <li>
+                Identify and implement proactive reach out for top-selling
+                commerce merchants (by GMV) to ensure retention.
+              </li>
+              <li>
+                Hired and grew the Success team globally, across 3 locations
+                from 5 to 16.
+              </li>
+            </ul>
+            <ul>
+              <h3>Achievements</h3>
+              <li>
+                <a href="https://getirelandonline.squarespace.com/">
+                  Get Ireland Online
+                </a>
+              </li>
+              <li>Launch of paid onboarding consultations</li>
+              <li>XXXXXX</li>
+            </ul>
+          </Modal.Body>
+        ) : company == "SQSPSup" ? (
+          <Modal.Body>
+            <h1>Senior Team Lead: Customer Support</h1>
+            <a href="https://www.squarespace.com/"></a>
+            <p>Description.</p>
+            <ul>
+              Included:
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <ul>
+              <h3>Achievements</h3>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </Modal.Body>
+        ) : company == "SQSPAdv" ? (
+          <Modal.Body>
+            <h1>Senior Team Lead: Customer Support</h1>
+            <a href="https://www.squarespace.com/"></a>
+            <p>Description.</p>
+            <ul>
+              Included:
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <ul>
+              <h3>Achievements</h3>
+              <li>
+                Winner of the first Support organization recognition programme
+                for productivity and quality performance by senior Leadership:
+                Spotlight
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+          </Modal.Body>
+        ) : (
+          <Modal.Body>Company does not match</Modal.Body>
+        )}
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <div className="container">
         <div className="row  justify-content-center">
           <div className="col-12 col-sm-8 col-lg-6">
