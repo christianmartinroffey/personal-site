@@ -36,6 +36,11 @@ function LanguageIcons() {
             alt="Flask"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
           />
+          <img className="img-fluid m-4 icon-size bg-white rounded-circle" 
+          alt="SQLAlchemy" 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" 
+          />
+          
           <img className="img-fluid m-4 icon-size"
             alt="Git"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
