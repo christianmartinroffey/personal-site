@@ -40,7 +40,10 @@ function LanguageIcons() {
           alt="SQLAlchemy" 
           src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" 
           />
-          
+          <img className="img-fluid m-4 icon-size"
+          alt="Heroku"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain-wordmark.svg" />
+      
           <img className="img-fluid m-4 icon-size"
             alt="Git"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"

@@ -37,24 +37,25 @@ function AboutMe() {
             <span></span>
             <span></span>
             <span></span>
+            <div id="portfolio-section"></div>
           </div>
         </div>
         </a>
-      <h2 className="pb-4" id="portfolio-section">What you'll find in this portfolio site:</h2>
+       
+      <h2 className="pb-4" id="portfolio-section">A little more about me:</h2>
       <div className="container d-flex center-all">
         <ul>
           <li>
-            A showcase of my skills and expertise, from front to back-end
-            languages
+          I've spent over 7 years in software SAAS companies learning and
+          understanding customers' needs on various levels. technical, mission,
+          business etc. Now it's time to bring those expertise to software development. 
           </li>
-          <li>Details on my software engineering experience</li>
-          <li>An overview of my previous experience</li>
+          <li>I'm a big fan of operational efficiency and continuous improvement. Nothing like getting the basics right!</li>
+          <li>I also love website animations</li>
         </ul>
         <div className="vertical-line"></div>
         <p className="pl-3">
-          I've spent over 7 years in software SAAS companies learning and
-          understanding customers' needs on various levels. technical, mission,
-          business etc.
+         Here you'll be able to find out more about my previous experience and main areas of expertise. 
         </p>
       </div>
     </div>
