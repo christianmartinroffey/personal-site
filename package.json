@@ -11,18 +11,11 @@
 		"build": "webpack --config webpack.prod.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Christian Martin - Roffey",
+		"url": "https://christian-mr-portfolio.herokuapp.com/"
 	},
 	"contributors": [
-		{
-			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
-		},
-		{
-			"name": "Ignacio Cordoba",
-			"url": "http://github.com/nachovz"
-		}
+		
 	],
 	"license": "ISC",
 	"devDependencies": {
