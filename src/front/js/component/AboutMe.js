@@ -46,29 +46,42 @@ function AboutMe() {
       <div className="container d-flex center-all">
         <ul>
           <li className="display-6">Professional</li>
-          
           <li className="pt-4 pb-4">
-          7+ years web-based SAAS experience, across Enterprise & SMB. 
+          - 7+ years web-based SAAS experience, across Enterprise & SMB. 💻 
           </li>
           <li className=" pb-4"> 
-          Technical Support, Account Management, Department & Global Leadership. 
+          - Technical Support, Account Management, Department & Global Leadership. 
           </li>
           <li className=" pb-4"> 
-          
+          - Coding mentor for 4Geeks 🚀
           </li>
-          <li>Operational efficiency and continuous improvement.</li>
-          <li>I also love website animations
-          focused on learning and
-          understanding customers' needs across different platforms and industries. 
+          <li className=" pb-4"> 
+          - Adept at identifying improvement opportunities and increasing operational efficiency.
           </li>
+          <div className="main-intro-text-background">
+          <li className=" pb-4"> 
+          - I also love website animations
+          </li>
+          </div>
         </ul>
         <div className="vertical-line"></div>
         <ul>
         <li className="display-6 pb-4">Personal</li>
-        <li className="pl-3">I'm a father </li>
-        <li className="pl-3">CrossFit athlete, coach (in my spare time) & gym afficionado</li>
-        <li className="pl-3">A halfsie - half English & half Spanish - I like to pick and choose when it suits 😏</li>  
-        <li className="pl-3">Fluent in 3 languages, English & Spanish native, Italian professional proficiency.</li>
+        <li className="pl-3 pb-2">
+          - I'm a father 👶
+        </li>
+        <li className="pl-3 pb-2">
+          - CrossFit athlete, coach (in my spare time) & gym afficionado 🏋️‍♂️
+        </li>
+        <li className="pl-3 pb-2">
+          - Live in paradise, 🌴 Mallorca 🌴 
+        </li>
+        <li className="pl-3 pb-2">
+          - A 'halfsie' - half English half Spanish - I like to pick and choose when it suits 😏
+        </li>  
+        <li className="pl-3 pb-2">
+          - Fluent in 3 languages, English & Spanish native, Italian professional proficiency.
+        </li>
         </ul>
       </div>
     </div>

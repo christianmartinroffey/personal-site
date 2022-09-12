@@ -15,16 +15,17 @@
   }
 
 /* colored gradient intro text */
-  /* .main-intro-text-background{
+  .main-intro-text-background:hover{
     background: linear-gradient(
         to right, 
-        rgb(84, 115, 66), 
+        rgb(233, 233, 233), 
         rgb(10, 146, 236)
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
-} */
+}
+
 
 /* Basic styles */
 h1{
