@@ -59,7 +59,7 @@ console.log(listID, "index", open, "status");
     <div className='container-fluid pt-5 pb-5 ' id="dark-page">
       <div className='row'>
         
-      <h2 className='p-3 col-4'>Skills & Expertise</h2>
+      <h2 className='p-3 col-4 display-4'>Skills & Expertise</h2>
       <div className='col-8 ' >
 {
               skillsOptions.map((skillOption, index)=>{ return(

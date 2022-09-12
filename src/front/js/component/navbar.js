@@ -25,7 +25,7 @@ export const Navbar = () => {
   return (
    
     <nav className="navbar navbar-light bg-white sticky-top">
-      <div className="container-fluid">
+      <div className="container">
         <Link to="/" className="no-decoration">
          
         <svg width="55" height="55" viewBox="0 0 213 185" fill="none" xmlns="http://www.w3.org/2000/svg">

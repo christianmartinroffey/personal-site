@@ -42,21 +42,33 @@ function AboutMe() {
         </div>
         </a>
        
-      <h2 className="pb-4" id="portfolio-section">A little more about me:</h2>
+      <h2 className="pb-4 display-4" id="portfolio-section">A little more about me:</h2>
       <div className="container d-flex center-all">
         <ul>
-          <li>
-          I've spent over 7 years in software SAAS companies learning and
-          understanding customers' needs on various levels. technical, mission,
-          business etc. Now it's time to bring those expertise to software development. 
+          <li className="display-6">Professional</li>
+          
+          <li className="pt-4 pb-4">
+          7+ years web-based SAAS experience, across Enterprise & SMB. 
           </li>
-          <li>I'm a big fan of operational efficiency and continuous improvement. Nothing like getting the basics right!</li>
-          <li>I also love website animations</li>
+          <li className=" pb-4"> 
+          Technical Support, Account Management, Department & Global Leadership. 
+          </li>
+          <li className=" pb-4"> 
+          
+          </li>
+          <li>Operational efficiency and continuous improvement.</li>
+          <li>I also love website animations
+          focused on learning and
+          understanding customers' needs across different platforms and industries. 
+          </li>
         </ul>
         <div className="vertical-line"></div>
-        <p className="pl-3">
-         Here you'll be able to find out more about my previous experience and main areas of expertise. 
-        </p>
+        <ul>
+        <li className="display-6 pb-4">Personal</li>
+        <li className="pl-3">
+        I'm a father, CrossFit athlete, gym afficionado and halfsie - half English & half Spanish - I like to pick and choose when it suits 😏
+        </li>
+        </ul>
       </div>
     </div>
   );
