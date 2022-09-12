@@ -65,9 +65,10 @@ function AboutMe() {
         <div className="vertical-line"></div>
         <ul>
         <li className="display-6 pb-4">Personal</li>
-        <li className="pl-3">
-        I'm a father, CrossFit athlete, gym afficionado and halfsie - half English & half Spanish - I like to pick and choose when it suits 😏
-        </li>
+        <li className="pl-3">I'm a father </li>
+        <li className="pl-3">CrossFit athlete, coach (in my spare time) & gym afficionado</li>
+        <li className="pl-3">A halfsie - half English & half Spanish - I like to pick and choose when it suits 😏</li>  
+        <li className="pl-3">Fluent in 3 languages, English & Spanish native, Italian professional proficiency.</li>
         </ul>
       </div>
     </div>
