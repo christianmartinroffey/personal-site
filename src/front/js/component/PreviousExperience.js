@@ -119,6 +119,7 @@ function PreviousExperience() {
               <li className="modal-list"><a href="https://github.com/christianmartinroffey/Star-Wars-Blog-Reading-List"> StarWars API blog</a></li>
               <li className="modal-list"><a href="https://github.com/christianmartinroffey/ReactTodoListLocal"> React To-Do List</a></li>
             </ul>
+            <p>May 2022 - September 2022</p>
           </Modal.Body>
         ) : company == "Uscreen" ? (
           <Modal.Body>
@@ -127,7 +128,7 @@ function PreviousExperience() {
             <h3 className="bold-text pb-2">Mission: To retain, upsell and ensure customers are seeing success on the
               platform. 
             </h3>
-            <h4>Responisbilities: </h4>
+            <h4>Responsibilities: </h4>
               <p className="modal-list"> Retention & upsell strategy for SMBs and
               Enterprise-level companies</p>
               <p className="modal-list"> Team growth, expantion and retention to support the needs of our customers.</p>
@@ -159,6 +160,7 @@ function PreviousExperience() {
                 standards.
               </li>
             </ul>
+            <p>February 2021 - June 2022</p>
           </Modal.Body>
         ) : company == "SQSPENT" ? (
           <Modal.Body>

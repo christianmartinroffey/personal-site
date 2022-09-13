@@ -11,6 +11,7 @@ import Avatars from "./component/Avatars.js";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Modal  from "./component/Modal.js";
+import Contact from "./pages/contact";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +42,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/modal">
 							<Modal />
+						</Route>
+						<Route exact path="/contact">
+							<Contact />
 						</Route>
 						
 						<Route>
