@@ -13,14 +13,14 @@ const lineBreak = `<br></br>`
       skillName: "Frontend",
       languages: "Languages: HTML, CSS, Javascript, React, Bootstrap",
       description: "Adept at building out front-end applications using the most popular languages and frameworks currently used to create a custom and professional user experience.",
-      projectExamples: "My Portfolio, Chore Manager, Star Wars Reading Blog, Todo List"
+      projectExamples: "Projects: My Portfolio, Chore Manager, Star Wars Reading Blog, Todo List"
     },
     {
       id: 1,
       skillName: "Backend",
       languages: "Languages: Python, Flask, API, SQLAlchemy ",
       description: "Able to build and maintain endpoints to support web applications. Specifically, user creation and validation, alongside industry standard requirements of sending emails on sign up as well as reset password process based on token authentication and verification",
-      projectExamples: "Chore Manager, JWT Authentication, Instagram Data Modelling"
+      projectExamples: "Projects: Chore Manager, JWT Authentication, Instagram Data Modelling"
     },
     {
       id: 2,
