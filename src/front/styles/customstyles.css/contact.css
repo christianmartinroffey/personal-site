@@ -1,5 +1,5 @@
 #title-Tag-Line {
-    font-size: 20px;
+    font-size: 30px;
   }
   /* .card-item__bg{
     width: 150px;
@@ -34,7 +34,6 @@
   
   .title{
     display: block;
-    font-family: sans-serif;
     margin: 10px auto 5px;
     width: 300px;
   }
@@ -43,11 +42,12 @@
   }
   
   .pageTitle{
-    font-size: 2em;
+    font-size: 40px;
     font-weight: bold;
   }
   .secondaryTitle{
     color: grey;
+    font-size: 20px;
   }
   
  
@@ -93,6 +93,12 @@
     
   }
   
+.form-dowload-link{
+    font-size: 20px;
+    color: white;
+}
+
+
   @keyframes bounce {
     0% {
       tranform: translate(0, 4px);
