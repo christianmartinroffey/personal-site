@@ -5,20 +5,22 @@ function Contact() {
 
 const sendEmail = () =>{
 console.log("button clicked");
+
 }
 
   return (
 
-    <div className="wrapper"> 
-    <form className="form"></form>
+    <div className="wrapper pt-5 pb-5"> 
+
+    <form className="form">
       <div className="pageTitle title">Get In Touch </div>
       <div className="secondaryTitle title">Add your details below so I can reach out.</div>
       <input type="text" className="name formEntry" placeholder="Name" ></input>
       <input type="text" className="email formEntry" placeholder="Email"></input>
       <textarea className="message formEntry" placeholder="Message"></textarea>
-      <button className="submit formEntry" onClick={sendEmail()}>Submit</button>
-      </div>
- 
+      <button className="submit formEntry btn-primary" onClick={sendEmail}>Submit</button>
+    </form>
+    </div>
   )
 }
 
