@@ -42,7 +42,7 @@ function AboutMe() {
         </div>
         </a>
        
-      <h2 className="pb-4 display-4" id="portfolio-section">A little more about me:</h2>
+      <h2 className="pb-4 display-4" id="portfolio-section">A super brief intro:</h2>
       <div className="container d-flex center-all">
         <ul>
           <li className="display-6">Professional</li>
@@ -50,37 +50,32 @@ function AboutMe() {
           - 7+ years web-based SAAS experience, across Enterprise & SMB. 💻 
           </li>
           <li className=" pb-4"> 
-          - Technical Support, Account Management, Department & Global Leadership. 
+          - Coding mentor for 4Geeks 🚀 
           </li>
           <li className=" pb-4"> 
-          - Coding mentor for 4Geeks 🚀
+          - Technical Support, Account Management, Department & Global Leadership. 👨‍💻
           </li>
           <li className=" pb-4"> 
-          - Adept at identifying improvement opportunities and increasing operational efficiency.
+          - Adept at identifying improvement opportunities and increasing operational efficiency. 💡
           </li>
-          <div className="main-intro-text-background">
-          <li className=" pb-4"> 
-          - I also love website animations
-          </li>
-          </div>
         </ul>
         <div className="vertical-line"></div>
         <ul>
         <li className="display-6 pb-4">Personal</li>
-        <li className="pl-3 pb-2">
-          - I'm a father 👶
+        <li className="pl-3 pb-4">
+          - I'm a father to baby Noah. 👶
         </li>
-        <li className="pl-3 pb-2">
-          - CrossFit athlete, coach (in my spare time) & gym afficionado 🏋️‍♂️
+        <li className="pl-3 pb-4">
+          - CrossFit athlete, coach (in my spare time) & gym afficionado. 🏋️‍♂️
         </li>
-        <li className="pl-3 pb-2">
-          - Live in paradise, 🌴 Mallorca 🌴 
+        <li className="pl-3 pb-4">
+          - Live in paradise 🌴 Mallorca, Spain 🌴 
         </li>
-        <li className="pl-3 pb-2">
-          - A 'halfsie' - half English half Spanish - I like to pick and choose when it suits 😏
+        <li className="pl-3 pb-4">
+          - Love a challenge and enjoying the Full Stack Developer journey. 🖥️ 
         </li>  
-        <li className="pl-3 pb-2">
-          - Fluent in 3 languages, English & Spanish native, Italian professional proficiency.
+        <li className="pl-3">
+          - Fluent in 3 languages, English 🇬🇧 & Spanish 🇪🇸 native, Italian 🇮🇹 professional proficiency.
         </li>
         </ul>
       </div>
