@@ -4,7 +4,7 @@ function BackToTop() {
 
   
   return (
-    <>
+    <div className='remove-margin'>
       <a href="#" className='col-6 to-top no-decoration '>
         <div className="container arrows-container-up arrow-rotated-up">
           <div className="arrow-up" > 
@@ -14,7 +14,7 @@ function BackToTop() {
           </div>
         </div>
       </a>
-    </>
+    </div>
   )
 }
 

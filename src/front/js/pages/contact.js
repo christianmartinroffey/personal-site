@@ -11,11 +11,11 @@ console.log("button clicked");
   return (
 
    
-    <div className="wrapper pt-5"> 
+    <div className="wrapper pt-5" id="dark-page"> 
 
     <form className="form">
       <div className="pageTitle title">Get In Touch </div>
-      <div className="secondaryTitle title">Add your details below so I can reach out, or download my CV ...  <a className='form-dowload-link' href="">here.</a></div>
+      <div className="title">Add your details below so I can reach out, or download my CV ...  <a className='' href="">here.</a></div>
       <input type="text" className="name formEntry" placeholder="Name" ></input>
       <input type="text" className="email formEntry" placeholder="Email"></input>
       <textarea className="message formEntry" placeholder="Message"></textarea>

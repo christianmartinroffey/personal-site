@@ -32,12 +32,10 @@ export const Footer = () => (
 
 
 	
-	<footer className="container-fluid d-flex text-center" id="dark-page">
+	<footer className="container-fluid d-flex text-center" id="dark-page" >
+		
 		<Social></Social>
-		 <div id="bottom-right" className='container d-flex text-center'>
-     
-	  
-  </div>
+		 <div id="bottom-right" className='container d-flex text-center'></div>
 		<div className=" footer mt-auto py-3 ">
 		<div id='' className="">
 		<p>
