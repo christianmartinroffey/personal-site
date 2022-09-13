@@ -46,7 +46,7 @@
     font-weight: bold;
   }
   .secondaryTitle{
-    color: grey;
+    color: rgb(211, 211, 211);
     font-size: 20px;
   }
   
@@ -95,8 +95,13 @@
   
 .form-dowload-link{
     font-size: 20px;
-    color: white;
+    color: rgb(211, 211, 211);
 }
+.form-dowload-link:hover{
+    font-size: 20px;
+    color: rgb(244, 63, 63);
+}
+
 
 
   @keyframes bounce {

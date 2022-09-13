@@ -5,7 +5,7 @@ import BackToTop from "./BackToTop";
 
 function Social() {
   return (
-    <div className="container-fluid " id="dark-page" >
+    <div className=" " id="dark-page" >
      
       <div className="container">
       <h3 className="social-text">

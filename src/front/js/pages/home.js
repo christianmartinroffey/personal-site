@@ -9,6 +9,7 @@ import PreviousExperience from "../component/PreviousExperience";
 import AboutMe from "../component/AboutMe";
 import SkillsAndExpertise from "../component/SkillsAndExpertise";
 import LanguageIcons from "../component/languageIcons";
+import BackToTop from "../component/BackToTop";
 
 
 export const Home = () => {
@@ -26,9 +27,10 @@ export const Home = () => {
         <SkillsAndExpertise />
         <PreviousExperience />
         {/* <UnsplashAPIIMG /> */}
+        <BackToTop/>
       </div>
 
-      <Social />
+      {/* <Social /> */}
     </div>
   );
 };
