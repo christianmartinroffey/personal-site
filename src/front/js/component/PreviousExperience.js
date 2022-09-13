@@ -384,7 +384,7 @@ function PreviousExperience() {
               {/* <!-- Team Details--> */}
               <div className="single_advisor_details_info">
                 <h3 className="experience-text">Squarespace Enterprise</h3>
-                <p className="experience-text">Enterprise and Premium SAAS</p>
+                <p className="experience-text">Enterprise and Premium Website SAAS</p>
                 <hr></hr>
                 <h5 className="experience-text designation">
                   Senior Team Lead, Account Management
