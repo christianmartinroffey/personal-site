@@ -5,33 +5,35 @@ import Accordion from 'react-bootstrap/Accordion';
 
 function SkillsAndExpertise() {
 
+const lineBreak = `<br></br>`
 
-  var skillsOptions = [
+  let skillsOptions = [
     {
       id: 0,
       skillName: "Frontend",
       languages: "Languages: HTML, CSS, Javascript, React, Bootstrap",
-      description: "More details on languages",
-      projectExamples: "Worked on X project"
+      description: "Adept at building out front-end applications using the most popular languages and frameworks currently used to create a custom and professional user experience.",
+      projectExamples: "My Portfolio, Chore Manager, Star Wars Reading Blog, Todo List"
     },
     {
       id: 1,
       skillName: "Backend",
-      languages: "Languages: Python, Flask, API",
-      description: "More details on languages",
-      projectExamples: "Worked on X project"
+      languages: "Languages: Python, Flask, API, SQLAlchemy ",
+      description: "Able to build and maintain endpoints to support web applications. Specifically, user creation and validation, alongside industry standard requirements of sending emails on sign up as well as reset password process based on token authentication and verification",
+      projectExamples: "Chore Manager, JWT Authentication, Instagram Data Modelling"
     },
     {
       id: 2,
       skillName: "Project Management",
-      languages: "Agile Methodologies; Scrum, Kanban, Scranban",
+      languages: `Agile Methodologies; Scrum, Kanban, Scranban & OKR methodology`,
       description: "JIRA, Product Board, Trello, Github",
-      projectExamples: "Implemented Agile metholodogies globally for Customer Operations Team Leads and over 30 individuals, leading to improved global efficiency when completing and collaborating on tasks across 3 office locations."
+      projectExamples: "Implemented Agile metholodogies globally for Customer Operations Team Leads and over 30 individuals, leading to improved global efficiency when completing and collaborating on tasks across 3 office locations, increasing overall department productivity and accountability."
     },
     {
       id: 3,
-      skillName: "skill 4",
-      status: "Finalized"
+      skillName: "Tools",
+      languages: `GitHub, VSCode, Heroku, Gitpod, JIRA, Product Board, ClickUp, Google Docs/Sheets, SquareSpace`,
+      description: "Familiar with a wide range of different systems and tools aimed at improving the day to day workflow and cross-team collaboration. Also includes project management, product management, data analysis and coding tools/systems.",
     }
   ];
   

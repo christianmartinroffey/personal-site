@@ -74,7 +74,23 @@ function PreviousExperience() {
     <div id="dark-page">
       <Modal className="text-black" show={show} onHide={handleClose}>
         {/* section for 4geeks */}
-        {company == "4geeks" ? (
+        {company == "4geeksMentor" ? (
+          <Modal.Body>
+            <h2>Full Stack Engineer Bootcamp</h2>
+            <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
+            <h3 className="bold-text pb-2">Mission: Provide tutorships and support to new Full Stack students. 
+            </h3>
+            <h4 className="pb-2"> <a href="https://4geeksacademy.com/es/coding-bootcamps/full-stack-part-time">Full Stack Developer Course Details</a> </h4>
+                <h4>Skills and Languages supported:</h4>
+            <ul>
+              <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+              <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
+              <li className="modal-list"> Test Driven Development: Jest</li>
+              <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
+            </ul>
+            <p>September 2022 - Current</p>
+          </Modal.Body>
+        ) : company == "4geeks" ? (
           <Modal.Body>
             <h2>Full Stack Engineer Bootcamp</h2>
             <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
@@ -252,7 +268,7 @@ function PreviousExperience() {
         </Modal.Footer>
       </Modal>
 
-      <div className="container">
+      <div className="container p-4">
         <div className="row  justify-content-center">
           <div className="col-12 col-sm-8 col-lg-6">
             {/* <!-- Section Heading--> */}
@@ -260,15 +276,44 @@ function PreviousExperience() {
               className="section_heading text-center fadeInUp inline-styling"
               data-wow-delay="0.2s"
             >
-              <h2 className="p-4">Previous Experience</h2>
-              <p className="pb-4">
-                Here you can find an overview of my experience and expertise.
-              </p>
+              <h2 className="p-4 display-4">Previous Experience</h2>
+              <h5 className="pb-4">
+                Get more specifics of my experience and expertise.
+              </h5>
               <div className="line"></div>
             </div>
           </div>
         </div>
         <div className="row">
+          {/* <!-- Single Advisor--> */}
+          <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
+            <div
+              className="single_advisor_profile wow fadeInUp inline-styling"
+              data-wow-delay="0.4s"
+            >
+              {/* <!-- Team Thumb--> */}
+              <div className="advisor_thumb">
+                {" "}
+                <img className="w-100 pt-2" src={logo4geeks} alt=""></img>
+              </div>
+              {/* <!-- Team Details--> */}
+              <div className="single_advisor_details_info">
+                <h3 className="experience-text">4Geeks Academy</h3>
+                <p className="experience-text">Full Stack Developer</p>
+                <hr></hr>
+                <h5 className="experience-text designation">
+                  Mentor, Full Stack Developer
+                </h5>
+                <a
+                  className="experience-links"
+                  id="4geeksMentor"
+                  onClick={(e) => onClickEvent4Geeks(e.target.id)}
+                >
+                  Click to find out more
+                </a>
+              </div>
+            </div>
+          </div>
           {/* <!-- Single Advisor--> */}
           <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div

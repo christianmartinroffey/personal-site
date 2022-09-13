@@ -75,9 +75,9 @@ export const Navbar = () => {
 </Link>
         
         
-        <Link to="/wip">
+        {/* <Link to="/wip">
           <span className="navbar-brand mb-0 h1">Work In Progress</span>
-        </Link>
+        </Link> */}
         <Link to="/contact">
           <span className="navbar-brand mb-0 h1">Contact</span>
         </Link>
