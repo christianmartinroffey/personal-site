@@ -184,3 +184,7 @@ width: 50px;
       transform: translate3d(0, 100px, 50%);
     }
   }
+
+  footer{
+    background-color: rgba(22, 22, 22, 0.9); 
+  }
