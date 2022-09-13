@@ -8,6 +8,10 @@ console.log("button clicked");
 
 }
 
+const downloadCV = () =>{
+    alert("Currently being revamped!")
+}
+
   return (
 
    
@@ -15,7 +19,7 @@ console.log("button clicked");
 
     <form className="form">
       <div className="pageTitle title">Get In Touch </div>
-      <div className="title">Add your details below so I can reach out, or download my CV ...  <a className='' href="">here.</a></div>
+      <div className="title">Add your details below so I can reach out, or download my CV ...  <a className='' onClick={downloadCV} href="">here.</a></div>
       <input type="text" className="name formEntry" placeholder="Name" ></input>
       <input type="text" className="email formEntry" placeholder="Email"></input>
       <textarea className="message formEntry" placeholder="Message"></textarea>

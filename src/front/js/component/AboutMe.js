@@ -42,7 +42,7 @@ function AboutMe() {
         </div>
         </a>
        
-      <h2 className="pb-4 display-4" id="portfolio-section">A super brief intro:</h2>
+      <h2 className="pb-4 display-4" id="portfolio-section">A brief intro:</h2>
       <div className="container d-flex center-all">
         <ul>
           <li className="display-6">Professional</li>
