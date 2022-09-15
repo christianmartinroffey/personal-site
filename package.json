@@ -14,9 +14,7 @@
 		"name": "Christian Martin - Roffey",
 		"url": "https://christian-mr-portfolio.herokuapp.com/"
 	},
-	"contributors": [
-		
-	],
+	"contributors": [],
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/cli": "^7.16.0",
@@ -66,6 +64,7 @@
 		]
 	},
 	"dependencies": {
+		"@emailjs/browser": "^3.7.0",
 		"animejs": "^3.2.1",
 		"bootstrap": "^5.2.0",
 		"material-avatar": "^0.3.5",
