@@ -79,9 +79,16 @@ export const Navbar = () => {
           <span className="navbar-brand mb-0 h1">Work In Progress</span>
         </Link> */}
         <div className="me-auto"></div>
+        <Link to="/">
+          <span className="navbar-brand mb-0 h1 ">Skills & Expertise</span>
+        </Link>
+        <Link to="/">
+          <span className="navbar-brand mb-0 h1 ">Previous Experience</span>
+        </Link>
         <Link to="/contact">
           <span className="navbar-brand mb-0 h1 ">Contact</span>
         </Link>
+       
         <div id="">
           {/* <Link to="/time">
 					<span className="navbar-brand mb-0 h1">Time To Waste?</span>
