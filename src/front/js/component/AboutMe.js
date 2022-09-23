@@ -16,19 +16,19 @@ function AboutMe() {
       <div className="container center-all d-flex pt-5 pb-5">
         {/* <h1 className='ml2 '>Hi! I'm Christian.</h1>
         <h1 className='ml2 pb-1'>A Full Stack Software Engineer.</h1> */}
-        <div className="col-6">
+        <div>
         <h1 className="home-title">
           <span className="">Hi! I'm Christian.</span>
           <span className="">A Full Stack Software Engineer.</span>
         </h1>
         </div>
-        <div className="col-6">
+       <div>
         <img
           className="mx-auto d-block img-fluid diamond-animation "
           src={profileCircle}
-          style={{ height: 300 }}
+          
         ></img>
-        </div>
+      </div>
       </div>
       <LanguageIcons/>
       <a className="no-decoration" href="https://3000-christianma-personalsit-930c68xkbqz.ws-eu64.gitpod.io/#portfolio-section">
