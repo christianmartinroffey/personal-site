@@ -23,15 +23,15 @@ li{
     /* border: 80px; */  
 };
 
-/* .banner-container{
+.banner-container{
     width: 48px;
    height: 48px;
 }
 .banner{
-    width: 100%; 
+    width: 100%; /* or any custom size */
     height: 100%; 
     object-fit: contain;
-} */
+}
 
 .social-text{
     font-size: 80px;
@@ -62,10 +62,8 @@ li{
 }
 /* // language icons on main home page */
 .icon-size{
-max-width: 70px;
+max-width: 80px;
 }
-
-.rounded-circle{}
 
 /* down arrows animation */
 
