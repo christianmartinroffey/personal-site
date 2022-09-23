@@ -1,8 +1,9 @@
 import React from 'react'
+import PageSeparator from './pageSeparator'
 
 function IntroSection() {
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid' id="dark-page">
         <h2 className="pb-4 display-4" id="portfolio-section">A brief intro:</h2>
       <div className="container d-flex ">
         <ul>
@@ -40,7 +41,9 @@ function IntroSection() {
         </li>
         </ul>
       </div>
+      <PageSeparator/>
     </div>
+
   )
 }
 
