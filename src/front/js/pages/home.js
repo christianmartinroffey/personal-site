@@ -22,7 +22,7 @@ export const Home = () => {
     <div className="">
       <div id="dark-page" className="text-center">
         <AboutMe />
-        
+      
         {/* <LanguageIcons/> */}
         <SkillsAndExpertise />
         <PreviousExperience />
