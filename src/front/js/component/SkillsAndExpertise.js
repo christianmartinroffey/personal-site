@@ -61,8 +61,8 @@ console.log(listID, "index", open, "status");
     <div className='container-fluid pt-5 pb-5 ' id="dark-page">
       <div className='row'>
         
-      <h2 className='p-3 col-4 display-4'>Skills & Expertise</h2>
-      <div className='col-8 ' >
+      <h2 className='pt-3 pb-3 display-5'>Skills & Expertise</h2>
+      <div className='' >
 {
               skillsOptions.map((skillOption, index)=>{ return(
       <Accordion className="p-1 border rounded " id="dark-page" flush >
