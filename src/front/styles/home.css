@@ -192,7 +192,17 @@ color: rgb(0, 0, 0)!important;
 
   /* iframe styling */
 
-  .SQSPIreland{
-    width: 100%;
-    height: 100%;
+  /* .SQSPIreland{
+    width: 250vh;
+    height: 60vh;
+  } */
+
+  /* line break oapcityt */
+
+.separator_svg{
+  
+}
+  .rotate-svg{
+    transform: rotate(180deg);
+    background-color: transparent;
   }

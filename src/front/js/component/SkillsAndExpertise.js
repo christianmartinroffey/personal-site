@@ -58,11 +58,11 @@ const openClickHandler = (e) =>{
 console.log(listID, "index", open, "status");
 
   return (
-    <div className='container-fluid pt-5 pb-5 ' id="dark-page">
+    <div className='container-fluid pt-5 pb-5 '>
       <div className='row'>
         
       <h2 className='pt-3 pb-3 display-5'>Skills & Expertise</h2>
-      <div className='' >
+      <div className=' p-4' >
 {
               skillsOptions.map((skillOption, index)=>{ return(
       <Accordion className="p-1 border rounded " id="dark-page" flush >

@@ -13,7 +13,7 @@ function AboutMe() {
 // };
 
   return (
-    <div className="justify-content-center pt-3 " id="dark-page">
+    <div className="justify-content-center pt-3 " >
       <div className="container center-all d-flex pt-5 pb-5">
         {/* <h1 className='ml2 '>Hi! I'm Christian.</h1>
         <h1 className='ml2 pb-1'>A Full Stack Software Engineer.</h1> */}

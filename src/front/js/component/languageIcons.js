@@ -8,7 +8,7 @@ function LanguageIcons() {
   const darkMode = store.toggle;
 
   return (
-    <div className="container-fluid pt-4 pb-4" id="dark-page">
+    <div className="container-fluid pt-4 pb-4" >
       {/* <h2 className='pb-3'>Languages & Tools</h2> */}
       <div className=" row  justify-content-evenly d-flex ">
         <svg className=" icon-size p-2 col" viewBox="0 0 128 128">
