@@ -3,7 +3,7 @@ import "../../styles/home.css";
 
 function Projects() {
   return (
-    <div className="">
+    <div className="" id="projects">
       <h2 className="pl-5 display-5 ">Projects </h2>
       <br className="" />
 

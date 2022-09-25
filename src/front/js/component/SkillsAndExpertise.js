@@ -60,7 +60,7 @@ console.log(listID, "index", open, "status");
   return (
     <div className='container-fluid pt-5 pb-5 ' id="skills">
 
-      <div className='row'>
+      <div className='row'  id="skills">
         
       <h2 className='pt-3 pb-3 display-5'>Skills & Expertise</h2>
       <div className=' p-4' >

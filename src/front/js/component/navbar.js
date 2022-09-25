@@ -173,6 +173,7 @@ export const Navbar = () => {
       <div className="me-auto"></div>
         <a className="nav-link color-black" aria-current="page" href="/">Home</a>
         <a className="nav-link" href="https://christian-mr-portfolio.herokuapp.com/#skills">Skills & Expertise </a>
+        <a className="nav-link" href="https://christian-mr-portfolio.herokuapp.com/#projects">Projects </a>
         <a className="nav-link" href="https://christian-mr-portfolio.herokuapp.com/#experience">Experience</a>
         <a className="nav-link" href="/contact" >Contact</a>
       </div>

@@ -71,7 +71,7 @@ function PreviousExperience() {
   }
 
   return (
-    <div id="dark-page experience">
+    <div id="experience">
       <Modal className="text-black" show={show} onHide={handleClose}>
         {/* section for 4geeks */}
         {company == "4geeksMentor" ? (
