@@ -3,7 +3,8 @@ import "../../styles/home.css";
 
 function Projects() {
   return (
-    <div className="" id="projects">
+    <div id="projects">
+    <div className="pt-5" >
       <h2 className="pl-5 display-5 ">Projects </h2>
       <br className="" />
 
@@ -43,6 +44,7 @@ function Projects() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
