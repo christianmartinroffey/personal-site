@@ -58,7 +58,7 @@ const openClickHandler = (e) =>{
 console.log(listID, "index", open, "status");
 
   return (
-    <div id="skills">
+  
     <div className='container-fluid pt-5 pb-5 ' >
 
       <div className='row'  >
@@ -82,7 +82,7 @@ console.log(listID, "index", open, "status");
 </div>
 </div>
 </div>
-    </div>
+   
   )
 }
 
