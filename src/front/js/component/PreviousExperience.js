@@ -50,6 +50,12 @@ function PreviousExperience() {
       overview: "overview text",
       specifics: "more specifics on that specific role",
     },
+    {
+      id: 7,
+      company: "Junior Software",
+      overview: "overview text",
+      specifics: "more specifics on that specific role",
+    },
   ];
   const [company, setCompany] = useState();
 
@@ -75,6 +81,24 @@ function PreviousExperience() {
       <Modal className="text-black" show={show} onHide={handleClose}>
         {/* section for 4geeks */}
         {company == "4geeksMentor" ? (
+          <Modal.Body>
+            <h2>Full Stack Engineer Bootcamp</h2>
+            <p>Website: <a href="https://usizy.com/">uSizy</a> </p>
+            <h4 className="bold-text pb-2">Mission: Provide tutorships and support to new Full Stack students. 
+            </h4>
+            <h5 className="pb-2"> <a href="https://4geeksacademy.com/es/coding-bootcamps/full-stack-part-time">Full Stack Developer Course Details</a> </h5>
+                <h3>Skills and Languages supported:</h3>
+            <ul>
+              <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+              <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
+              <li className="modal-list"> Test Driven Development: Jest</li>
+              <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
+            </ul>
+            <p>September 2022 - Current</p>
+          </Modal.Body>
+        ) : 
+         
+        company == "4geeksMentor" ? (
           <Modal.Body>
             <h2>Full Stack Engineer Bootcamp</h2>
             <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
