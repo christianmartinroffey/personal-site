@@ -52,7 +52,7 @@ function PreviousExperience() {
     },
     {
       id: 7,
-      company: "Junior Software",
+      company: "Junior Software Engineer",
       overview: "overview text",
       specifics: "more specifics on that specific role",
     },
@@ -80,18 +80,16 @@ function PreviousExperience() {
     <div id="experience">
       <Modal className="text-black" show={show} onHide={handleClose}>
         {/* section for 4geeks */}
-        {company == "4geeksMentor" ? (
+        {company == "uSizy" ? (
           <Modal.Body>
             <h2>Full Stack Engineer Bootcamp</h2>
             <p>Website: <a href="https://usizy.com/">uSizy</a> </p>
-            <h4 className="bold-text pb-2">Mission: Provide tutorships and support to new Full Stack students. 
+            <h4 className="bold-text pb-2">Summary: Integrate uSizy solutions for e-commerce businesses. 
             </h4>
-            <h5 className="pb-2"> <a href="https://4geeksacademy.com/es/coding-bootcamps/full-stack-part-time">Full Stack Developer Course Details</a> </h5>
-                <h3>Skills and Languages supported:</h3>
+            <h3>Skills and Languages supported:</h3>
             <ul>
               <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
-              <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
-              <li className="modal-list"> Test Driven Development: Jest</li>
+              <li className="modal-list"> Backend: Python, Django, API, SQL</li>
               <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
             </ul>
             <p>September 2022 - Current</p>
@@ -309,6 +307,35 @@ function PreviousExperience() {
           </div>
         </div>
         <div className="row">
+            {/* <!-- Single Advisor--> */}
+            <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
+            <div
+              className="single_advisor_profile wow fadeInUp inline-styling"
+              data-wow-delay="0.4s"
+            >
+              {/* <!-- Team Thumb--> */}
+              <div className="advisor_thumb">
+                {" "}
+                <img className="w-100 pt-2" src={uSizy} alt=""></img>
+              </div>
+              {/* <!-- Team Details--> */}
+              <div className="single_advisor_details_info">
+                <h3 className="experience-text">uSizy</h3>
+                <p className="experience-text">Junior Software Engineer</p>
+                <hr></hr>
+                <h5 className="experience-text designation">
+                  Junior Software Engineer
+                </h5>
+                <a
+                  className="experience-links"
+                  id="uSizy"
+                  onClick={(e) => onClickEvent4Geeks(e.target.id)}
+                >
+                  Click to find out more
+                </a>
+              </div>
+            </div>
+          </div>
           {/* <!-- Single Advisor--> */}
           <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
