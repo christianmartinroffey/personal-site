@@ -5,6 +5,7 @@ import SQSPLogo from "../../../front/img/SQSPLogo.png";
 import logo4geeks from "../../img/logo4geeks.png";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import usizy_image from "../../img/usizy_image.png";
 
 function PreviousExperience() {
   const [show, setShow] = useState(false);
@@ -316,7 +317,7 @@ function PreviousExperience() {
               {/* <!-- Team Thumb--> */}
               <div className="advisor_thumb">
                 {" "}
-                <img className="w-100 pt-2" src={uSizy} alt=""></img>
+                <img className="w-100 pt-2" src={usizy_image} alt="uSizy image" style={{height: "250px", width: "40git0px"}}></img>
               </div>
               {/* <!-- Team Details--> */}
               <div className="single_advisor_details_info">
