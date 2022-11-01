@@ -52,7 +52,7 @@ function PreviousExperience() {
     },
     {
       id: 7,
-      company: "Junior Software Engineer",
+      company: "uSizy",
       overview: "overview text",
       specifics: "more specifics on that specific role",
     },
@@ -82,7 +82,7 @@ function PreviousExperience() {
         {/* section for 4geeks */}
         {company == "uSizy" ? (
           <Modal.Body>
-            <h2>Full Stack Engineer Bootcamp</h2>
+            <h2>Junior Software Engineer</h2>
             <p>Website: <a href="https://usizy.com/">uSizy</a> </p>
             <h4 className="bold-text pb-2">Summary: Integrate uSizy solutions for e-commerce businesses. 
             </h4>
@@ -92,7 +92,7 @@ function PreviousExperience() {
               <li className="modal-list"> Backend: Python, Django, API, SQL</li>
               <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
             </ul>
-            <p>September 2022 - Current</p>
+            <p>October 2022 - Current</p>
           </Modal.Body>
         ) : 
          
