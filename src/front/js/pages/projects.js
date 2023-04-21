@@ -26,7 +26,7 @@ function Projects() {
       </div>
       <br className="" />
 
-      <div className="row ">
+      {/* <div className="row ">
         <div className="container d-flex   ">
           <div class="embed-responsive ratio ratio-4x3 ">
             <iframe
@@ -43,7 +43,7 @@ function Projects() {
             </h5>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
     </div>
   );
