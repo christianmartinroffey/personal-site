@@ -89,9 +89,18 @@ function PreviousExperience() {
             </h4>
             <h3>Skills and Languages supported:</h3>
             <ul>
-              <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+              <li className="modal-list"> Frontend: Javascript, HTML, CSS, Bootstrap</li>
               <li className="modal-list"> Backend: Python, Django, API, SQL</li>
-              <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
+              <li className="modal-list"> Git: Terminal, Github, Linux, Docker </li>
+            </ul>
+            <h3>Responsibilities: </h3>
+              <p className="modal-list"> Prepare and integrate new customers for Usizy's Size Adviser solution using a combination of Python, XML, Javascript, HTML and CSS.</p>
+              <p className="modal-list"> Data analysis using SQL queries to recommend improvemnts to customers and internal stakeholders.</p>
+              <h3> Highlights:</h3>
+            <ul className="container p-1">
+              <li className="modal-list"> Revamped the customer testing process using URL query parameters with Javascript and CSS to toggle integration display, allowing for integration testing the solution without impacting customers.
+              </li>
+              <li className="modal-list"> Used SQL and data analysis to recommend using weighted averages to Usizy's customer dashboard and customer-facing data</li>
             </ul>
             <p>October 2022 - Current</p>
           </Modal.Body>
