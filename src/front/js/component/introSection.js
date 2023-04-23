@@ -9,10 +9,10 @@ function IntroSection() {
         <ul>
           <li className="display-6">Professional</li>
           <li className="pt-4 pb-4">
-          - 7+ years web-based SAAS experience, across Enterprise & SMB. 💻 
+          - 7+ years web-based & e-commerce SAAS experience, across Enterprise & SMB. 💻 
           </li>
           <li className=" pb-4"> 
-          - Coding mentor for 4Geeks 🚀 
+          - Technical understanding of front-end and back-end programming languages  🚀 
           </li>
           <li className=" pb-4"> 
           - Technical Support, Account Management, Department & Global Leadership. 👨‍💻

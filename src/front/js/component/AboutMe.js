@@ -32,7 +32,7 @@ function AboutMe() {
       </div>
       </div>
       <LanguageIcons/>
-      <a className="no-decoration" href="https://christian-mr-portfolio.herokuapp.com/#portfolio-section">
+      <a className="no-decoration" href="https://cmr-personal-site.onrender.com/#portfolio-section">
       <div className="container arrows-container">
           <div className="arrow" > 
             <span></span>
