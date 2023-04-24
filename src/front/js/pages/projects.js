@@ -14,13 +14,13 @@ function Projects() {
           <h2 className="">Chore Manager</h2>
           <h5 className="pr-3 ">Take a look at the demo here: </h5>
         </div>
-        <div class="embed-responsive ratio ratio-4x3  ">
+        <div className="embed-responsive ratio ratio-4x3  ">
           <iframe
             src="https://www.youtube.com/embed/bGGqFwnh2OI?start=4392"
             title="Chore Manager Demo"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
@@ -28,11 +28,11 @@ function Projects() {
 
       {/* <div className="row ">
         <div className="container d-flex   ">
-          <div class="embed-responsive ratio ratio-4x3 ">
+          <div className="embed-responsive ratio ratio-4x3 ">
             <iframe
-              class="embed-responsive-item"
+              className="embed-responsive-item"
               src="https://getirelandonline.squarespace.com/"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
           <div className="col-4 p-2">
