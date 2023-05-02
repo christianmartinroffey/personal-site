@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import Modal  from "./component/Modal.js";
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
+import Location from "./pages/location";
 
 //create your first component
 const Layout = () => {
@@ -49,6 +50,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/projects">
 							<Projects />
+						</Route>
+						<Route exact path="/location">
+							<Location />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
