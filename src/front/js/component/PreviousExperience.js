@@ -6,6 +6,7 @@ import logo4geeks from "../../img/logo4geeks.png";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import usizy_image from "../../img/usizy_image.png";
+import fideltour_logo from "../../img/fideltour_logo.png"
 
 function PreviousExperience() {
   const [show, setShow] = useState(false);
@@ -57,6 +58,12 @@ function PreviousExperience() {
       overview: "overview text",
       specifics: "more specifics on that specific role",
     },
+    {
+      id: 8,
+      company: "Fideltour",
+      overview: "overview text",
+      specifics: "more specifics on that specific role",
+    },
   ];
   const [company, setCompany] = useState();
 
@@ -80,8 +87,30 @@ function PreviousExperience() {
   return (
     <div id="experience">
       <Modal className="text-black" show={show} onHide={handleClose}>
-        {/* section for 4geeks */}
-        {company == "uSizy" ? (
+        {/* section for usizy */}
+        {company == "Fideltour" ? (
+          <Modal.Body>
+            <h2>Backend Engineer</h2>
+            <p>Website: <a href="https://fideltour.com/">Fideltour</a> </p>
+            <h4 className="bold-text pb-2">Summary: Develop new and maintain current products across the full suite of Fideltour's offerings. 
+            </h4>
+              <h3> Key features and products developed:</h3>
+                <ul>
+                  <li className="modal-list"> Automation - automated workflows allowing users to create hotel-specific actions and events.</li>
+                  <li className="modal-list"> A/B test - allow users to create automated A/B tests.</li>
+                  <li className="modal-list"> Zapier integration - implement connection with Zapier to allow customer to automate contact related processes.</li>
+                </ul>
+                <h3>Skills and Languages learned:</h3>
+            <ul>
+            
+              <li className="modal-list"> Frontend: Javascript, HTML, CSS, Bootstrap</li>
+              <li className="modal-list"> Backend: Python, Django, MySQL</li>
+              <li className="modal-list"> Git: Terminal, Github, Gitflow </li>
+            </ul>
+            <p>June 2023 - Present</p>
+          </Modal.Body>
+        ) :
+        company == "uSizy" ? (
           <Modal.Body>
             <h2>Junior Software Engineer</h2>
             <p>Website: <a href="https://usizy.com/">uSizy</a> </p>
@@ -102,27 +131,28 @@ function PreviousExperience() {
               </li>
               <li className="modal-list"> Used SQL and data analysis to recommend using weighted averages to Usizy's customer dashboard and customer-facing data</li>
             </ul>
-            <p>October 2022 - Current</p>
+            <p>October 2022 - June 2023</p>
           </Modal.Body>
         ) : 
          
-        company == "4geeksMentor" ? (
-          <Modal.Body>
-            <h2>Full Stack Engineer Bootcamp</h2>
-            <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
-            <h4 className="bold-text pb-2">Mission: Provide tutorships and support to new Full Stack students. 
-            </h4>
-            <h5 className="pb-2"> <a href="https://4geeksacademy.com/es/coding-bootcamps/full-stack-part-time">Full Stack Developer Course Details</a> </h5>
-                <h3>Skills and Languages supported:</h3>
-            <ul>
-              <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
-              <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
-              <li className="modal-list"> Test Driven Development: Jest</li>
-              <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
-            </ul>
-            <p>September 2022 - Current</p>
-          </Modal.Body>
-        ) : company == "4geeks" ? (
+        // company == "4geeksMentor" ? (
+        //   <Modal.Body>
+        //     <h2>Full Stack Engineer Bootcamp</h2>
+        //     <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
+        //     <h4 className="bold-text pb-2">Mission: Provide tutorships and support to new Full Stack students. 
+        //     </h4>
+        //     <h5 className="pb-2"> <a href="https://4geeksacademy.com/es/coding-bootcamps/full-stack-part-time">Full Stack Developer Course Details</a> </h5>
+        //         <h3>Skills and Languages supported:</h3>
+        //     <ul>
+        //       <li className="modal-list"> Frontend: Javascript, React, HTML, CSS, Bootstrap</li>
+        //       <li className="modal-list"> Backend: Python, Flask, API, SQL</li>
+        //       <li className="modal-list"> Test Driven Development: Jest</li>
+        //       <li className="modal-list"> Git: Terminal, Github, Gitpod, Heroku </li>
+        //     </ul>
+        //     <p>September 2022 - Current</p>
+        //   </Modal.Body>
+        // ) : 
+        company == "4geeks" ? (
           <Modal.Body>
             <h2>Full Stack Engineer Bootcamp</h2>
             <p>Website: <a href="https://4geeks.com/">4Geeks</a> </p>
@@ -317,6 +347,35 @@ function PreviousExperience() {
           </div>
         </div>
         <div className="row">
+          {/* <!-- Single Advisor--> */}
+          <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
+            <div
+              className="single_advisor_profile wow fadeInUp inline-styling"
+              data-wow-delay="0.4s"
+            >
+              {/* <!-- Team Thumb--> */}
+              <div className="advisor_thumb">
+                {" "}
+                <img className="w-100 pt-5 mt-5" src={fideltour_logo} alt="Fideltour image" style={{height: "100px", width: "40git0px"}}></img>
+              </div>
+              {/* <!-- Team Details--> */}
+              <div className="single_advisor_details_info">
+                <h3 className="experience-text">Fideltour</h3>
+                <p className="experience-text">Backend Software Engineer</p>
+                <hr></hr>
+                <h5 className="experience-text designation">
+                  Backend Software Engineer
+                </h5>
+                <a
+                  className="experience-links"
+                  id="Fideltour"
+                  onClick={(e) => onClickEvent4Geeks(e.target.id)}
+                >
+                  Click to find out more
+                </a>
+              </div>
+            </div>
+          </div>
             {/* <!-- Single Advisor--> */}
             <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
@@ -347,18 +406,18 @@ function PreviousExperience() {
             </div>
           </div>
           {/* <!-- Single Advisor--> */}
-          <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
+          {/* <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
               className="single_advisor_profile wow fadeInUp inline-styling"
               data-wow-delay="0.4s"
-            >
+            > */}
               {/* <!-- Team Thumb--> */}
-              <div className="advisor_thumb">
+              {/* <div className="advisor_thumb">
                 {" "}
                 <img className="w-100 pt-2" src={logo4geeks} alt=""></img>
-              </div>
+              </div> */}
               {/* <!-- Team Details--> */}
-              <div className="single_advisor_details_info">
+              {/* <div className="single_advisor_details_info">
                 <h3 className="experience-text">4Geeks Academy</h3>
                 <p className="experience-text">Full Stack Developer</p>
                 <hr></hr>
@@ -374,7 +433,7 @@ function PreviousExperience() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* <!-- Single Advisor--> */}
           <div className=" experience-card experience-card-background col-12 col-sm-6 col-lg-3">
             <div
