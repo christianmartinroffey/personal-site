@@ -11,8 +11,11 @@ function Projects() {
       <div className="container-fluid d-flex">
         <div className="col-4">
           <h2 className="">JudgeFit</h2>
-          <h5 className="pr-3 ">Take a look at the demo here: </h5>
+          <h3 className="pr-3 ">Using machine learning tools such as Mediapipe and OpenCV, JudgeFit aims to solve the issue of standardisation and objectivity when judging athletic performance. </h3>
+          <br className="" />
+          <h5 className="pr-3 ">Take a look at the demo here: </h5>    
         </div>
+   
         <div className="embed-responsive ratio ratio-4x3  ">
           <iframe 
             width="1524" 
