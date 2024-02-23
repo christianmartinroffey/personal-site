@@ -4,10 +4,10 @@ import React from 'react'
 function IntroSection() {
   return (
     <div className='container-fluid' >
-        <h2 className="pb-4 display-4" id="portfolio-section">A brief intro:</h2>
+        <h2 className="pb-4 display-4 text-decoration-underline" id="portfolio-section">A brief intro:</h2>
       <div className="container d-flex ">
         <ul>
-          <li className="display-6">Professional</li>
+          <li className="display-6 text-decoration-underline">Professional</li>
           <li className="pt-4 pb-4">
           - 7+ years web-based & e-commerce SAAS experience, across Enterprise & SMB. 💻 
           </li>
@@ -23,7 +23,7 @@ function IntroSection() {
         </ul>
        
         <ul>
-        <li className="display-6 pb-4">Personal</li>
+        <li className="display-6 pb-4 text-decoration-underline">Personal</li>
         <li className="pl-3 pb-4">
           - I'm a father to baby Noah. 👶
         </li>

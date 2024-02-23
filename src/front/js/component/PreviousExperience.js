@@ -338,7 +338,7 @@ function PreviousExperience() {
               className="section_heading text-center fadeInUp inline-styling"
               data-wow-delay="0.2s"
             >
-              <h2 className="p-4 display-4">Previous Experience</h2>
+              <h2 className="p-4 display-4 text-decoration-underline">Previous Experience</h2>
               <h5 className="pb-4">
                 Get more specifics of my experience and expertise.
               </h5>

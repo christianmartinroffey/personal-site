@@ -63,7 +63,7 @@ console.log(listID, "index", open, "status");
 
       <div className='row'  >
         
-      <h2 className='pt-3 pb-3 display-5'>Skills & Expertise</h2>
+      <h2 className='pt-3 pb-3 display-5 text-decoration-underline'>Skills & Expertise</h2>
       <div className=' p-4' >
 {
               skillsOptions.map((skillOption, index)=>{ return(
