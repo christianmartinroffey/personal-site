@@ -20,7 +20,7 @@ function AboutMe() {
         <div>
         <h1 className="home-title">
           <span className="">Hi! I'm Christian.</span>
-          <span className="">A Full Stack Software Engineer.</span>
+          <span className="">A Backend Software Engineer.</span>
         </h1>
         </div>
        <div>

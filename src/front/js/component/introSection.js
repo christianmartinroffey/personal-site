@@ -34,7 +34,7 @@ function IntroSection() {
           - Live in paradise 🌴 Mallorca, Spain 🌴 
         </li>
         <li className="pl-3 pb-4">
-          - Love a challenge and enjoying the Full Stack Developer journey. 🖥️ 
+          - Love a challenge and enjoying the Software Engineer Developer journey. 🖥️ 
         </li>  
         <li className="pl-3">
           - Fluent in 3 languages, English 🇬🇧 & Spanish 🇪🇸 native, Italian 🇮🇹 professional proficiency.
