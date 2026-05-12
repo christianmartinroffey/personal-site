@@ -117,16 +117,17 @@ export const Home = () => {
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
         <div className="hero-orbit" aria-hidden="true">
-          <span className="orbit-dot dot-one" />
-          <span className="orbit-dot dot-two" />
-          <span className="orbit-dot dot-three" />
+          <span className="orbit-dot dot-one">APIs</span>
+          <span className="orbit-dot dot-two">Vision</span>
+          <span className="orbit-dot dot-three">Product</span>
+          <span className="orbit-dot dot-four">Python</span>
         </div>
 
         <div className="portfolio-container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Backend engineer · computer vision builder · stealth llama energy</p>
             <h1>
-              backend systems with a product brain and a computer vision streak.
+              Useful software, clean systems, sharper feedback loops.
             </h1>
             <p className="hero-intro">
               I'm Christian M-R. I build Python APIs, automation workflows and full-stack prototypes, then connect them back to the user problem. Current direction: practical computer vision, object detection and tools that make messy real-world processes easier to judge, track and improve.
@@ -138,7 +139,7 @@ export const Home = () => {
           </div>
 
           <aside className="hero-card creative-pass" aria-label="Profile summary">
-            <p className="card-kicker">signal map</p>
+            <p className="card-kicker">focus map</p>
             <div className="profile-mark llama-mark">🦙</div>
             <h2>Christian Martin-Roffey</h2>
             <p>Python-first engineer blending backend implementation, applied computer vision and product-led delivery.</p>
