@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
-import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../store/appContext";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
 
 export const Navbar = () => {
-  const { store, actions } = useContext(Context);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem("portfolio-theme") === "dark";
+  });
+
   const darkOnClick = () => {
-    actions.turnOnDarkMode();
+    setIsDarkMode(currentMode => !currentMode);
   };
 
   const [scrolled, setScrolled] = useState();
@@ -17,15 +19,23 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => initScrollBehaviour());
+    const theme = isDarkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem("portfolio-theme", theme);
+  }, [isDarkMode]);
+
+  useEffect(() => {
+    const handleScroll = () => initScrollBehaviour();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <nav className="navbar navbar-expand-lg portfolio-nav">
   <div className="container-fluid">
 
-     <a className=" no-decoration navbar-brand" href="/">
+     <a className=" no-decoration navbar-brand" href="/#home">
           <svg
            width="60"
              height="60"
@@ -34,7 +44,7 @@ export const Navbar = () => {
              xmlns="http:www.w3.org/2000/svg"
            >
              <g clipPath="url(#clip0_1_2)">
-               <rect width="213" height="185" fill="white" />
+               <rect width="213" height="185" fill="transparent" />
                <path
                  d="M174.306 79.2101L179.663 66.4127L171.96 37.9273L153.429 5.50837L143.874 2.33793L134.691 1.32043L140.737 31.5656L110.64 5.80437H98.3048L92.2636 9.60381L120.43 53.3147L91.7498 61.568L48.4282 86.3164L38.9231 114.862L53.7159 118.62L27.9563 124.052V130.582L23.5818 132.233L37.9965 145.292L61.1177 151.409L87.4312 139.98L76.2034 170.452L117.033 183.749L190.369 147.353V116.136L174.306 79.2101Z"
                  fill="#B3ADD8"
@@ -160,7 +170,7 @@ export const Navbar = () => {
                  />
                </filter>
                <clipPath id="clip0_1_2">
-                 <rect width="213" height="185" fill="white" />
+                 <rect width="213" height="185" fill="transparent" />
                </clipPath>
              </defs>
            </svg>
@@ -172,36 +182,28 @@ export const Navbar = () => {
       <div className="navbar-nav">
       <div className="me-auto"></div>
         <a className="nav-link color-black" aria-current="page" href="/">Home</a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#skills">Skills & Expertise </a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#experience">Experience</a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#projects">Projects </a>
-        <a className="nav-link" href="/contact" >Contact</a>
+        <a className="nav-link" href="/#skills">Skills & Expertise </a>
+        <a className="nav-link" href="/#experience">Experience</a>
+        <a className="nav-link" href="/#projects">Projects </a>
+        <a className="nav-link" href="/#contact" >Contact</a>
       </div>
-      
-      <span className="ms-auto p-2 ">
-      <svg
-            onClick={darkOnClick}
-           
-             id="dark_mode"
-             width="25"
-             height="25"
-             viewBox="0 0 55 55"
-             xmlns="http:www.w3.org/2000/svg"
-           >
-             <path
-               className="moon"
-               d="M 27.5 0 C 34.791 0 41.79 2.899 46.945 8.055 C 52.101 13.21 55 20.209 55 27.5 C 55 34.791 52.101 41.79 46.945 46.945 C 41.79 52.101 34.791 55 27.5 55 C 20.209 55 13.21 52.101 8.055 46.945 C 2.899 41.79 0 34.791 0 27.5 C 0 20.209 2.899 13.21 8.055 8.055 C 13.21 2.899 20.209 0 27.5 0 Z"
-               fill="#fee140"
-             />
-           </svg>
-           </span>
+
+      <button
+        className="theme-toggle ms-auto"
+        type="button"
+        onClick={darkOnClick}
+        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={isDarkMode}
+      >
+        <span aria-hidden="true">{isDarkMode ? "☀️" : "🌙"}</span>
+      </button>
     </div>
-   
+
   </div>
 </nav>
 
 
-    // <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    // <nav className="navbar navbar-expand-lg portfolio-nav">
     //   <div className="container">
     //     <a className="no-decoration navbar-brand" href="/">
     //       <svg
@@ -212,7 +214,7 @@ export const Navbar = () => {
     //         xmlns="http://www.w3.org/2000/svg"
     //       >
     //         <g clipPath="url(#clip0_1_2)">
-    //           <rect width="213" height="185" fill="white" />
+    //           <rect width="213" height="185" fill="transparent" />
     //           <path
     //             d="M174.306 79.2101L179.663 66.4127L171.96 37.9273L153.429 5.50837L143.874 2.33793L134.691 1.32043L140.737 31.5656L110.64 5.80437H98.3048L92.2636 9.60381L120.43 53.3147L91.7498 61.568L48.4282 86.3164L38.9231 114.862L53.7159 118.62L27.9563 124.052V130.582L23.5818 132.233L37.9965 145.292L61.1177 151.409L87.4312 139.98L76.2034 170.452L117.033 183.749L190.369 147.353V116.136L174.306 79.2101Z"
     //             fill="#B3ADD8"
@@ -338,7 +340,7 @@ export const Navbar = () => {
     //             />
     //           </filter>
     //           <clipPath id="clip0_1_2">
-    //             <rect width="213" height="185" fill="white" />
+    //             <rect width="213" height="185" fill="transparent" />
     //           </clipPath>
     //         </defs>
     //       </svg>
@@ -358,7 +360,7 @@ export const Navbar = () => {
     //       <span className="navbar-brand mb-0 h1 ">Contact</span>
     //     </Link>
 
-      
+
     //       {/* <Link to="/time">
 		// 			<span className="navbar-brand mb-0 h1">Time To Waste?</span>
 		// 		</Link> */}
@@ -377,7 +379,7 @@ export const Navbar = () => {
     //         />
     //       </svg>
     //     </div>
-      
+
     // </nav>
   );
 };

@@ -5,13 +5,12 @@
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 
 *{
-  font-family: 'Didact Gothic';
-  font-weight: bold!important;
-  
+  box-sizing: border-box;
 }
 
 body{
-  background-color: rgba(22,22,22);
+  margin: 0;
+  background-color: #08111f;
   color: white;
 }
 

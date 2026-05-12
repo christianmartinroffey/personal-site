@@ -1,59 +1,385 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../store/appContext";
+import React, { useEffect, useState } from "react";
 import "../../styles/home.css";
 
-import Social from "../component/Social";
-import UnsplashAPIIMG from "../component/UnsplashAPIIMG";
-import PreviousExperience from "../component/PreviousExperience";
-import AboutMe from "../component/AboutMe";
-import SkillsAndExpertise from "../component/SkillsAndExpertise";
-import LanguageIcons from "../component/languageIcons";
-import BackToTop from "../component/BackToTop";
-import Projects from "./projects";
-import PageSeparator from "../component/pageSeparator,";
+const skillGroups = [
+  {
+    title: "Languages",
+    skills: ["Python (primary)", "TypeScript", "JavaScript"]
+  },
+  {
+    title: "Backend",
+    skills: [
+      "FastAPI",
+      "Strawberry GraphQL (schema-first federation)",
+      "ariadne-codegen",
+      "Tortoise ORM",
+      "Aerich migrations",
+      "FastStream",
+      "Kafka",
+      "confluent-kafka",
+      "Pydantic"
+    ]
+  },
+  {
+    title: "Frontend",
+    skills: [
+      "Next.js",
+      "React",
+      "Apollo Client (including optimistic updates)",
+      "HeroUI",
+      "Tailwind CSS",
+      "react-datasheet-grid",
+      "@dnd-kit (drag-and-drop)",
+      "Playwright (E2E testing)"
+    ]
+  },
+  {
+    title: "Databases",
+    skills: ["PostgreSQL", "PITR/WAL disaster recovery", "Oracle RMS", "asyncpg"]
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: [
+      "Azure Blob Storage",
+      "Azure Key Vault",
+      "Workload Identity / RBAC",
+      "Kubernetes",
+      "kaas cluster",
+      "Helm",
+      "ArgoCD GitOps",
+      "Docker",
+      "GitHub Actions CI/CD"
+    ]
+  },
+  {
+    title: "Architecture & Patterns",
+    skills: [
+      "GraphQL Federation",
+      "Supergraph design",
+      "Microservices",
+      "Multi-brand platforms",
+      "Event-driven architecture",
+      "Kafka topic-per-aggregate",
+      "ETL pipelines",
+      "Oracle RMS → PostgreSQL"
+    ]
+  },
+  {
+    title: "Computer Vision / ML",
+    skills: [
+      "MediaPipe",
+      "YOLO (YOLOv8)",
+      "rembg (background removal)",
+      "BiRefNet/Triton",
+      "OpenCV",
+      "pixel/DPI image validation pipelines",
+      "Project: JudgeFit (automated CrossFit movement judging)"
+    ]
+  },
+  {
+    title: "Tooling & DX",
+    skills: [
+      "uv (Python package management)",
+      "pre-commit",
+      "Dependabot",
+      "External Secrets Operator",
+      "Per-PR Helm feature branch deployments"
+    ]
+  }
+];
 
+const signalCards = [
+  {
+    number: "01",
+    title: "Federated backend systems",
+    body: "FastAPI, Strawberry GraphQL federation, Kafka, PostgreSQL and schema-first service design."
+  },
+  {
+    number: "02",
+    title: "Computer vision pipelines",
+    body: "MediaPipe, YOLOv8, OpenCV and image validation workflows for applied movement and asset analysis."
+  },
+  {
+    number: "03",
+    title: "Cloud-native delivery",
+    body: "Kubernetes, Helm, ArgoCD, Azure and CI/CD patterns that keep multi-service platforms shippable."
+  }
+];
+
+const experience = [
+  {
+    role: "Software Engineer",
+    company: "TekSystems · Ahold Delhaize client",
+    period: "Aug 2024 — Present",
+    summary:
+      "Building backend and frontend capabilities for Ahold Delhaize across multi-brand retail platforms including Albert Heijn, Etos, and Gall & Gall. Work spans FastAPI, federated GraphQL, Kafka event streams, PostgreSQL, Azure, Kubernetes, Helm, and ArgoCD-backed delivery workflows.",
+    tags: ["FastAPI", "GraphQL Federation", "Kafka", "PostgreSQL", "Azure", "Kubernetes"]
+  },
+  {
+    role: "Backend Engineer",
+    company: "Fideltour",
+    period: "2023 — Aug 2024",
+    summary:
+      "Built and maintained products across Fideltour's hospitality marketing platform, including automation workflows, A/B testing and third-party integrations.",
+    tags: ["Python", "Django", "MySQL", "Automation", "Integrations"]
+  },
+  {
+    role: "Junior Software Engineer",
+    company: "uSizy",
+    period: "2022 — 2023",
+    summary:
+      "Integrated e-commerce sizing solutions, improved customer testing workflows and used SQL analysis to surface practical product recommendations.",
+    tags: ["Python", "Django", "SQL", "JavaScript", "E-commerce"]
+  },
+  {
+    role: "Full Stack Developer Bootcamp",
+    company: "4Geeks Academy",
+    period: "2022",
+    summary:
+      "Built a portfolio of full-stack applications covering authentication, REST APIs, React interfaces, testing and deployment workflows.",
+    tags: ["React", "Flask", "SQLAlchemy", "Jest", "REST APIs"]
+  },
+  {
+    role: "Customer Success & Operations Leadership",
+    company: "Squarespace / Uscreen",
+    period: "2016 — 2022",
+    summary:
+      "Led customer-facing teams, built retention and onboarding programs, and translated operational problems into scalable processes and product insights.",
+    tags: ["Leadership", "Retention", "Operations", "OKRs", "Process Design"]
+  }
+];
+
+const projects = [
+  {
+    title: "JudgeFit",
+    type: "Computer vision / CrossFit movement judging",
+    summary:
+      "An automated movement judging concept using computer vision to improve standardisation and objectivity when evaluating athletic performance.",
+    impact: "MediaPipe, YOLOv8, OpenCV and pose/object detection patterns for movement analysis.",
+    links: [
+      { label: "GitHub", href: "https://github.com/christianmartinroffey/judgeFit" },
+      { label: "Demo", href: "https://www.youtube.com/watch?v=sOcGW-yd7is" }
+    ]
+  },
+  {
+    title: "Retail platform engineering",
+    type: "Federated GraphQL / microservices / ETL",
+    summary:
+      "Backend and frontend platform work for multi-brand retail systems, including GraphQL federation, Kafka event flows, and Oracle RMS to PostgreSQL data pipelines.",
+    impact: "FastAPI, Strawberry GraphQL, ariadne-codegen, Kafka, PostgreSQL, Azure, Kubernetes, Helm and ArgoCD."
+  },
+  {
+    title: "Personal Site",
+    type: "Portfolio / CV",
+    summary:
+      "A creative CV-style portfolio for presenting software experience, technical focus areas and selected projects.",
+    impact: "React front end, Flask hosting shell, responsive single-page storytelling, and light/dark interaction design.",
+    links: [
+      { label: "GitHub", href: "https://github.com/christianmartinroffey/personal-site" }
+    ]
+  }
+];
+
+const contactLinks = [
+  { label: "GitHub", href: "https://github.com/christianmartinroffey" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/christian-martin-roffey/" },
+  { label: "CV PDF", href: "/Christian_MR_CV.pdf" }
+];
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
-  const darkText = store.darkModeText;
-  const toggle = store.toggle;
-  console.log(toggle);
+  const [activeExperience, setActiveExperience] = useState(0);
+  const currentExperience = experience[activeExperience];
 
-  
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveExperience(index => (index + 1) % experience.length);
+    }, 5200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const showPreviousExperience = () => {
+    setActiveExperience(index => (index - 1 + experience.length) % experience.length);
+  };
+
+  const showNextExperience = () => {
+    setActiveExperience(index => (index + 1) % experience.length);
+  };
 
   return (
-    <div className="">
-      <div id="dark-page" className="text-center">
-        <AboutMe />
-        <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+    <main className="portfolio-page grain-field">
+      <section className="hero-section" id="home">
+        <div className="hero-glow hero-glow-one" />
+        <div className="hero-glow hero-glow-two" />
+        <div className="hero-orbit" aria-hidden="true">
+          <span className="orbit-dot dot-one">GraphQL</span>
+          <span className="orbit-dot dot-two">Vision</span>
+          <span className="orbit-dot dot-three">Kafka</span>
+          <span className="orbit-dot dot-four">Python</span>
+        </div>
+
+        <div className="portfolio-container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">Software engineer · federated backend systems · computer vision builder</p>
+            <h1>
+              Useful software, clean systems, sharper feedback loops.
+            </h1>
+            <p className="hero-intro">
+              I'm Christian M-R. I build Python-first backend systems, federated GraphQL services, event-driven retail platforms and full-stack tools — with a strong applied computer vision streak through JudgeFit and image validation pipelines.
+            </p>
+            <div className="hero-actions">
+              <a className="button primary" href="#projects">Explore the work</a>
+              <a className="button secondary" href="#skills">See the toolkit</a>
+            </div>
           </div>
-          <div className=" separator_svg" id="skills">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+
+          <aside className="hero-card creative-pass" aria-label="Profile summary">
+            <p className="card-kicker">focus map</p>
+            <div className="profile-mark llama-mark">🦙</div>
+            <h2>Christian Martin-Roffey</h2>
+            <p>Python-primary software engineer blending federated backend architecture, cloud-native delivery, frontend product work and applied computer vision.</p>
+            <div className="signal-list">
+              <span>Madrid / Remote</span>
+              <span>FastAPI · GraphQL · Kafka</span>
+              <span>Next.js · React · Apollo</span>
+              <span>OpenCV · MediaPipe · YOLOv8</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="signal-strip" aria-label="Expertise highlights">
+        <div className="portfolio-container signal-grid">
+          {signalCards.map(item => (
+            <article className="signal-card" key={item.title}>
+              <span>{item.number}</span>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section" id="skills">
+        <div className="portfolio-container split-section">
+          <div className="section-sticky-copy">
+            <p className="eyebrow">Skills & expertise</p>
+            <h2>Less generic résumé, more working toolkit.</h2>
           </div>
-        {/* <LanguageIcons/> */}
-        <SkillsAndExpertise />
-        <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+          <div>
+            <p className="section-copy">
+              The overlap is the point: federated backend engineering for reliability, frontend range for usable workflows, cloud-native delivery for repeatability, and computer vision for applied ML products.
+            </p>
+            <div className="skill-groups">
+              {skillGroups.map(group => (
+                <article className="skill-group" key={group.title}>
+                  <h3>{group.title}</h3>
+                  <div className="skill-cloud">
+                    {group.skills.map(skill => <span key={skill}>{skill}</span>)}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className=" separator_svg" id="experience">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+        </div>
+      </section>
+
+      <section className="portfolio-section muted-section" id="experience">
+        <div className="portfolio-container">
+          <div className="section-heading marquee-heading">
+            <p className="eyebrow">Experience</p>
+            <h2>From customer operations to retail platform engineering.</h2>
           </div>
-          
-          <PreviousExperience/>
-          <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacity="1"/></svg>
+          <div className="experience-showcase" aria-live="polite">
+            <div className="experience-stage">
+              <article className="timeline-card experience-slide" key={`${currentExperience.company}-${currentExperience.role}`}>
+                <div className="timeline-meta">{currentExperience.period}</div>
+                <div>
+                  <h3>{currentExperience.role}</h3>
+                  <p className="company-name">{currentExperience.company}</p>
+                  <p>{currentExperience.summary}</p>
+                  <div className="tag-row">
+                    {currentExperience.tags.map(tag => <span key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div className="experience-controls" aria-label="Experience slideshow controls">
+              <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
+                ←
+              </button>
+              <div className="experience-dots">
+                {experience.map((item, index) => (
+                  <button
+                    type="button"
+                    className={index === activeExperience ? "active" : ""}
+                    key={item.company}
+                    onClick={() => setActiveExperience(index)}
+                    aria-label={`Show ${item.company} experience`}
+                    aria-current={index === activeExperience ? "true" : undefined}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={showNextExperience} aria-label="Show next experience">
+                →
+              </button>
+            </div>
           </div>
-          <div className=" separator_svg" id="projects">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacity="1"/></svg>
+        </div>
+      </section>
+
+      <section className="portfolio-section" id="projects">
+        <div className="portfolio-container">
+          <div className="section-heading project-heading">
+            <div>
+              <p className="eyebrow">Selected projects</p>
+              <h2>A small gallery of practical builds.</h2>
+            </div>
+            <p>
+              Scoped to current strengths: federated backend work, event-driven retail platforms, computer vision experiments, and full-stack delivery.
+            </p>
           </div>
-          <Projects/>
-        <div className="">
-        {/* <UnsplashAPIIMG /> */}
-        <BackToTop/>      
-      </div>
-      {/* <Social /> */}
-    </div>
-    </div>
+          <div className="project-grid">
+            {projects.map((project, index) => (
+              <article className={`project-card project-card-${index + 1}`} key={project.title}>
+                <div className="project-visual" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <p className="project-type">{project.type}</p>
+                <h3>{project.title}</h3>
+                <p>{project.summary}</p>
+                <p className="project-impact">{project.impact}</p>
+                {project.links ? (
+                  <div className="project-links">
+                    {project.links.map(link => (
+                      <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="portfolio-section contact-section" id="contact">
+        <div className="portfolio-container contact-card">
+          <div>
+            <p className="eyebrow">Contact</p>
+            <h2>Need someone who can ship backend logic and still care about the user journey?</h2>
+          </div>
+          <div className="contact-links">
+            {contactLinks.map(link => (
+              <a href={link.href} key={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
