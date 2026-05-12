@@ -19,18 +19,21 @@ const skills = [
   "Agile Delivery"
 ];
 
-const highlights = [
+const signalCards = [
   {
-    value: "Backend",
-    label: "Python, Django, Flask and API development"
+    number: "01",
+    title: "Backend systems",
+    body: "Python services, API design, automation workflows and data-backed product features."
   },
   {
-    value: "CV / ML",
-    label: "Computer vision experiments with OpenCV and MediaPipe"
+    number: "02",
+    title: "Computer vision",
+    body: "OpenCV and MediaPipe experiments for pose tracking, movement analysis and objective judging."
   },
   {
-    value: "Product",
-    label: "Experience connecting software delivery with customer outcomes"
+    number: "03",
+    title: "Product instincts",
+    body: "A customer operations background that keeps the software pointed at real user problems."
   }
 ];
 
@@ -85,7 +88,7 @@ const projects = [
     title: "Personal Site",
     type: "Portfolio / CV",
     summary:
-      "A modern CV-style portfolio for presenting software experience, technical focus areas and selected projects.",
+      "A creative CV-style portfolio for presenting software experience, technical focus areas and selected projects.",
     impact: "React front end, Flask hosting shell and responsive single-page storytelling.",
     links: [
       { label: "GitHub", href: "https://github.com/christianmartinroffey/personal-site" }
@@ -109,58 +112,66 @@ const contactLinks = [
 
 export const Home = () => {
   return (
-    <main className="portfolio-page">
+    <main className="portfolio-page grain-field">
       <section className="hero-section" id="home">
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
+        <div className="hero-orbit" aria-hidden="true">
+          <span className="orbit-dot dot-one" />
+          <span className="orbit-dot dot-two" />
+          <span className="orbit-dot dot-three" />
+        </div>
+
         <div className="portfolio-container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Backend software engineer · Python · Computer vision</p>
+            <p className="eyebrow">Backend engineer · computer vision builder · stealth llama energy</p>
             <h1>
-              Building practical software where product thinking meets clean engineering.
+              backend systems with a product brain and a computer vision streak.
             </h1>
             <p className="hero-intro">
-              I'm Christian M-R, a backend-focused software engineer with a background in customer operations and product delivery. I build APIs, automation workflows and full-stack prototypes, with a growing focus on computer vision and object detection.
+              I'm Christian M-R. I build Python APIs, automation workflows and full-stack prototypes, then connect them back to the user problem. Current direction: practical computer vision, object detection and tools that make messy real-world processes easier to judge, track and improve.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#projects">View projects</a>
-              <a className="button secondary" href="#contact">Get in touch</a>
+              <a className="button primary" href="#projects">Explore the work</a>
+              <a className="button secondary" href="#skills">See the toolkit</a>
             </div>
           </div>
 
-          <aside className="hero-card" aria-label="Profile summary">
-            <div className="status-pill">Available for backend, CV and product-led engineering work</div>
-            <div className="profile-mark">CMR</div>
+          <aside className="hero-card creative-pass" aria-label="Profile summary">
+            <p className="card-kicker">signal map</p>
+            <div className="profile-mark llama-mark">🦙</div>
             <h2>Christian Martin-Roffey</h2>
-            <p>Backend Engineer focused on Python, APIs, automation and applied computer vision.</p>
-            <div className="hero-card-footer">
+            <p>Python-first engineer blending backend implementation, applied computer vision and product-led delivery.</p>
+            <div className="signal-list">
               <span>Madrid / Remote</span>
               <span>React · Flask · Django</span>
+              <span>OpenCV · MediaPipe</span>
             </div>
           </aside>
         </div>
       </section>
 
-      <section className="stats-strip" aria-label="Expertise highlights">
-        <div className="portfolio-container stats-grid">
-          {highlights.map(item => (
-            <div className="stat-card" key={item.value}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
+      <section className="signal-strip" aria-label="Expertise highlights">
+        <div className="portfolio-container signal-grid">
+          {signalCards.map(item => (
+            <article className="signal-card" key={item.title}>
+              <span>{item.number}</span>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
       <section className="portfolio-section" id="skills">
         <div className="portfolio-container split-section">
-          <div>
+          <div className="section-sticky-copy">
             <p className="eyebrow">Skills & expertise</p>
-            <h2>Strong backend foundations with full-stack range.</h2>
+            <h2>Less generic résumé, more working toolkit.</h2>
           </div>
           <div>
             <p className="section-copy">
-              I like simple systems, explicit APIs and interfaces that solve real problems. My experience combines software engineering with years of customer-facing leadership, so I care about both implementation quality and user impact.
+              The overlap is the point: backend engineering for reliability, frontend range for usable prototypes, computer vision for applied ML, and operations experience for knowing which problems are worth solving.
             </p>
             <div className="skill-cloud">
               {skills.map(skill => <span key={skill}>{skill}</span>)}
@@ -171,9 +182,9 @@ export const Home = () => {
 
       <section className="portfolio-section muted-section" id="experience">
         <div className="portfolio-container">
-          <div className="section-heading">
+          <div className="section-heading marquee-heading">
             <p className="eyebrow">Experience</p>
-            <h2>Engineering with a product and operations lens.</h2>
+            <h2>From customer operations to code that improves operations.</h2>
           </div>
           <div className="timeline">
             {experience.map(item => (
@@ -198,15 +209,18 @@ export const Home = () => {
           <div className="section-heading project-heading">
             <div>
               <p className="eyebrow">Selected projects</p>
-              <h2>Work that shows the direction I'm building in.</h2>
+              <h2>A small gallery of practical builds.</h2>
             </div>
             <p>
-              A mix of portfolio, full-stack and computer vision work — chosen to show practical delivery rather than just technology lists.
+              Inspired by curated creative portfolio grids, but scoped to your actual strengths: backend work, CV experiments, full-stack delivery and clear product thinking.
             </p>
           </div>
           <div className="project-grid">
-            {projects.map(project => (
-              <article className="project-card" key={project.title}>
+            {projects.map((project, index) => (
+              <article className={`project-card project-card-${index + 1}`} key={project.title}>
+                <div className="project-visual" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
                 <p className="project-type">{project.type}</p>
                 <h3>{project.title}</h3>
                 <p>{project.summary}</p>
@@ -228,7 +242,7 @@ export const Home = () => {
         <div className="portfolio-container contact-card">
           <div>
             <p className="eyebrow">Contact</p>
-            <h2>Want to talk backend systems, computer vision or product-focused engineering?</h2>
+            <h2>Need someone who can ship backend logic and still care about the user journey?</h2>
           </div>
           <div className="contact-links">
             {contactLinks.map(link => (
