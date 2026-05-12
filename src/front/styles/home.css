@@ -14,8 +14,22 @@
   --shadow: 0 26px 70px rgba(44, 49, 55, 0.12);
 }
 
+:root[data-theme="dark"] {
+  --canvas: #101318;
+  --canvas-soft: #171b22;
+  --ink: #eef2f5;
+  --muted: #a9b1ba;
+  --line: rgba(238, 242, 245, 0.1);
+  --pill: #222832;
+  --pill-strong: #2b333f;
+  --blue: #8fa6ff;
+  --coral: #ff927f;
+  --green: #65d6af;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+}
+
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--canvas); color: var(--ink); }
+body { margin: 0; background: var(--canvas); color: var(--ink); transition: background 220ms ease, color 220ms ease; }
 body, button, a { font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-footer a::before { display: none; }
 
@@ -85,6 +99,26 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 .portfolio-nav .nav-link:hover { background: var(--canvas-soft); color: var(--ink) !important; }
 .portfolio-nav .navbar-toggler { border: 0; border-radius: 999px; background: rgba(214, 221, 225, 0.82); }
+.theme-toggle {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  margin-left: 0.7rem;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(214, 221, 225, 0.82);
+  font-size: 1.05rem;
+  line-height: 1;
+  backdrop-filter: blur(14px);
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-2px);
+  background: var(--canvas-soft);
+  box-shadow: 0 16px 34px rgba(38,41,45,0.12);
+}
 
 .hero-section { position: relative; min-height: calc(100vh - 86px); padding: 94px 0 84px; display: grid; align-items: center; }
 .hero-section::before, .hero-section::after {
@@ -338,4 +372,99 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   .hero-card { min-height: auto; }
   .creative-pass::after { display: none; }
   .modern-footer .portfolio-container { align-items: flex-start; flex-direction: column; }
+}
+
+:root[data-theme="dark"] body {
+  background: var(--canvas);
+}
+
+:root[data-theme="dark"] .portfolio-page {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(143, 166, 255, 0.12), transparent 18rem),
+    radial-gradient(circle at 84% 12%, rgba(255, 146, 127, 0.10), transparent 20rem),
+    linear-gradient(180deg, #101318 0%, #151922 45%, #0d1015 100%);
+}
+
+:root[data-theme="dark"] .portfolio-nav .navbar-brand,
+:root[data-theme="dark"] .portfolio-nav .navbar-nav,
+:root[data-theme="dark"] .theme-toggle,
+:root[data-theme="dark"] .portfolio-nav .navbar-toggler {
+  background: rgba(34, 40, 50, 0.82);
+}
+
+:root[data-theme="dark"] .portfolio-nav .nav-link:hover,
+:root[data-theme="dark"] .theme-toggle:hover,
+:root[data-theme="dark"] .theme-toggle:focus-visible {
+  background: var(--canvas-soft);
+}
+
+:root[data-theme="dark"] .hero-section::before,
+:root[data-theme="dark"] .hero-section::after {
+  background: rgba(34, 40, 50, 0.62);
+}
+
+:root[data-theme="dark"] .hero-card,
+:root[data-theme="dark"] .signal-card,
+:root[data-theme="dark"] .timeline-card,
+:root[data-theme="dark"] .project-card,
+:root[data-theme="dark"] .contact-card {
+  background: rgba(23, 27, 34, 0.72);
+}
+
+:root[data-theme="dark"] .muted-section {
+  background: rgba(23, 27, 34, 0.38);
+}
+
+:root[data-theme="dark"] .orbit-dot {
+  background: rgba(34, 40, 50, 0.78);
+}
+
+:root[data-theme="dark"] .orbit-dot::before {
+  background: #737d8a;
+  box-shadow: 0 0 0 8px rgba(115, 125, 138, 0.18);
+}
+
+:root[data-theme="dark"] .signal-list span,
+:root[data-theme="dark"] .skill-cloud span,
+:root[data-theme="dark"] .tag-row span,
+:root[data-theme="dark"] .project-type,
+:root[data-theme="dark"] .button.secondary,
+:root[data-theme="dark"] .contact-links a,
+:root[data-theme="dark"] .project-links a,
+:root[data-theme="dark"] .experience-controls button,
+:root[data-theme="dark"] .project-visual,
+:root[data-theme="dark"] .profile-mark {
+  background: var(--pill);
+}
+
+:root[data-theme="dark"] .button.primary {
+  background: var(--ink);
+  color: #101318;
+}
+
+:root[data-theme="dark"] .skill-cloud span:nth-child(3n + 1),
+:root[data-theme="dark"] .project-card-1 .project-visual {
+  background: #202847;
+}
+
+:root[data-theme="dark"] .skill-cloud span:nth-child(3n + 2),
+:root[data-theme="dark"] .project-card-2 .project-visual {
+  background: #1c352f;
+}
+
+:root[data-theme="dark"] .skill-cloud span:nth-child(3n + 3),
+:root[data-theme="dark"] .project-card-3 .project-visual {
+  background: #352b21;
+}
+
+:root[data-theme="dark"] .experience-dots button {
+  background: #3a434f;
+}
+
+:root[data-theme="dark"] .experience-dots button.active {
+  background: var(--ink);
+}
+
+:root[data-theme="dark"] .modern-footer {
+  background: #0d1015;
 }
