@@ -258,7 +258,10 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .muted-section { background: rgba(247, 249, 249, 0.38); border-top: 1px solid rgba(38,41,45,0.06); border-bottom: 1px solid rgba(38,41,45,0.06); }
 .split-section, .project-heading, .contact-card { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 3rem; align-items: start; }
 .section-sticky-copy { position: sticky; top: 112px; }
-.skill-cloud, .tag-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.6rem; }
+.skill-groups { display: grid; gap: 1rem; margin-top: 2rem; }
+.skill-group { padding: 1.15rem; border-radius: 30px; background: rgba(247,249,249,0.54); }
+.skill-group h3 { margin: 0; color: var(--ink); font-family: "Cabinet Grotesk", sans-serif; font-size: 1.08rem; font-weight: 900 !important; letter-spacing: -0.02em; }
+.skill-cloud, .tag-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.1rem; }
 .skill-cloud span, .tag-row span, .project-type { display: inline-flex; padding: 0.5rem 0.78rem; border-radius: 999px; background: var(--pill); color: var(--ink); font-size: 0.88rem; }
 .skill-cloud span:nth-child(3n + 1) { background: #e7ebff; }
 .skill-cloud span:nth-child(3n + 2) { background: #e4efea; }
@@ -405,6 +408,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
 :root[data-theme="dark"] .hero-card,
 :root[data-theme="dark"] .signal-card,
+:root[data-theme="dark"] .skill-group,
 :root[data-theme="dark"] .timeline-card,
 :root[data-theme="dark"] .project-card,
 :root[data-theme="dark"] .contact-card {
