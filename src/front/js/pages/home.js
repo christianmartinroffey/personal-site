@@ -1,59 +1,244 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import "../../styles/home.css";
 
-import Social from "../component/Social";
-import UnsplashAPIIMG from "../component/UnsplashAPIIMG";
-import PreviousExperience from "../component/PreviousExperience";
-import AboutMe from "../component/AboutMe";
-import SkillsAndExpertise from "../component/SkillsAndExpertise";
-import LanguageIcons from "../component/languageIcons";
-import BackToTop from "../component/BackToTop";
-import Projects from "./projects";
-import PageSeparator from "../component/pageSeparator,";
+const skills = [
+  "Python",
+  "Django",
+  "Flask",
+  "REST APIs",
+  "SQL",
+  "PostgreSQL",
+  "MySQL",
+  "React",
+  "JavaScript",
+  "OpenCV",
+  "MediaPipe",
+  "Machine Learning",
+  "Docker",
+  "GitHub",
+  "Agile Delivery"
+];
 
+const highlights = [
+  {
+    value: "Backend",
+    label: "Python, Django, Flask and API development"
+  },
+  {
+    value: "CV / ML",
+    label: "Computer vision experiments with OpenCV and MediaPipe"
+  },
+  {
+    value: "Product",
+    label: "Experience connecting software delivery with customer outcomes"
+  }
+];
+
+const experience = [
+  {
+    role: "Backend Engineer",
+    company: "Fideltour",
+    period: "2023 — Present",
+    summary:
+      "Building and maintaining products across Fideltour's hospitality marketing platform, including automation workflows, A/B testing and third-party integrations.",
+    tags: ["Python", "Django", "MySQL", "Automation", "Integrations"]
+  },
+  {
+    role: "Junior Software Engineer",
+    company: "uSizy",
+    period: "2022 — 2023",
+    summary:
+      "Integrated e-commerce sizing solutions, improved customer testing workflows and used SQL analysis to surface practical product recommendations.",
+    tags: ["Python", "Django", "SQL", "JavaScript", "E-commerce"]
+  },
+  {
+    role: "Full Stack Developer Bootcamp",
+    company: "4Geeks Academy",
+    period: "2022",
+    summary:
+      "Built a portfolio of full-stack applications covering authentication, REST APIs, React interfaces, testing and deployment workflows.",
+    tags: ["React", "Flask", "SQLAlchemy", "Jest", "REST APIs"]
+  },
+  {
+    role: "Customer Success & Operations Leadership",
+    company: "Squarespace / Uscreen",
+    period: "2016 — 2022",
+    summary:
+      "Led customer-facing teams, built retention and onboarding programs, and translated operational problems into scalable processes and product insights.",
+    tags: ["Leadership", "Retention", "Operations", "OKRs", "Process Design"]
+  }
+];
+
+const projects = [
+  {
+    title: "JudgeFit",
+    type: "Computer vision / fitness analysis",
+    summary:
+      "A machine-learning assisted judging concept using MediaPipe and OpenCV to improve standardisation and objectivity when evaluating athletic performance.",
+    impact: "Pose tracking, movement analysis and demo-led product exploration.",
+    links: [
+      { label: "GitHub", href: "https://github.com/christianmartinroffey/judgeFit" },
+      { label: "Demo", href: "https://www.youtube.com/watch?v=sOcGW-yd7is" }
+    ]
+  },
+  {
+    title: "Personal Site",
+    type: "Portfolio / CV",
+    summary:
+      "A modern CV-style portfolio for presenting software experience, technical focus areas and selected projects.",
+    impact: "React front end, Flask hosting shell and responsive single-page storytelling.",
+    links: [
+      { label: "GitHub", href: "https://github.com/christianmartinroffey/personal-site" }
+    ]
+  },
+  {
+    title: "Chore Manager",
+    type: "Full-stack productivity app",
+    summary:
+      "A household task management app built during the 4Geeks program with authentication, password recovery and API integrations.",
+    impact: "React, Flask, SQL and external API integration across a complete user flow.",
+    links: [{ label: "Demo", href: "https://www.youtube.com/watch?v=bGGqFwnh2OI&t=4392s" }]
+  }
+];
+
+const contactLinks = [
+  { label: "GitHub", href: "https://github.com/christianmartinroffey" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/christian-martin-roffey/" },
+  { label: "CV PDF", href: "/Christian_MR_CV.pdf" }
+];
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
-  const darkText = store.darkModeText;
-  const toggle = store.toggle;
-  console.log(toggle);
-
-  
-
   return (
-    <div className="">
-      <div id="dark-page" className="text-center">
-        <AboutMe />
-        <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+    <main className="portfolio-page">
+      <section className="hero-section" id="home">
+        <div className="hero-glow hero-glow-one" />
+        <div className="hero-glow hero-glow-two" />
+        <div className="portfolio-container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">Backend software engineer · Python · Computer vision</p>
+            <h1>
+              Building practical software where product thinking meets clean engineering.
+            </h1>
+            <p className="hero-intro">
+              I'm Christian M-R, a backend-focused software engineer with a background in customer operations and product delivery. I build APIs, automation workflows and full-stack prototypes, with a growing focus on computer vision and object detection.
+            </p>
+            <div className="hero-actions">
+              <a className="button primary" href="#projects">View projects</a>
+              <a className="button secondary" href="#contact">Get in touch</a>
+            </div>
           </div>
-          <div className=" separator_svg" id="skills">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+
+          <aside className="hero-card" aria-label="Profile summary">
+            <div className="status-pill">Available for backend, CV and product-led engineering work</div>
+            <div className="profile-mark">CMR</div>
+            <h2>Christian Martin-Roffey</h2>
+            <p>Backend Engineer focused on Python, APIs, automation and applied computer vision.</p>
+            <div className="hero-card-footer">
+              <span>Madrid / Remote</span>
+              <span>React · Flask · Django</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="stats-strip" aria-label="Expertise highlights">
+        <div className="portfolio-container stats-grid">
+          {highlights.map(item => (
+            <div className="stat-card" key={item.value}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section" id="skills">
+        <div className="portfolio-container split-section">
+          <div>
+            <p className="eyebrow">Skills & expertise</p>
+            <h2>Strong backend foundations with full-stack range.</h2>
           </div>
-        {/* <LanguageIcons/> */}
-        <SkillsAndExpertise />
-        <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+          <div>
+            <p className="section-copy">
+              I like simple systems, explicit APIs and interfaces that solve real problems. My experience combines software engineering with years of customer-facing leadership, so I care about both implementation quality and user impact.
+            </p>
+            <div className="skill-cloud">
+              {skills.map(skill => <span key={skill}>{skill}</span>)}
+            </div>
           </div>
-          <div className=" separator_svg" id="experience">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacityacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacityacity="1"/></svg>
+        </div>
+      </section>
+
+      <section className="portfolio-section muted-section" id="experience">
+        <div className="portfolio-container">
+          <div className="section-heading">
+            <p className="eyebrow">Experience</p>
+            <h2>Engineering with a product and operations lens.</h2>
           </div>
-          
-          <PreviousExperience/>
-          <div className="rotate-svg separator_svg">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacity="1"/></svg>
+          <div className="timeline">
+            {experience.map(item => (
+              <article className="timeline-card" key={`${item.company}-${item.role}`}>
+                <div className="timeline-meta">{item.period}</div>
+                <div>
+                  <h3>{item.role}</h3>
+                  <p className="company-name">{item.company}</p>
+                  <p>{item.summary}</p>
+                  <div className="tag-row">
+                    {item.tags.map(tag => <span key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
-          <div className=" separator_svg" id="projects">
-          <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="shape-fill" fill="#919191" fillOpacity="1"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill" fill="#919191" fillOpacity="1"/></svg>
+        </div>
+      </section>
+
+      <section className="portfolio-section" id="projects">
+        <div className="portfolio-container">
+          <div className="section-heading project-heading">
+            <div>
+              <p className="eyebrow">Selected projects</p>
+              <h2>Work that shows the direction I'm building in.</h2>
+            </div>
+            <p>
+              A mix of portfolio, full-stack and computer vision work — chosen to show practical delivery rather than just technology lists.
+            </p>
           </div>
-          <Projects/>
-        <div className="">
-        {/* <UnsplashAPIIMG /> */}
-        <BackToTop/>      
-      </div>
-      {/* <Social /> */}
-    </div>
-    </div>
+          <div className="project-grid">
+            {projects.map(project => (
+              <article className="project-card" key={project.title}>
+                <p className="project-type">{project.type}</p>
+                <h3>{project.title}</h3>
+                <p>{project.summary}</p>
+                <p className="project-impact">{project.impact}</p>
+                <div className="project-links">
+                  {project.links.map(link => (
+                    <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="portfolio-section contact-section" id="contact">
+        <div className="portfolio-container contact-card">
+          <div>
+            <p className="eyebrow">Contact</p>
+            <h2>Want to talk backend systems, computer vision or product-focused engineering?</h2>
+          </div>
+          <div className="contact-links">
+            {contactLinks.map(link => (
+              <a href={link.href} key={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };

@@ -22,10 +22,10 @@ export const Navbar = () => {
 
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <nav className="navbar navbar-expand-lg portfolio-nav">
   <div className="container-fluid">
 
-     <a className=" no-decoration navbar-brand" href="/">
+     <a className=" no-decoration navbar-brand" href="/#home">
           <svg
            width="60"
              height="60"
@@ -172,16 +172,16 @@ export const Navbar = () => {
       <div className="navbar-nav">
       <div className="me-auto"></div>
         <a className="nav-link color-black" aria-current="page" href="/">Home</a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#skills">Skills & Expertise </a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#experience">Experience</a>
-        <a className="nav-link" href="https://cmr-personal-site.onrender.com/#projects">Projects </a>
-        <a className="nav-link" href="/contact" >Contact</a>
+        <a className="nav-link" href="/#skills">Skills & Expertise </a>
+        <a className="nav-link" href="/#experience">Experience</a>
+        <a className="nav-link" href="/#projects">Projects </a>
+        <a className="nav-link" href="/#contact" >Contact</a>
       </div>
-      
+
       <span className="ms-auto p-2 ">
       <svg
             onClick={darkOnClick}
-           
+
              id="dark_mode"
              width="25"
              height="25"
@@ -196,12 +196,12 @@ export const Navbar = () => {
            </svg>
            </span>
     </div>
-   
+
   </div>
 </nav>
 
 
-    // <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    // <nav className="navbar navbar-expand-lg portfolio-nav">
     //   <div className="container">
     //     <a className="no-decoration navbar-brand" href="/">
     //       <svg
@@ -358,7 +358,7 @@ export const Navbar = () => {
     //       <span className="navbar-brand mb-0 h1 ">Contact</span>
     //     </Link>
 
-      
+
     //       {/* <Link to="/time">
 		// 			<span className="navbar-brand mb-0 h1">Time To Waste?</span>
 		// 		</Link> */}
@@ -377,7 +377,7 @@ export const Navbar = () => {
     //         />
     //       </svg>
     //     </div>
-      
+
     // </nav>
   );
 };
