@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/home.css";
 
 const skills = [
@@ -111,6 +111,25 @@ const contactLinks = [
 ];
 
 export const Home = () => {
+  const [activeExperience, setActiveExperience] = useState(0);
+  const currentExperience = experience[activeExperience];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveExperience(index => (index + 1) % experience.length);
+    }, 5200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const showPreviousExperience = () => {
+    setActiveExperience(index => (index - 1 + experience.length) % experience.length);
+  };
+
+  const showNextExperience = () => {
+    setActiveExperience(index => (index + 1) % experience.length);
+  };
+
   return (
     <main className="portfolio-page grain-field">
       <section className="hero-section" id="home">
@@ -187,20 +206,41 @@ export const Home = () => {
             <p className="eyebrow">Experience</p>
             <h2>From customer operations to code that improves operations.</h2>
           </div>
-          <div className="timeline">
-            {experience.map(item => (
-              <article className="timeline-card" key={`${item.company}-${item.role}`}>
-                <div className="timeline-meta">{item.period}</div>
+          <div className="experience-showcase" aria-live="polite">
+            <div className="experience-stage">
+              <article className="timeline-card experience-slide" key={`${currentExperience.company}-${currentExperience.role}`}>
+                <div className="timeline-meta">{currentExperience.period}</div>
                 <div>
-                  <h3>{item.role}</h3>
-                  <p className="company-name">{item.company}</p>
-                  <p>{item.summary}</p>
+                  <h3>{currentExperience.role}</h3>
+                  <p className="company-name">{currentExperience.company}</p>
+                  <p>{currentExperience.summary}</p>
                   <div className="tag-row">
-                    {item.tags.map(tag => <span key={tag}>{tag}</span>)}
+                    {currentExperience.tags.map(tag => <span key={tag}>{tag}</span>)}
                   </div>
                 </div>
               </article>
-            ))}
+            </div>
+
+            <div className="experience-controls" aria-label="Experience slideshow controls">
+              <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
+                ←
+              </button>
+              <div className="experience-dots">
+                {experience.map((item, index) => (
+                  <button
+                    type="button"
+                    className={index === activeExperience ? "active" : ""}
+                    key={item.company}
+                    onClick={() => setActiveExperience(index)}
+                    aria-label={`Show ${item.company} experience`}
+                    aria-current={index === activeExperience ? "true" : undefined}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={showNextExperience} aria-label="Show next experience">
+                →
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -231,9 +231,61 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skill-cloud span:nth-child(3n + 3) { background: #f1e8df; }
 .section-heading { margin-bottom: 2rem; }
 
-.timeline { display: grid; gap: 1rem; }
+.experience-showcase { display: grid; gap: 1.1rem; }
+.experience-stage {
+  position: relative;
+  min-height: 285px;
+  overflow: hidden;
+  border-radius: 42px;
+}
 .timeline-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 1.4rem; padding: 1.45rem; border-radius: 36px; transition: transform 160ms ease, background 160ms ease; }
-.timeline-card:hover { transform: translateX(8px); background: var(--canvas-soft); }
+.experience-slide {
+  min-height: 285px;
+  animation: slideExperience 520ms cubic-bezier(.2,.9,.2,1) both;
+}
+.experience-slide:hover { transform: translateY(-4px); background: var(--canvas-soft); }
+.experience-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.experience-controls button {
+  display: inline-grid;
+  min-width: 48px;
+  min-height: 48px;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--ink);
+  font-weight: 900;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.experience-controls button:hover,
+.experience-controls button:focus-visible {
+  background: var(--canvas-soft);
+  box-shadow: 0 16px 34px rgba(38,41,45,0.12);
+  transform: translateY(-2px);
+}
+.experience-dots {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.experience-dots button {
+  min-width: 12px;
+  width: 12px;
+  min-height: 12px;
+  height: 12px;
+  padding: 0;
+  background: #c9d1d5;
+}
+.experience-dots button.active {
+  width: 38px;
+  background: var(--ink);
+}
 .timeline-meta, .company-name, .project-type, .project-impact { color: var(--blue); font-weight: 900 !important; }
 .company-name { margin: 0.25rem 0 0.7rem; }
 
@@ -264,6 +316,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 @keyframes llamaFloat { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
 @keyframes nodeFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes underlinePop { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes slideExperience { from { opacity: 0; transform: translateX(28px) scale(0.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.001ms !important; } }
 @media (max-width: 900px) {
