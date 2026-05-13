@@ -477,13 +477,15 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skills-scroll-section {
   position: relative;
   overflow: visible;
-  padding-top: 72px;
-  padding-bottom: 56px;
+  padding-top: 48px;
+  padding-bottom: 0;
+  scroll-margin-top: 96px;
 }
 
 .skills-transition-stage {
   position: relative;
-  min-height: 240vh;
+  display: grid;
+  grid-template-rows: auto auto auto;
 }
 
 .skills-progress-rail {
@@ -492,7 +494,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   z-index: 4;
   display: flex;
   gap: 0.55rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
   padding: 0.6rem;
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -546,7 +548,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
 .skills-pin-card {
   position: sticky;
-  top: 150px;
+  top: 146px;
   z-index: 2;
   border: 1px solid var(--line);
   border-radius: 48px;
@@ -560,7 +562,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   display: grid;
   grid-template-columns: minmax(0, 0.74fr) minmax(320px, 1.26fr);
   gap: clamp(1rem, 4vw, 2.5rem);
-  min-height: min(600px, calc(100vh - 200px));
+  min-height: min(560px, calc(100vh - 190px));
   padding: clamp(1.2rem, 3vw, 2rem);
   align-items: center;
 }
@@ -670,15 +672,16 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 .skills-scroll-steps {
-  position: absolute;
-  inset: 0 0 auto;
   display: flex;
   flex-direction: column;
+  height: 175vh;
+  margin-top: calc(-1 * min(560px, calc(100vh - 190px)));
   pointer-events: none;
 }
 
 .skill-scroll-step {
-  min-height: 30vh;
+  flex: 1 0 0;
+  min-height: 0;
 }
 
 :root[data-theme="dark"] .skills-pin-card,
@@ -703,10 +706,6 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 @media (max-width: 900px) {
-  .skills-transition-stage {
-    min-height: auto;
-  }
-
   .skills-progress-rail {
     top: 76px;
   }
@@ -723,6 +722,8 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
   .skills-scroll-steps {
     display: none;
+    height: auto;
+    margin-top: 0;
   }
 }
 
