@@ -225,7 +225,7 @@ export const Home = () => {
               Useful software, clean systems, sharper feedback loops.
             </h1>
             <p className="hero-intro">
-              I'm Christian M-R. I build Python-first backend systems, federated GraphQL services, event-driven retail platforms and full-stack tools — with a strong applied computer vision streak through JudgeFit and image validation pipelines.
+              I'm Christian. I build Python-first backend systems, federated GraphQL services, event-driven retail platforms and full-stack tools — with a strong applied computer vision streak through JudgeFit and image validation pipelines.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#projects">Explore the work</a>
