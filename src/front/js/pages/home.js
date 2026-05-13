@@ -174,7 +174,72 @@ const skillIcons = {
   "Retention": "↺",
   "Operations": "⚙",
   "OKRs": "◎",
-  "Process Design": "▦"
+  "Process Design": "▦",
+  "Languages": "</>",
+  "Backend": "⚙",
+  "Frontend": "⚛",
+  "Databases": "DB",
+  "Cloud & Infrastructure": "☁",
+  "Architecture & Patterns": "▦",
+  "Computer Vision / ML": "👁",
+  "Tooling & DX": "⌘",
+  "Python (primary)": "Py",
+  "TypeScript": "TS",
+  "Strawberry GraphQL (schema-first federation)": "◈",
+  "ariadne-codegen": "◈",
+  "Tortoise ORM": "DB",
+  "Aerich migrations": "⇄",
+  "FastStream": "↔",
+  "confluent-kafka": "↔",
+  "Pydantic": "P",
+  "Next.js": "N",
+  "Apollo Client (including optimistic updates)": "◈",
+  "HeroUI": "UI",
+  "Tailwind CSS": "TW",
+  "react-datasheet-grid": "▦",
+  "@dnd-kit (drag-and-drop)": "↕",
+  "Playwright (E2E testing)": "✓",
+  "PITR/WAL disaster recovery": "↺",
+  "Oracle RMS": "OR",
+  "asyncpg": "DB",
+  "Azure Blob Storage": "☁",
+  "Azure Key Vault": "🔐",
+  "Workload Identity / RBAC": "🔐",
+  "kaas cluster": "⎈",
+  "Helm": "⛵",
+  "ArgoCD GitOps": "↗",
+  "Docker": "🐳",
+  "GitHub Actions CI/CD": "◆",
+  "Supergraph design": "◈",
+  "Microservices": "µ",
+  "Multi-brand platforms": "▥",
+  "Event-driven architecture": "↔",
+  "Kafka topic-per-aggregate": "↔",
+  "ETL pipelines": "⇄",
+  "Oracle RMS → PostgreSQL": "DB",
+  "MediaPipe": "MP",
+  "YOLO (YOLOv8)": "YO",
+  "rembg (background removal)": "✂",
+  "BiRefNet/Triton": "AI",
+  "OpenCV": "CV",
+  "pixel/DPI image validation pipelines": "px",
+  "Project: JudgeFit (automated CrossFit movement judging)": "JF",
+  "uv (Python package management)": "uv",
+  "pre-commit": "✓",
+  "Dependabot": "🤖",
+  "External Secrets Operator": "🔐",
+  "Per-PR Helm feature branch deployments": "PR"
+};
+
+const skillGroupSummaries = {
+  "Languages": "Python-first, with enough TypeScript and JavaScript range to move cleanly across backend services and product interfaces.",
+  "Backend": "API design, async Python, schema-first GraphQL, event streams and persistence layers that make systems easier to evolve.",
+  "Frontend": "React and Next.js product surfaces, data-heavy UI workflows, optimistic GraphQL interactions and reliable E2E coverage.",
+  "Databases": "PostgreSQL-heavy data work, migration safety, recovery thinking and practical integrations with retail source systems.",
+  "Cloud & Infrastructure": "Azure, Kubernetes, Helm and ArgoCD delivery paths for repeatable multi-service deployments.",
+  "Architecture & Patterns": "Federated graphs, event-driven services, microservice boundaries and ETL flows across multi-brand platforms.",
+  "Computer Vision / ML": "Applied image and movement analysis with MediaPipe, YOLO, OpenCV and validation pipelines.",
+  "Tooling & DX": "The workflow glue: package management, automation, dependency hygiene, secrets and per-PR deploy feedback loops."
 };
 
 const projects = [
@@ -216,8 +281,18 @@ const contactLinks = [
 
 export const Home = () => {
   const [activeExperience, setActiveExperience] = useState(0);
+  const [activeSkillGroup, setActiveSkillGroup] = useState(0);
   const currentExperience = experience[activeExperience];
-  const experienceRefs = useRef([]);
+  const currentSkillGroup = skillGroups[activeSkillGroup];
+  const skillRefs = useRef([]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveExperience(index => (index + 1) % experience.length);
+    }, 5200);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!window.IntersectionObserver) return;
@@ -229,30 +304,30 @@ export const Home = () => {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (mostVisible) {
-          setActiveExperience(Number(mostVisible.target.dataset.index));
+          setActiveSkillGroup(Number(mostVisible.target.dataset.index));
         }
       },
       { rootMargin: "-32% 0px -38% 0px", threshold: [0.25, 0.5, 0.75] }
     );
 
-    experienceRefs.current.forEach(node => {
+    skillRefs.current.forEach(node => {
       if (node) observer.observe(node);
     });
 
     return () => observer.disconnect();
   }, []);
 
-  const showExperience = index => {
-    experienceRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
-    setActiveExperience(index);
+  const showSkillGroup = index => {
+    skillRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setActiveSkillGroup(index);
   };
 
   const showPreviousExperience = () => {
-    showExperience((activeExperience - 1 + experience.length) % experience.length);
+    setActiveExperience(index => (index - 1 + experience.length) % experience.length);
   };
 
   const showNextExperience = () => {
-    showExperience((activeExperience + 1) % experience.length);
+    setActiveExperience(index => (index + 1) % experience.length);
   };
 
   return (
@@ -306,76 +381,46 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="portfolio-section" id="skills">
-        <div className="portfolio-container split-section">
-          <div className="section-sticky-copy">
+      <section className="portfolio-section skills-scroll-section" id="skills">
+        <div className="portfolio-container">
+          <div className="section-heading skills-scroll-heading">
             <p className="eyebrow">Skills & expertise</p>
             <h2>Less generic résumé, more working toolkit.</h2>
-          </div>
-          <div>
-            <p className="section-copy">
-              The overlap is the point: federated backend engineering for reliability, frontend range for usable workflows, cloud-native delivery for repeatability, and computer vision for applied ML products.
-            </p>
-            <div className="skill-groups">
-              {skillGroups.map(group => (
-                <article className="skill-group" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <div className="skill-cloud">
-                    {group.skills.map(skill => <span key={skill}>{skill}</span>)}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="portfolio-section muted-section experience-scroll-section" id="experience">
-        <div className="portfolio-container">
-          <div className="section-heading marquee-heading experience-scroll-heading">
-            <p className="eyebrow">Experience</p>
-            <h2>Experience that changes as you scroll.</h2>
             <p>
-              A more animated career timeline: each stop brings a different stack, skill set and level of system ownership into focus.
+              Scroll the toolkit and the focus shifts by discipline — from languages, to backend systems, to cloud delivery, to applied computer vision.
             </p>
           </div>
 
-          <div className="experience-scroll-showcase" aria-live="polite">
-            <aside className="experience-pin-card">
-              <p className="eyebrow">Currently in view</p>
-              <div className="experience-pin-orb" aria-hidden="true">
-                <span>{String(activeExperience + 1).padStart(2, "0")}</span>
+          <div className="skills-scroll-showcase" aria-live="polite">
+            <aside className="skills-pin-card">
+              <p className="eyebrow">Toolkit in focus</p>
+              <div className="skills-pin-orb" aria-hidden="true">
+                <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
               </div>
-              <p className="timeline-meta">{currentExperience.period}</p>
-              <h3>{currentExperience.role}</h3>
-              <p className="company-name">{currentExperience.company}</p>
-              <p>{currentExperience.summary}</p>
-              <div className="tag-row icon-tag-row">
-                {currentExperience.tags.map(tag => (
-                  <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
+              <h3>{currentSkillGroup.title}</h3>
+              <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
+              <div className="skill-cloud icon-skill-cloud">
+                {currentSkillGroup.skills.slice(0, 6).map(skill => (
+                  <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
                 ))}
               </div>
             </aside>
 
-            <div className="experience-scroll-list">
-              {experience.map((item, index) => (
+            <div className="skills-scroll-list">
+              {skillGroups.map((group, index) => (
                 <article
-                  className={`timeline-card experience-scroll-card ${index === activeExperience ? "active" : ""}`}
+                  className={`skill-group skill-scroll-card ${index === activeSkillGroup ? "active" : ""}`}
                   data-index={index}
-                  key={`${item.company}-${item.role}`}
-                  ref={node => (experienceRefs.current[index] = node)}
+                  key={group.title}
+                  ref={node => (skillRefs.current[index] = node)}
                 >
-                  <div className="timeline-meta">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    {item.period}
-                  </div>
+                  <div className="skill-scroll-number">{String(index + 1).padStart(2, "0")}</div>
                   <div>
-                    <h3>{item.role}</h3>
-                    <p className="company-name">{item.company}</p>
-                    <p>{item.summary}</p>
-                    <div className="tag-row icon-tag-row">
-                      {item.tags.map(tag => (
-                        <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
+                    <h3>{group.title}</h3>
+                    <p>{skillGroupSummaries[group.title]}</p>
+                    <div className="skill-cloud icon-skill-cloud">
+                      {group.skills.map(skill => (
+                        <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
                       ))}
                     </div>
                   </div>
@@ -384,25 +429,64 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="experience-controls floating-experience-controls" aria-label="Experience timeline controls">
-            <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
-              ←
-            </button>
-            <div className="experience-dots">
-              {experience.map((item, index) => (
-                <button
-                  type="button"
-                  className={index === activeExperience ? "active" : ""}
-                  key={item.company}
-                  onClick={() => showExperience(index)}
-                  aria-label={`Show ${item.company} experience`}
-                  aria-current={index === activeExperience ? "true" : undefined}
-                />
-              ))}
+          <div className="skills-dots" aria-label="Skill group shortcuts">
+            {skillGroups.map((group, index) => (
+              <button
+                type="button"
+                className={index === activeSkillGroup ? "active" : ""}
+                key={group.title}
+                onClick={() => showSkillGroup(index)}
+                aria-label={`Show ${group.title} skills`}
+                aria-current={index === activeSkillGroup ? "true" : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="portfolio-section muted-section" id="experience">
+        <div className="portfolio-container">
+          <div className="section-heading marquee-heading">
+            <p className="eyebrow">Experience</p>
+            <h2>From customer operations to retail platform engineering.</h2>
+          </div>
+          <div className="experience-showcase" aria-live="polite">
+            <div className="experience-stage">
+              <article className="timeline-card experience-slide" key={`${currentExperience.company}-${currentExperience.role}`}>
+                <div className="timeline-meta">{currentExperience.period}</div>
+                <div>
+                  <h3>{currentExperience.role}</h3>
+                  <p className="company-name">{currentExperience.company}</p>
+                  <p>{currentExperience.summary}</p>
+                  <div className="tag-row icon-tag-row">
+                    {currentExperience.tags.map(tag => (
+                      <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
             </div>
-            <button type="button" onClick={showNextExperience} aria-label="Show next experience">
-              →
-            </button>
+
+            <div className="experience-controls" aria-label="Experience slideshow controls">
+              <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
+                ←
+              </button>
+              <div className="experience-dots">
+                {experience.map((item, index) => (
+                  <button
+                    type="button"
+                    className={index === activeExperience ? "active" : ""}
+                    key={item.company}
+                    onClick={() => setActiveExperience(index)}
+                    aria-label={`Show ${item.company} experience`}
+                    aria-current={index === activeExperience ? "true" : undefined}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={showNextExperience} aria-label="Show next experience">
+                →
+              </button>
+            </div>
           </div>
         </div>
       </section>
