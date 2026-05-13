@@ -284,7 +284,7 @@ export const Home = () => {
   const [activeSkillGroup, setActiveSkillGroup] = useState(0);
   const currentExperience = experience[activeExperience];
   const currentSkillGroup = skillGroups[activeSkillGroup];
-  const skillRefs = useRef([]);
+  const skillsSectionRef = useRef(null);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -295,31 +295,32 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (!window.IntersectionObserver) return;
+    const updateActiveSkillGroup = () => {
+      const section = skillsSectionRef.current;
+      if (!section) return;
 
-    const observer = new IntersectionObserver(
-      entries => {
-        const mostVisible = entries
-          .filter(entry => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      const rect = section.getBoundingClientRect();
+      const viewportTrigger = window.innerHeight * 0.42;
+      const scrollableDistance = Math.max(rect.height - window.innerHeight * 0.7, 1);
+      const progress = Math.min(Math.max((viewportTrigger - rect.top) / scrollableDistance, 0), 1);
+      const nextIndex = Math.round(progress * (skillGroups.length - 1));
 
-        if (mostVisible) {
-          setActiveSkillGroup(Number(mostVisible.target.dataset.index));
-        }
-      },
-      { rootMargin: "-32% 0px -38% 0px", threshold: [0.25, 0.5, 0.75] }
-    );
+      setActiveSkillGroup(nextIndex);
+    };
 
-    skillRefs.current.forEach(node => {
-      if (node) observer.observe(node);
-    });
+    updateActiveSkillGroup();
+    window.addEventListener("scroll", updateActiveSkillGroup, { passive: true });
+    window.addEventListener("resize", updateActiveSkillGroup);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", updateActiveSkillGroup);
+      window.removeEventListener("resize", updateActiveSkillGroup);
+    };
   }, []);
 
   const showSkillGroup = index => {
-    skillRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
     setActiveSkillGroup(index);
+    skillsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const showPreviousExperience = () => {
@@ -381,7 +382,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="portfolio-section skills-scroll-section" id="skills">
+      <section className="portfolio-section skills-scroll-section" id="skills" ref={skillsSectionRef}>
         <div className="portfolio-container">
           <div className="skills-transition-stage" aria-live="polite">
             <div className="skills-progress-rail" aria-label="Skill group timeline">
@@ -422,17 +423,6 @@ export const Home = () => {
                   ))}
                 </div>
               </div>
-            </div>
-
-            <div className="skills-scroll-steps" aria-hidden="true">
-              {skillGroups.map((group, index) => (
-                <div
-                  className="skill-scroll-step"
-                  data-index={index}
-                  key={group.title}
-                  ref={node => (skillRefs.current[index] = node)}
-                />
-              ))}
             </div>
           </div>
         </div>

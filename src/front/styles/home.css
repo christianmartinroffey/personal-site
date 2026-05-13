@@ -477,20 +477,19 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skills-scroll-section {
   position: relative;
   overflow: visible;
-  padding-top: 48px;
-  padding-bottom: 0;
-  scroll-margin-top: 96px;
+  min-height: 135vh;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  scroll-margin-top: 84px;
 }
 
 .skills-transition-stage {
   position: relative;
-  display: grid;
-  grid-template-rows: auto auto auto;
 }
 
 .skills-progress-rail {
   position: sticky;
-  top: 82px;
+  top: 78px;
   z-index: 4;
   display: flex;
   gap: 0.55rem;
@@ -548,7 +547,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
 .skills-pin-card {
   position: sticky;
-  top: 146px;
+  top: 142px;
   z-index: 2;
   border: 1px solid var(--line);
   border-radius: 48px;
@@ -562,7 +561,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   display: grid;
   grid-template-columns: minmax(0, 0.74fr) minmax(320px, 1.26fr);
   gap: clamp(1rem, 4vw, 2.5rem);
-  min-height: min(560px, calc(100vh - 190px));
+  min-height: min(560px, calc(100vh - 185px));
   padding: clamp(1.2rem, 3vw, 2rem);
   align-items: center;
 }
@@ -671,19 +670,6 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   font-weight: 900;
 }
 
-.skills-scroll-steps {
-  display: flex;
-  flex-direction: column;
-  height: 175vh;
-  margin-top: calc(-1 * min(560px, calc(100vh - 190px)));
-  pointer-events: none;
-}
-
-.skill-scroll-step {
-  flex: 1 0 0;
-  min-height: 0;
-}
-
 :root[data-theme="dark"] .skills-pin-card,
 :root[data-theme="dark"] .skills-progress-rail {
   background: rgba(23, 27, 34, 0.82);
@@ -718,12 +704,6 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   .compact-skills-card,
   .skills-card-visual {
     grid-template-columns: 1fr;
-  }
-
-  .skills-scroll-steps {
-    display: none;
-    height: auto;
-    margin-top: 0;
   }
 }
 
