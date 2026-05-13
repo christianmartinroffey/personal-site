@@ -35,3 +35,19 @@ jobs:
         with:
           name: production-build
           path: public
+
+  deploy:
+    name: Deploy to Raspberry Pi
+    runs-on:
+      - self-hosted
+      - linux
+      - ARM64
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Deploy local Raspberry Pi service
+        run: scripts/deploy-pi.sh
