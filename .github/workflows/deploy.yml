@@ -22,5 +22,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Deploy local Raspberry Pi service
         run: scripts/deploy-pi.sh

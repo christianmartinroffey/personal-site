@@ -27,11 +27,11 @@ git checkout "$BRANCH"
 log "Resetting local checkout to origin/$BRANCH"
 git reset --hard "origin/$BRANCH"
 
-log "Installing Node dependencies"
-npm ci
+log "Installing Bun dependencies"
+bun install --frozen-lockfile
 
 log "Building production bundle"
-npm run build
+bun run build
 
 log "Restarting $SERVICE_NAME"
 if systemctl --user restart "$SERVICE_NAME"; then
