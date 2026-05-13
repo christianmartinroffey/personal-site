@@ -239,10 +239,10 @@ export const Home = () => {
             <h2>Christian Martin-Roffey</h2>
             <p>Python-primary software engineer blending federated backend architecture, cloud-native delivery, frontend product work and applied computer vision.</p>
             <div className="signal-list">
-              <span>Madrid / Remote</span>
+              <span>Mallorca / Remote</span>
               <span>FastAPI · GraphQL · Kafka</span>
               <span>Next.js · React · Apollo</span>
-              <span>OpenCV · MediaPipe · YOLOv8</span>
+              <span>OpenCV · MediaPipe · YOLO</span>
             </div>
           </aside>
         </div>
