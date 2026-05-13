@@ -6,12 +6,6 @@ import PreviousExperience from "./PreviousExperience";
 import IntroSection from "./introSection";
 
 function AboutMe() {
-
-// const linkToNextSection = () =>{
-//https://3000-christianma-personalsit-930c68xkbqz.ws-eu63.gitpod.io/#yourAnchorTag">Your link text</Link> */}
-// console.log("button clicked")
-// };
-
   return (
     <div className="justify-content-center pt-3 " >
       <div className="container center-all d-flex pt-5 pb-5">

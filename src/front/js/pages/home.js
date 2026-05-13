@@ -183,7 +183,7 @@ const projects = [
 const contactLinks = [
   { label: "GitHub", href: "https://github.com/christianmartinroffey" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/christian-martin-roffey/" },
-  { label: "CV PDF", href: "/Christian_MR_CV.pdf" }
+  { label: "CV PDF", href: "/**********" }
 ];
 
 export const Home = () => {
