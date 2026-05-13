@@ -300,9 +300,8 @@ export const Home = () => {
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
-      const viewportTrigger = window.innerHeight * 0.42;
-      const scrollableDistance = Math.max(rect.height - window.innerHeight * 0.7, 1);
-      const progress = Math.min(Math.max((viewportTrigger - rect.top) / scrollableDistance, 0), 1);
+      const scrollableDistance = Math.max(rect.height - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
       const nextIndex = Math.round(progress * (skillGroups.length - 1));
 
       setActiveSkillGroup(nextIndex);
@@ -319,8 +318,18 @@ export const Home = () => {
   }, []);
 
   const showSkillGroup = index => {
+    const section = skillsSectionRef.current;
     setActiveSkillGroup(index);
-    skillsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (!section) return;
+
+    const scrollableDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const progress = index / Math.max(skillGroups.length - 1, 1);
+
+    window.scrollTo({
+      top: section.offsetTop + scrollableDistance * progress,
+      behavior: "smooth"
+    });
   };
 
   const showPreviousExperience = () => {
@@ -385,23 +394,24 @@ export const Home = () => {
       <section className="portfolio-section skills-scroll-section" id="skills" ref={skillsSectionRef}>
         <div className="portfolio-container">
           <div className="skills-transition-stage" aria-live="polite">
-            <div className="skills-progress-rail" aria-label="Skill group timeline">
-              {skillGroups.map((group, index) => (
-                <button
-                  type="button"
-                  className={index === activeSkillGroup ? "active" : ""}
-                  key={group.title}
-                  onClick={() => showSkillGroup(index)}
-                  aria-label={`Show ${group.title} skills`}
-                  aria-current={index === activeSkillGroup ? "true" : undefined}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  {group.title}
-                </button>
-              ))}
-            </div>
+            <div className="skills-sticky-stack">
+              <div className="skills-progress-rail" aria-label="Skill group timeline">
+                {skillGroups.map((group, index) => (
+                  <button
+                    type="button"
+                    className={index === activeSkillGroup ? "active" : ""}
+                    key={group.title}
+                    onClick={() => showSkillGroup(index)}
+                    aria-label={`Show ${group.title} skills`}
+                    aria-current={index === activeSkillGroup ? "true" : undefined}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {group.title}
+                  </button>
+                ))}
+              </div>
 
-            <div className="skills-pin-card compact-skills-card">
+              <div className="skills-pin-card compact-skills-card">
               <div className="skills-card-copy">
                 <p className="eyebrow">Skills & expertise</p>
                 <h2>Less generic résumé, more working toolkit.</h2>
@@ -422,6 +432,7 @@ export const Home = () => {
                     <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
                   ))}
                 </div>
+              </div>
               </div>
             </div>
           </div>

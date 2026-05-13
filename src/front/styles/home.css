@@ -477,19 +477,25 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skills-scroll-section {
   position: relative;
   overflow: visible;
-  min-height: 135vh;
-  padding-top: 72px;
-  padding-bottom: 72px;
-  scroll-margin-top: 84px;
+  min-height: 320vh;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  scroll-margin-top: 0;
 }
 
 .skills-transition-stage {
   position: relative;
+  min-height: inherit;
+}
+
+.skills-sticky-stack {
+  position: sticky;
+  top: 88px;
+  z-index: 3;
 }
 
 .skills-progress-rail {
-  position: sticky;
-  top: 78px;
+  position: relative;
   z-index: 4;
   display: flex;
   gap: 0.55rem;
@@ -546,8 +552,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 .skills-pin-card {
-  position: sticky;
-  top: 142px;
+  position: relative;
   z-index: 2;
   border: 1px solid var(--line);
   border-radius: 48px;
@@ -561,7 +566,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   display: grid;
   grid-template-columns: minmax(0, 0.74fr) minmax(320px, 1.26fr);
   gap: clamp(1rem, 4vw, 2.5rem);
-  min-height: min(560px, calc(100vh - 185px));
+  min-height: min(560px, calc(100vh - 175px));
   padding: clamp(1.2rem, 3vw, 2rem);
   align-items: center;
 }
@@ -692,13 +697,13 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 @media (max-width: 900px) {
-  .skills-progress-rail {
-    top: 76px;
+  .skills-sticky-stack {
+    position: relative;
+    top: auto;
   }
 
   .skills-pin-card {
     position: relative;
-    top: auto;
   }
 
   .compact-skills-card,
