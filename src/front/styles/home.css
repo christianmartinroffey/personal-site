@@ -477,11 +477,12 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skills-scroll-section {
   position: relative;
   overflow: visible;
+  padding-bottom: 56px;
 }
 
 .skills-scroll-heading {
   max-width: 880px;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .skills-scroll-heading p:not(.eyebrow) {
@@ -492,62 +493,77 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   line-height: 1.75;
 }
 
-.skills-scroll-showcase {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(1.5rem, 5vw, 4rem);
-  align-items: start;
+.skills-transition-stage {
+  position: relative;
+  min-height: 240vh;
 }
 
 .skills-pin-card {
   position: sticky;
-  top: 112px;
-  min-height: 520px;
-  padding: clamp(1.35rem, 3vw, 2rem);
+  top: 108px;
+  z-index: 2;
   border: 1px solid var(--line);
   border-radius: 48px;
   overflow: hidden;
-  background: rgba(247, 249, 249, 0.78);
+  background: rgba(247, 249, 249, 0.82);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
+}
+
+.compact-skills-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.74fr) minmax(320px, 1.26fr);
+  gap: clamp(1rem, 4vw, 2.5rem);
+  min-height: min(620px, calc(100vh - 150px));
+  padding: clamp(1.2rem, 3vw, 2rem);
+  align-items: center;
 }
 
 .skills-pin-card::after {
   content: "";
   position: absolute;
-  inset: auto -18% -28% 18%;
-  height: 280px;
+  inset: auto -12% -34% 42%;
+  height: 320px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--blue), var(--green), var(--coral));
-  opacity: 0.18;
-  filter: blur(8px);
+  opacity: 0.16;
+  filter: blur(10px);
   animation: nodeFloat 6s ease-in-out infinite;
 }
 
-.skills-pin-card h3 {
+.skills-card-copy,
+.skills-card-visual {
   position: relative;
   z-index: 1;
-  margin: 0.35rem 0 0.75rem;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: clamp(2.1rem, 4.8vw, 4.35rem);
-  font-weight: 900 !important;
-  line-height: 0.9;
-  letter-spacing: -0.075em;
 }
 
-.skills-pin-card p,
-.skills-pin-card .skill-cloud {
-  position: relative;
-  z-index: 1;
+.skills-pin-card h3 {
+  margin: 0.35rem 0 0.85rem;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: clamp(2.25rem, 5vw, 5rem);
+  font-weight: 900 !important;
+  line-height: 0.88;
+  letter-spacing: -0.08em;
+}
+
+.skills-pin-card p:not(.eyebrow) {
+  max-width: 440px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.55vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.skills-card-visual {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.46fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
 }
 
 .skills-pin-orb {
-  position: relative;
-  z-index: 1;
   display: grid;
-  width: min(100%, 280px);
+  width: min(100%, 230px);
   aspect-ratio: 1;
-  margin: 0 auto 1.4rem;
   place-items: center;
   border-radius: 42px;
   background:
@@ -559,50 +575,15 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 .skills-pin-orb span {
   color: rgba(38,41,45,0.28);
   font-family: "Cabinet Grotesk", sans-serif;
-  font-size: clamp(4rem, 11vw, 7.25rem);
+  font-size: clamp(3.5rem, 8vw, 6.2rem);
   font-weight: 900;
   letter-spacing: -0.1em;
 }
 
-.skills-scroll-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28vh;
-  padding-bottom: 12vh;
-}
-
-.skill-scroll-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
-  min-height: 62vh;
-  align-items: center;
-  opacity: 0.48;
-  transform: translateY(20px) scale(0.96);
-  transition: opacity 420ms ease, transform 420ms ease, background 180ms ease, box-shadow 180ms ease;
-}
-
-.skill-scroll-card.active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  background: var(--canvas-soft);
-  box-shadow: 0 34px 86px rgba(38,41,45,0.16);
-}
-
-.skill-scroll-card p {
-  max-width: 680px;
-  margin: 0.7rem 0 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.skill-scroll-number {
-  color: rgba(38,41,45,0.18);
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 4.4rem;
-  font-weight: 900;
-  line-height: 0.8;
-  letter-spacing: -0.09em;
+.compact-skill-cloud {
+  align-content: center;
+  max-height: 360px;
+  overflow: hidden;
 }
 
 .icon-skill-cloud span,
@@ -624,6 +605,49 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   font-weight: 900;
 }
 
+.skills-scroll-steps {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.skill-scroll-step {
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  max-width: min(320px, 70vw);
+  padding: 0.65rem 0.85rem;
+  border-radius: 999px;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 260ms ease, transform 260ms ease, background 260ms ease;
+}
+
+.skill-scroll-step.active {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(247,249,249,0.84);
+  box-shadow: 0 18px 44px rgba(38,41,45,0.11);
+}
+
+.skill-scroll-step span {
+  color: var(--blue);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+}
+
+.skill-scroll-step strong {
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
 .skills-dots {
   position: sticky;
   bottom: 1rem;
@@ -633,7 +657,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
   gap: 0.5rem;
   width: fit-content;
   max-width: 100%;
-  margin: -4rem auto 0;
+  margin: -3rem auto 0;
   padding: 0.65rem;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -658,16 +682,12 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 :root[data-theme="dark"] .skills-pin-card,
-:root[data-theme="dark"] .skills-dots {
-  background: rgba(23, 27, 34, 0.78);
+:root[data-theme="dark"] .skills-dots,
+:root[data-theme="dark"] .skill-scroll-step.active {
+  background: rgba(23, 27, 34, 0.82);
 }
 
-:root[data-theme="dark"] .skill-scroll-card.active {
-  background: var(--canvas-soft);
-}
-
-:root[data-theme="dark"] .skills-pin-orb span,
-:root[data-theme="dark"] .skill-scroll-number {
+:root[data-theme="dark"] .skills-pin-orb span {
   color: rgba(238,242,245,0.14);
 }
 
@@ -685,35 +705,49 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 }
 
 @media (max-width: 900px) {
-  .skills-scroll-showcase {
-    grid-template-columns: 1fr;
+  .skills-transition-stage {
+    min-height: auto;
   }
 
   .skills-pin-card {
     position: relative;
     top: auto;
-    min-height: auto;
   }
 
-  .skills-scroll-list {
-    gap: 1rem;
-    padding-bottom: 6rem;
+  .compact-skills-card,
+  .skills-card-visual {
+    grid-template-columns: 1fr;
   }
 
-  .skill-scroll-card {
+  .skills-scroll-steps {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin-top: 1rem;
+    pointer-events: auto;
+  }
+
+  .skill-scroll-step {
     min-height: auto;
+    width: auto;
+    max-width: none;
     opacity: 1;
     transform: none;
+    background: var(--pill);
   }
 
   .skills-dots {
-    margin-top: -4.5rem;
+    display: none;
   }
 }
 
 @media (max-width: 640px) {
-  .skill-scroll-card {
+  .compact-skills-card {
+    min-height: auto;
+  }
+
+  .skills-scroll-steps {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 }

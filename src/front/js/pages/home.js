@@ -391,40 +391,37 @@ export const Home = () => {
             </p>
           </div>
 
-          <div className="skills-scroll-showcase" aria-live="polite">
-            <aside className="skills-pin-card">
-              <p className="eyebrow">Toolkit in focus</p>
-              <div className="skills-pin-orb" aria-hidden="true">
-                <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
+          <div className="skills-transition-stage" aria-live="polite">
+            <div className="skills-pin-card compact-skills-card">
+              <div className="skills-card-copy">
+                <p className="eyebrow">Toolkit in focus</p>
+                <h3>{currentSkillGroup.title}</h3>
+                <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
               </div>
-              <h3>{currentSkillGroup.title}</h3>
-              <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
-              <div className="skill-cloud icon-skill-cloud">
-                {currentSkillGroup.skills.slice(0, 6).map(skill => (
-                  <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
-                ))}
-              </div>
-            </aside>
 
-            <div className="skills-scroll-list">
+              <div className="skills-card-visual">
+                <div className="skills-pin-orb" aria-hidden="true">
+                  <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
+                </div>
+                <div className="skill-cloud icon-skill-cloud compact-skill-cloud">
+                  {currentSkillGroup.skills.map(skill => (
+                    <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="skills-scroll-steps" aria-label="Skill scroll transition triggers">
               {skillGroups.map((group, index) => (
-                <article
-                  className={`skill-group skill-scroll-card ${index === activeSkillGroup ? "active" : ""}`}
+                <div
+                  className={`skill-scroll-step ${index === activeSkillGroup ? "active" : ""}`}
                   data-index={index}
                   key={group.title}
                   ref={node => (skillRefs.current[index] = node)}
                 >
-                  <div className="skill-scroll-number">{String(index + 1).padStart(2, "0")}</div>
-                  <div>
-                    <h3>{group.title}</h3>
-                    <p>{skillGroupSummaries[group.title]}</p>
-                    <div className="skill-cloud icon-skill-cloud">
-                      {group.skills.map(skill => (
-                        <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{group.title}</strong>
+                </div>
               ))}
             </div>
           </div>
