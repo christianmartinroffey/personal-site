@@ -383,18 +383,15 @@ export const Home = () => {
 
       <section className="portfolio-section skills-scroll-section" id="skills">
         <div className="portfolio-container">
-          <div className="section-heading skills-scroll-heading">
-            <p className="eyebrow">Skills & expertise</p>
-            <h2>Less generic résumé, more working toolkit.</h2>
-            <p>
-              Scroll the toolkit and the focus shifts by discipline — from languages, to backend systems, to cloud delivery, to applied computer vision.
-            </p>
-          </div>
-
           <div className="skills-transition-stage" aria-live="polite">
             <div className="skills-pin-card compact-skills-card">
               <div className="skills-card-copy">
-                <p className="eyebrow">Toolkit in focus</p>
+                <p className="eyebrow">Skills & expertise</p>
+                <h2>Less generic résumé, more working toolkit.</h2>
+                <p className="skills-section-context">
+                  Scroll the toolkit and the focus shifts by discipline — from languages, to backend systems, to cloud delivery, to applied computer vision.
+                </p>
+                <p className="eyebrow toolkit-focus-label">Toolkit in focus</p>
                 <h3>{currentSkillGroup.title}</h3>
                 <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
               </div>
