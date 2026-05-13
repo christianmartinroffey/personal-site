@@ -116,7 +116,7 @@ const caseStudies = [
   {
     kicker: "Enterprise platform",
     title: "Federated GraphQL across retail services.",
-    body: "Backend and frontend work across multi-brand retail platforms: schema-first GraphQL, async Python services, Kafka-backed data movement, PostgreSQL persistence, and GitOps delivery. Details stay public-safe; the signal is the architecture pattern and delivery discipline.",
+    body: "Backend and frontend work across multi-brand retail platforms: schema-first GraphQL, async Python services, Kafka-backed data movement, PostgreSQL persistence, and GitOps delivery. The first impression is current platform credibility, while details stay public-safe: the signal is the architecture pattern, delivery discipline, and ability to work across service boundaries.",
     tags: ["FastAPI", "Strawberry GraphQL", "Kafka", "PostgreSQL", "Azure", "Kubernetes", "Helm", "ArgoCD"]
   },
   {
@@ -210,9 +210,9 @@ export const Home = () => {
         <div className="cockpit-shell section-grid">
           <div className="section-copy sticky-copy">
             <p className="system-label">01 · enterprise platform work</p>
-            <h2>Public-safe architecture proof, not corporate oversharing.</h2>
+            <h2>Enterprise platform map.</h2>
             <p>
-              The first impression is current platform credibility: federated GraphQL across services, Kafka-backed data movement, and repeatable Kubernetes delivery. Click a node to inspect the system.
+              Click a node to inspect the backend/platform capability behind the graph.
             </p>
             <div className="detail-card active-node-card">
               <p className="system-label">Selected node</p>
