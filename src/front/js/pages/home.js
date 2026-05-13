@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/home.css";
 
 const skillGroups = [
@@ -149,6 +149,34 @@ const experience = [
   }
 ];
 
+
+const skillIcons = {
+  "FastAPI": "⚡",
+  "GraphQL Federation": "◈",
+  "Kafka": "↔",
+  "PostgreSQL": "🐘",
+  "Azure": "☁",
+  "Kubernetes": "⎈",
+  "Python": "Py",
+  "Django": "Dj",
+  "MySQL": "DB",
+  "Automation": "⚙",
+  "Integrations": "🔌",
+  "SQL": "SQL",
+  "JavaScript": "JS",
+  "E-commerce": "🛒",
+  "React": "⚛",
+  "Flask": "🌶",
+  "SQLAlchemy": "DB",
+  "Jest": "✓",
+  "REST APIs": "API",
+  "Leadership": "★",
+  "Retention": "↺",
+  "Operations": "⚙",
+  "OKRs": "◎",
+  "Process Design": "▦"
+};
+
 const projects = [
   {
     title: "JudgeFit",
@@ -189,21 +217,42 @@ const contactLinks = [
 export const Home = () => {
   const [activeExperience, setActiveExperience] = useState(0);
   const currentExperience = experience[activeExperience];
+  const experienceRefs = useRef([]);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveExperience(index => (index + 1) % experience.length);
-    }, 5200);
+    if (!window.IntersectionObserver) return;
 
-    return () => window.clearInterval(interval);
+    const observer = new IntersectionObserver(
+      entries => {
+        const mostVisible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (mostVisible) {
+          setActiveExperience(Number(mostVisible.target.dataset.index));
+        }
+      },
+      { rootMargin: "-32% 0px -38% 0px", threshold: [0.25, 0.5, 0.75] }
+    );
+
+    experienceRefs.current.forEach(node => {
+      if (node) observer.observe(node);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
+  const showExperience = index => {
+    experienceRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setActiveExperience(index);
+  };
+
   const showPreviousExperience = () => {
-    setActiveExperience(index => (index - 1 + experience.length) % experience.length);
+    showExperience((activeExperience - 1 + experience.length) % experience.length);
   };
 
   const showNextExperience = () => {
-    setActiveExperience(index => (index + 1) % experience.length);
+    showExperience((activeExperience + 1) % experience.length);
   };
 
   return (
@@ -281,47 +330,79 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="portfolio-section muted-section" id="experience">
+      <section className="portfolio-section muted-section experience-scroll-section" id="experience">
         <div className="portfolio-container">
-          <div className="section-heading marquee-heading">
+          <div className="section-heading marquee-heading experience-scroll-heading">
             <p className="eyebrow">Experience</p>
-            <h2>From customer operations to retail platform engineering.</h2>
+            <h2>Experience that changes as you scroll.</h2>
+            <p>
+              A more animated career timeline: each stop brings a different stack, skill set and level of system ownership into focus.
+            </p>
           </div>
-          <div className="experience-showcase" aria-live="polite">
-            <div className="experience-stage">
-              <article className="timeline-card experience-slide" key={`${currentExperience.company}-${currentExperience.role}`}>
-                <div className="timeline-meta">{currentExperience.period}</div>
-                <div>
-                  <h3>{currentExperience.role}</h3>
-                  <p className="company-name">{currentExperience.company}</p>
-                  <p>{currentExperience.summary}</p>
-                  <div className="tag-row">
-                    {currentExperience.tags.map(tag => <span key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-              </article>
-            </div>
 
-            <div className="experience-controls" aria-label="Experience slideshow controls">
-              <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
-                ←
-              </button>
-              <div className="experience-dots">
-                {experience.map((item, index) => (
-                  <button
-                    type="button"
-                    className={index === activeExperience ? "active" : ""}
-                    key={item.company}
-                    onClick={() => setActiveExperience(index)}
-                    aria-label={`Show ${item.company} experience`}
-                    aria-current={index === activeExperience ? "true" : undefined}
-                  />
+          <div className="experience-scroll-showcase" aria-live="polite">
+            <aside className="experience-pin-card">
+              <p className="eyebrow">Currently in view</p>
+              <div className="experience-pin-orb" aria-hidden="true">
+                <span>{String(activeExperience + 1).padStart(2, "0")}</span>
+              </div>
+              <p className="timeline-meta">{currentExperience.period}</p>
+              <h3>{currentExperience.role}</h3>
+              <p className="company-name">{currentExperience.company}</p>
+              <p>{currentExperience.summary}</p>
+              <div className="tag-row icon-tag-row">
+                {currentExperience.tags.map(tag => (
+                  <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
                 ))}
               </div>
-              <button type="button" onClick={showNextExperience} aria-label="Show next experience">
-                →
-              </button>
+            </aside>
+
+            <div className="experience-scroll-list">
+              {experience.map((item, index) => (
+                <article
+                  className={`timeline-card experience-scroll-card ${index === activeExperience ? "active" : ""}`}
+                  data-index={index}
+                  key={`${item.company}-${item.role}`}
+                  ref={node => (experienceRefs.current[index] = node)}
+                >
+                  <div className="timeline-meta">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {item.period}
+                  </div>
+                  <div>
+                    <h3>{item.role}</h3>
+                    <p className="company-name">{item.company}</p>
+                    <p>{item.summary}</p>
+                    <div className="tag-row icon-tag-row">
+                      {item.tags.map(tag => (
+                        <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
+          </div>
+
+          <div className="experience-controls floating-experience-controls" aria-label="Experience timeline controls">
+            <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
+              ←
+            </button>
+            <div className="experience-dots">
+              {experience.map((item, index) => (
+                <button
+                  type="button"
+                  className={index === activeExperience ? "active" : ""}
+                  key={item.company}
+                  onClick={() => showExperience(index)}
+                  aria-label={`Show ${item.company} experience`}
+                  aria-current={index === activeExperience ? "true" : undefined}
+                />
+              ))}
+            </div>
+            <button type="button" onClick={showNextExperience} aria-label="Show next experience">
+              →
+            </button>
           </div>
         </div>
       </section>

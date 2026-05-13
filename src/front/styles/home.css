@@ -35,7 +35,7 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
 .portfolio-page {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.72), transparent 18rem),
     radial-gradient(circle at 84% 12%, rgba(255, 255, 255, 0.58), transparent 20rem),
@@ -471,4 +471,219 @@ body a::before, .portfolio-page a::before, .portfolio-nav a::before, .modern-foo
 
 :root[data-theme="dark"] .modern-footer {
   background: #0d1015;
+}
+
+/* Scroll-led experience timeline */
+.experience-scroll-section {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(71, 108, 255, 0.11), transparent 24rem),
+    radial-gradient(circle at 88% 18%, rgba(37, 184, 138, 0.12), transparent 22rem),
+    rgba(247, 249, 249, 0.38);
+}
+
+.experience-scroll-heading {
+  max-width: 860px;
+  margin-bottom: 3rem;
+}
+
+.experience-scroll-heading p:not(.eyebrow) {
+  max-width: 680px;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.16rem);
+  line-height: 1.75;
+}
+
+.experience-scroll-showcase {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.experience-pin-card {
+  position: sticky;
+  top: 112px;
+  min-height: 520px;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 48px;
+  overflow: hidden;
+  background: rgba(247, 249, 249, 0.78);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.experience-pin-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -28% 18%;
+  height: 280px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue), var(--green), var(--coral));
+  opacity: 0.18;
+  filter: blur(8px);
+  animation: nodeFloat 6s ease-in-out infinite;
+}
+
+.experience-pin-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0.35rem 0 0.45rem;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: clamp(2.1rem, 4.8vw, 4.35rem);
+  font-weight: 900 !important;
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.experience-pin-card p,
+.experience-pin-card .tag-row {
+  position: relative;
+  z-index: 1;
+}
+
+.experience-pin-orb {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  margin: 0 auto 1.4rem;
+  place-items: center;
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255,255,255,0.92), transparent 28%),
+    linear-gradient(145deg, var(--pill), var(--pill-strong));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 24px 64px rgba(38,41,45,0.11);
+}
+
+.experience-pin-orb span {
+  color: rgba(38,41,45,0.16);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: clamp(5rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.1em;
+}
+
+.experience-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 34vh;
+  padding-bottom: 16vh;
+}
+
+.experience-scroll-card {
+  min-height: 68vh;
+  align-items: center;
+  opacity: 0.48;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 420ms ease, transform 420ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.experience-scroll-card.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  background: var(--canvas-soft);
+  box-shadow: 0 34px 86px rgba(38,41,45,0.16);
+}
+
+.experience-scroll-card .timeline-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experience-scroll-card .timeline-meta span {
+  color: rgba(38,41,45,0.18);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 4.4rem;
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.09em;
+}
+
+.icon-tag-row span {
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.icon-tag-row strong {
+  display: inline-grid;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--canvas-soft);
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.floating-experience-controls {
+  position: sticky;
+  bottom: 1rem;
+  z-index: 4;
+  width: min(680px, 100%);
+  margin: -4rem auto 0;
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(247,249,249,0.74);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 54px rgba(38,41,45,0.12);
+}
+
+:root[data-theme="dark"] .experience-scroll-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(143, 166, 255, 0.12), transparent 24rem),
+    radial-gradient(circle at 88% 18%, rgba(101, 214, 175, 0.1), transparent 22rem),
+    rgba(23, 27, 34, 0.38);
+}
+
+:root[data-theme="dark"] .experience-pin-card,
+:root[data-theme="dark"] .floating-experience-controls {
+  background: rgba(23, 27, 34, 0.78);
+}
+
+:root[data-theme="dark"] .experience-scroll-card.active {
+  background: var(--canvas-soft);
+}
+
+:root[data-theme="dark"] .experience-pin-orb span,
+:root[data-theme="dark"] .experience-scroll-card .timeline-meta span {
+  color: rgba(238,242,245,0.14);
+}
+
+:root[data-theme="dark"] .icon-tag-row strong {
+  background: #101318;
+}
+
+@media (max-width: 900px) {
+  .experience-scroll-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-pin-card {
+    position: relative;
+    top: auto;
+    min-height: auto;
+  }
+
+  .experience-scroll-list {
+    gap: 1rem;
+    padding-bottom: 6rem;
+  }
+
+  .experience-scroll-card {
+    min-height: auto;
+    opacity: 1;
+    transform: none;
+  }
+
+  .floating-experience-controls {
+    margin-top: -4.5rem;
+  }
 }
