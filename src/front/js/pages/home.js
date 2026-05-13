@@ -149,6 +149,99 @@ const experience = [
   }
 ];
 
+
+const skillIcons = {
+  "FastAPI": "⚡",
+  "GraphQL Federation": "◈",
+  "Kafka": "↔",
+  "PostgreSQL": "🐘",
+  "Azure": "☁",
+  "Kubernetes": "⎈",
+  "Python": "Py",
+  "Django": "Dj",
+  "MySQL": "DB",
+  "Automation": "⚙",
+  "Integrations": "🔌",
+  "SQL": "SQL",
+  "JavaScript": "JS",
+  "E-commerce": "🛒",
+  "React": "⚛",
+  "Flask": "🌶",
+  "SQLAlchemy": "DB",
+  "Jest": "✓",
+  "REST APIs": "API",
+  "Leadership": "★",
+  "Retention": "↺",
+  "Operations": "⚙",
+  "OKRs": "◎",
+  "Process Design": "▦",
+  "Languages": "</>",
+  "Backend": "⚙",
+  "Frontend": "⚛",
+  "Databases": "DB",
+  "Cloud & Infrastructure": "☁",
+  "Architecture & Patterns": "▦",
+  "Computer Vision / ML": "👁",
+  "Tooling & DX": "⌘",
+  "Python (primary)": "Py",
+  "TypeScript": "TS",
+  "Strawberry GraphQL (schema-first federation)": "◈",
+  "ariadne-codegen": "◈",
+  "Tortoise ORM": "DB",
+  "Aerich migrations": "⇄",
+  "FastStream": "↔",
+  "confluent-kafka": "↔",
+  "Pydantic": "P",
+  "Next.js": "N",
+  "Apollo Client (including optimistic updates)": "◈",
+  "HeroUI": "UI",
+  "Tailwind CSS": "TW",
+  "react-datasheet-grid": "▦",
+  "@dnd-kit (drag-and-drop)": "↕",
+  "Playwright (E2E testing)": "✓",
+  "PITR/WAL disaster recovery": "↺",
+  "Oracle RMS": "OR",
+  "asyncpg": "DB",
+  "Azure Blob Storage": "☁",
+  "Azure Key Vault": "🔐",
+  "Workload Identity / RBAC": "🔐",
+  "kaas cluster": "⎈",
+  "Helm": "⛵",
+  "ArgoCD GitOps": "↗",
+  "Docker": "🐳",
+  "GitHub Actions CI/CD": "◆",
+  "Supergraph design": "◈",
+  "Microservices": "µ",
+  "Multi-brand platforms": "▥",
+  "Event-driven architecture": "↔",
+  "Kafka topic-per-aggregate": "↔",
+  "ETL pipelines": "⇄",
+  "Oracle RMS → PostgreSQL": "DB",
+  "MediaPipe": "MP",
+  "YOLO (YOLOv8)": "YO",
+  "rembg (background removal)": "✂",
+  "BiRefNet/Triton": "AI",
+  "OpenCV": "CV",
+  "pixel/DPI image validation pipelines": "px",
+  "Project: JudgeFit (automated CrossFit movement judging)": "JF",
+  "uv (Python package management)": "uv",
+  "pre-commit": "✓",
+  "Dependabot": "🤖",
+  "External Secrets Operator": "🔐",
+  "Per-PR Helm feature branch deployments": "PR"
+};
+
+const skillGroupSummaries = {
+  "Languages": "Python-first, with enough TypeScript and JavaScript range to move cleanly across backend services and product interfaces.",
+  "Backend": "API design, async Python, schema-first GraphQL, event streams and persistence layers that make systems easier to evolve.",
+  "Frontend": "React and Next.js product surfaces, data-heavy UI workflows, optimistic GraphQL interactions and reliable E2E coverage.",
+  "Databases": "PostgreSQL-heavy data work, migration safety, recovery thinking and practical integrations with retail source systems.",
+  "Cloud & Infrastructure": "Azure, Kubernetes, Helm and ArgoCD delivery paths for repeatable multi-service deployments.",
+  "Architecture & Patterns": "Federated graphs, event-driven services, microservice boundaries and ETL flows across multi-brand platforms.",
+  "Computer Vision / ML": "Applied image and movement analysis with MediaPipe, YOLO, OpenCV and validation pipelines.",
+  "Tooling & DX": "The workflow glue: package management, automation, dependency hygiene, secrets and per-PR deploy feedback loops."
+};
+
 const projects = [
   {
     title: "JudgeFit",
@@ -188,7 +281,9 @@ const contactLinks = [
 
 export const Home = () => {
   const [activeExperience, setActiveExperience] = useState(0);
+  const [activeSkillGroup, setActiveSkillGroup] = useState(0);
   const currentExperience = experience[activeExperience];
+  const currentSkillGroup = skillGroups[activeSkillGroup];
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -197,6 +292,11 @@ export const Home = () => {
 
     return () => window.clearInterval(interval);
   }, []);
+
+  const showSkillGroup = index => {
+    setActiveSkillGroup(index);
+  };
+
 
   const showPreviousExperience = () => {
     setActiveExperience(index => (index - 1 + experience.length) % experience.length);
@@ -257,25 +357,49 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="portfolio-section" id="skills">
-        <div className="portfolio-container split-section">
-          <div className="section-sticky-copy">
-            <p className="eyebrow">Skills & expertise</p>
-            <h2>Less generic résumé, more working toolkit.</h2>
-          </div>
-          <div>
-            <p className="section-copy">
-              The overlap is the point: federated backend engineering for reliability, frontend range for usable workflows, cloud-native delivery for repeatability, and computer vision for applied ML products.
-            </p>
-            <div className="skill-groups">
-              {skillGroups.map(group => (
-                <article className="skill-group" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <div className="skill-cloud">
-                    {group.skills.map(skill => <span key={skill}>{skill}</span>)}
-                  </div>
-                </article>
-              ))}
+      <section className="portfolio-section skills-tab-section" id="skills">
+        <div className="portfolio-container">
+          <div className="skills-tabs-layout" aria-live="polite">
+            <div className="skills-panel-stack">
+              <div className="skills-tab-rail" aria-label="Skill group timeline">
+                {skillGroups.map((group, index) => (
+                  <button
+                    type="button"
+                    className={index === activeSkillGroup ? "active" : ""}
+                    key={group.title}
+                    onClick={() => showSkillGroup(index)}
+                    aria-label={`Show ${group.title} skills`}
+                    aria-current={index === activeSkillGroup ? "true" : undefined}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {group.title}
+                  </button>
+                ))}
+              </div>
+
+              <div className="skills-overview-card compact-skills-card">
+                <div className="skills-card-copy">
+                <p className="eyebrow">Skills & expertise</p>
+                <h2>Less generic résumé, more working toolkit.</h2>
+                <p className="skills-section-context">
+                  Pick a toolkit area to update the overview — from languages, to backend systems, to cloud delivery, to applied computer vision.
+                </p>
+                <p className="eyebrow toolkit-focus-label">Toolkit in focus</p>
+                <h3>{currentSkillGroup.title}</h3>
+                <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
+              </div>
+
+                <div className="skills-card-visual">
+                <div className="skills-pin-orb" aria-hidden="true">
+                  <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
+                </div>
+                <div className="skill-cloud icon-skill-cloud compact-skill-cloud">
+                  {currentSkillGroup.skills.map(skill => (
+                    <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
+                  ))}
+                </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -295,8 +419,10 @@ export const Home = () => {
                   <h3>{currentExperience.role}</h3>
                   <p className="company-name">{currentExperience.company}</p>
                   <p>{currentExperience.summary}</p>
-                  <div className="tag-row">
-                    {currentExperience.tags.map(tag => <span key={tag}>{tag}</span>)}
+                  <div className="tag-row icon-tag-row">
+                    {currentExperience.tags.map(tag => (
+                      <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
+                    ))}
                   </div>
                 </div>
               </article>
