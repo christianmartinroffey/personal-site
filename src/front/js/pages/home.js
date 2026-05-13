@@ -1,505 +1,341 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../styles/home.css";
 
-const skillGroups = [
+const platformNodes = [
   {
-    title: "Languages",
-    skills: ["Python (primary)", "TypeScript", "JavaScript"]
+    id: "gateway",
+    label: "API Gateway",
+    x: 50,
+    y: 16,
+    type: "edge",
+    summary: "Entry point for frontend clients, authentication context, and federated request routing.",
+    stack: ["React clients", "Auth context", "GraphQL gateway"]
   },
   {
-    title: "Backend",
-    skills: [
-      "FastAPI",
-      "Strawberry GraphQL (schema-first federation)",
-      "ariadne-codegen",
-      "Tortoise ORM",
-      "Aerich migrations",
-      "FastStream",
-      "Kafka",
-      "confluent-kafka",
-      "Pydantic"
-    ]
+    id: "catalog",
+    label: "Catalog Service",
+    x: 20,
+    y: 40,
+    type: "service",
+    summary: "Owns product-domain schema slices and keeps retail product data queryable without leaking source-system complexity.",
+    stack: ["FastAPI", "Strawberry", "PostgreSQL"]
   },
   {
-    title: "Frontend",
-    skills: [
-      "Next.js",
-      "React",
-      "Apollo Client (including optimistic updates)",
-      "HeroUI",
-      "Tailwind CSS",
-      "react-datasheet-grid",
-      "@dnd-kit (drag-and-drop)",
-      "Playwright (E2E testing)"
-    ]
+    id: "pricing",
+    label: "Pricing Service",
+    x: 50,
+    y: 48,
+    type: "service",
+    summary: "Publishes contract-first pricing fields into the graph while coordinating async updates across downstream systems.",
+    stack: ["GraphQL Federation", "Kafka", "Pydantic"]
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "PITR/WAL disaster recovery", "Oracle RMS", "asyncpg"]
+    id: "availability",
+    label: "Availability Service",
+    x: 78,
+    y: 40,
+    type: "service",
+    summary: "Models stock and availability signals so multiple brands can consume one reliable platform capability.",
+    stack: ["Python", "asyncpg", "Event streams"]
   },
   {
-    title: "Cloud & Infrastructure",
-    skills: [
-      "Azure Blob Storage",
-      "Azure Key Vault",
-      "Workload Identity / RBAC",
-      "Kubernetes",
-      "kaas cluster",
-      "Helm",
-      "ArgoCD GitOps",
-      "Docker",
-      "GitHub Actions CI/CD"
-    ]
+    id: "events",
+    label: "Kafka Event Mesh",
+    x: 34,
+    y: 73,
+    type: "stream",
+    summary: "Moves domain events between bounded contexts so APIs stay responsive while data keeps flowing.",
+    stack: ["Kafka", "FastStream", "Topic design"]
   },
   {
-    title: "Architecture & Patterns",
-    skills: [
-      "GraphQL Federation",
-      "Supergraph design",
-      "Microservices",
-      "Multi-brand platforms",
-      "Event-driven architecture",
-      "Kafka topic-per-aggregate",
-      "ETL pipelines",
-      "Oracle RMS → PostgreSQL"
-    ]
-  },
-  {
-    title: "Computer Vision / ML",
-    skills: [
-      "MediaPipe",
-      "YOLO (YOLOv8)",
-      "rembg (background removal)",
-      "BiRefNet/Triton",
-      "OpenCV",
-      "pixel/DPI image validation pipelines",
-      "Project: JudgeFit (automated CrossFit movement judging)"
-    ]
-  },
-  {
-    title: "Tooling & DX",
-    skills: [
-      "uv (Python package management)",
-      "pre-commit",
-      "Dependabot",
-      "External Secrets Operator",
-      "Per-PR Helm feature branch deployments"
-    ]
+    id: "delivery",
+    label: "GitOps Delivery",
+    x: 67,
+    y: 74,
+    type: "ops",
+    summary: "Turns service changes into repeatable deployments with Helm charts, Kubernetes lanes, and ArgoCD visibility.",
+    stack: ["Kubernetes", "Helm", "ArgoCD"]
   }
 ];
 
-const signalCards = [
+const graphEdges = [
+  ["gateway", "catalog"],
+  ["gateway", "pricing"],
+  ["gateway", "availability"],
+  ["catalog", "events"],
+  ["pricing", "events"],
+  ["availability", "events"],
+  ["events", "delivery"],
+  ["pricing", "delivery"]
+];
+
+const poseFrames = [
   {
-    number: "01",
-    title: "Federated backend systems",
-    body: "FastAPI, Strawberry GraphQL federation, Kafka, PostgreSQL and schema-first service design."
+    label: "Start",
+    depth: "High",
+    verdict: "Setup detected",
+    hip: 168,
+    knee: 174,
+    points: {
+      head: [50, 13], chest: [50, 25], hip: [50, 43], leftKnee: [40, 63], rightKnee: [60, 63], leftAnkle: [34, 86], rightAnkle: [66, 86], leftShoulder: [41, 25], rightShoulder: [59, 25]
+    }
   },
   {
-    number: "02",
-    title: "Computer vision pipelines",
-    body: "MediaPipe, YOLOv8, OpenCV and image validation workflows for applied movement and asset analysis."
+    label: "Descent",
+    depth: "Approaching",
+    verdict: "Track knees + torso",
+    hip: 118,
+    knee: 106,
+    points: {
+      head: [48, 18], chest: [50, 32], hip: [49, 53], leftKnee: [35, 68], rightKnee: [62, 68], leftAnkle: [31, 88], rightAnkle: [70, 88], leftShoulder: [40, 32], rightShoulder: [60, 32]
+    }
   },
   {
-    number: "03",
-    title: "Cloud-native delivery",
-    body: "Kubernetes, Helm, ArgoCD, Azure and CI/CD patterns that keep multi-service platforms shippable."
+    label: "Bottom",
+    depth: "Below parallel",
+    verdict: "Good rep candidate",
+    hip: 82,
+    knee: 74,
+    points: {
+      head: [46, 25], chest: [49, 41], hip: [48, 65], leftKnee: [32, 70], rightKnee: [64, 70], leftAnkle: [30, 89], rightAnkle: [72, 89], leftShoulder: [39, 41], rightShoulder: [59, 41]
+    }
+  },
+  {
+    label: "Stand",
+    depth: "Recovered",
+    verdict: "Rep complete",
+    hip: 160,
+    knee: 168,
+    points: {
+      head: [51, 14], chest: [51, 26], hip: [51, 45], leftKnee: [42, 64], rightKnee: [61, 64], leftAnkle: [36, 87], rightAnkle: [67, 87], leftShoulder: [42, 26], rightShoulder: [60, 26]
+    }
   }
 ];
 
-const experience = [
+const caseStudies = [
   {
-    role: "Software Engineer",
-    company: "TekSystems · Ahold Delhaize client",
-    period: "Aug 2024 — Present",
-    summary:
-      "Building backend and frontend capabilities for Ahold Delhaize across multi-brand retail platforms including Albert Heijn, Etos, and Gall & Gall. Work spans FastAPI, federated GraphQL, Kafka event streams, PostgreSQL, Azure, Kubernetes, Helm, and ArgoCD-backed delivery workflows.",
-    tags: ["FastAPI", "GraphQL Federation", "Kafka", "PostgreSQL", "Azure", "Kubernetes"]
+    kicker: "Enterprise platform",
+    title: "Federated GraphQL across retail services.",
+    body: "Backend and frontend work across multi-brand retail platforms: schema-first GraphQL, async Python services, Kafka-backed data movement, PostgreSQL persistence, and GitOps delivery. The first impression is current platform credibility, while details stay public-safe: the signal is the architecture pattern, delivery discipline, and ability to work across service boundaries.",
+    tags: ["FastAPI", "Strawberry GraphQL", "Kafka", "PostgreSQL", "Azure", "Kubernetes", "Helm", "ArgoCD"]
   },
   {
-    role: "Backend Engineer",
-    company: "Fideltour",
-    period: "2023 — Aug 2024",
-    summary:
-      "Built and maintained products across Fideltour's hospitality marketing platform, including automation workflows, A/B testing and third-party integrations.",
-    tags: ["Python", "Django", "MySQL", "Automation", "Integrations"]
-  },
-  {
-    role: "Junior Software Engineer",
-    company: "uSizy",
-    period: "2022 — 2023",
-    summary:
-      "Integrated e-commerce sizing solutions, improved customer testing workflows and used SQL analysis to surface practical product recommendations.",
-    tags: ["Python", "Django", "SQL", "JavaScript", "E-commerce"]
-  },
-  {
-    role: "Full Stack Developer Bootcamp",
-    company: "4Geeks Academy",
-    period: "2022",
-    summary:
-      "Built a portfolio of full-stack applications covering authentication, REST APIs, React interfaces, testing and deployment workflows.",
-    tags: ["React", "Flask", "SQLAlchemy", "Jest", "REST APIs"]
-  },
-  {
-    role: "Customer Success & Operations Leadership",
-    company: "Squarespace / Uscreen",
-    period: "2016 — 2022",
-    summary:
-      "Led customer-facing teams, built retention and onboarding programs, and translated operational problems into scalable processes and product insights.",
-    tags: ["Leadership", "Retention", "Operations", "OKRs", "Process Design"]
+    kicker: "Computer vision edge",
+    title: "JudgeFit turns movement into measurable signals.",
+    body: "A CrossFit judging concept using pose estimation and object-detection thinking to reason about movement standards. The site prototype uses generated pose data first, then leaves room for real analysis later.",
+    tags: ["MediaPipe", "YOLOv8", "OpenCV", "Pose angles", "Movement standards"]
   }
 ];
 
-
-const skillIcons = {
-  "FastAPI": "⚡",
-  "GraphQL Federation": "◈",
-  "Kafka": "↔",
-  "PostgreSQL": "🐘",
-  "Azure": "☁",
-  "Kubernetes": "⎈",
-  "Python": "Py",
-  "Django": "Dj",
-  "MySQL": "DB",
-  "Automation": "⚙",
-  "Integrations": "🔌",
-  "SQL": "SQL",
-  "JavaScript": "JS",
-  "E-commerce": "🛒",
-  "React": "⚛",
-  "Flask": "🌶",
-  "SQLAlchemy": "DB",
-  "Jest": "✓",
-  "REST APIs": "API",
-  "Leadership": "★",
-  "Retention": "↺",
-  "Operations": "⚙",
-  "OKRs": "◎",
-  "Process Design": "▦",
-  "Languages": "</>",
-  "Backend": "⚙",
-  "Frontend": "⚛",
-  "Databases": "DB",
-  "Cloud & Infrastructure": "☁",
-  "Architecture & Patterns": "▦",
-  "Computer Vision / ML": "👁",
-  "Tooling & DX": "⌘",
-  "Python (primary)": "Py",
-  "TypeScript": "TS",
-  "Strawberry GraphQL (schema-first federation)": "◈",
-  "ariadne-codegen": "◈",
-  "Tortoise ORM": "DB",
-  "Aerich migrations": "⇄",
-  "FastStream": "↔",
-  "confluent-kafka": "↔",
-  "Pydantic": "P",
-  "Next.js": "N",
-  "Apollo Client (including optimistic updates)": "◈",
-  "HeroUI": "UI",
-  "Tailwind CSS": "TW",
-  "react-datasheet-grid": "▦",
-  "@dnd-kit (drag-and-drop)": "↕",
-  "Playwright (E2E testing)": "✓",
-  "PITR/WAL disaster recovery": "↺",
-  "Oracle RMS": "OR",
-  "asyncpg": "DB",
-  "Azure Blob Storage": "☁",
-  "Azure Key Vault": "🔐",
-  "Workload Identity / RBAC": "🔐",
-  "kaas cluster": "⎈",
-  "Helm": "⛵",
-  "ArgoCD GitOps": "↗",
-  "Docker": "🐳",
-  "GitHub Actions CI/CD": "◆",
-  "Supergraph design": "◈",
-  "Microservices": "µ",
-  "Multi-brand platforms": "▥",
-  "Event-driven architecture": "↔",
-  "Kafka topic-per-aggregate": "↔",
-  "ETL pipelines": "⇄",
-  "Oracle RMS → PostgreSQL": "DB",
-  "MediaPipe": "MP",
-  "YOLO (YOLOv8)": "YO",
-  "rembg (background removal)": "✂",
-  "BiRefNet/Triton": "AI",
-  "OpenCV": "CV",
-  "pixel/DPI image validation pipelines": "px",
-  "Project: JudgeFit (automated CrossFit movement judging)": "JF",
-  "uv (Python package management)": "uv",
-  "pre-commit": "✓",
-  "Dependabot": "🤖",
-  "External Secrets Operator": "🔐",
-  "Per-PR Helm feature branch deployments": "PR"
-};
-
-const skillGroupSummaries = {
-  "Languages": "Python-first, with enough TypeScript and JavaScript range to move cleanly across backend services and product interfaces.",
-  "Backend": "API design, async Python, schema-first GraphQL, event streams and persistence layers that make systems easier to evolve.",
-  "Frontend": "React and Next.js product surfaces, data-heavy UI workflows, optimistic GraphQL interactions and reliable E2E coverage.",
-  "Databases": "PostgreSQL-heavy data work, migration safety, recovery thinking and practical integrations with retail source systems.",
-  "Cloud & Infrastructure": "Azure, Kubernetes, Helm and ArgoCD delivery paths for repeatable multi-service deployments.",
-  "Architecture & Patterns": "Federated graphs, event-driven services, microservice boundaries and ETL flows across multi-brand platforms.",
-  "Computer Vision / ML": "Applied image and movement analysis with MediaPipe, YOLO, OpenCV and validation pipelines.",
-  "Tooling & DX": "The workflow glue: package management, automation, dependency hygiene, secrets and per-PR deploy feedback loops."
-};
-
-const projects = [
-  {
-    title: "JudgeFit",
-    type: "Computer vision / CrossFit movement judging",
-    summary:
-      "An automated movement judging concept using computer vision to improve standardisation and objectivity when evaluating athletic performance.",
-    impact: "MediaPipe, YOLOv8, OpenCV and pose/object detection patterns for movement analysis.",
-    links: [
-      { label: "GitHub", href: "https://github.com/christianmartinroffey/judgeFit" },
-      { label: "Demo", href: "https://www.youtube.com/watch?v=sOcGW-yd7is" }
-    ]
-  },
-  {
-    title: "Retail platform engineering",
-    type: "Federated GraphQL / microservices / ETL",
-    summary:
-      "Backend and frontend platform work for multi-brand retail systems, including GraphQL federation, Kafka event flows, and Oracle RMS to PostgreSQL data pipelines.",
-    impact: "FastAPI, Strawberry GraphQL, ariadne-codegen, Kafka, PostgreSQL, Azure, Kubernetes, Helm and ArgoCD."
-  },
-  {
-    title: "Personal Site",
-    type: "Portfolio / CV",
-    summary:
-      "A creative CV-style portfolio for presenting software experience, technical focus areas and selected projects.",
-    impact: "React front end, Flask hosting shell, responsive single-page storytelling, and light/dark interaction design.",
-    links: [
-      { label: "GitHub", href: "https://github.com/christianmartinroffey/personal-site" }
-    ]
-  }
+const toolkit = [
+  "Python-first backend engineering",
+  "Federated GraphQL platform design",
+  "Kafka/event-driven workflows",
+  "React product surfaces",
+  "Kubernetes + Helm + ArgoCD",
+  "Computer vision prototyping"
 ];
 
-const contactLinks = [
+const links = [
   { label: "GitHub", href: "https://github.com/christianmartinroffey" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/christian-martin-roffey/" },
-  { label: "CV PDF", href: "/**********" }
+  { label: "JudgeFit", href: "https://github.com/christianmartinroffey/judgeFit" }
 ];
 
+const getNodeById = id => platformNodes.find(node => node.id === id);
+
+const edgeLine = edge => {
+  const from = getNodeById(edge[0]);
+  const to = getNodeById(edge[1]);
+  return { x1: from.x, y1: from.y, x2: to.x, y2: to.y };
+};
+
+const PoseLine = ({ from, to, points }) => (
+  <line x1={points[from][0]} y1={points[from][1]} x2={points[to][0]} y2={points[to][1]} />
+);
+
+const PoseDot = ({ name, points }) => <circle cx={points[name][0]} cy={points[name][1]} r="1.8" />;
+
 export const Home = () => {
-  const [activeExperience, setActiveExperience] = useState(0);
-  const [activeSkillGroup, setActiveSkillGroup] = useState(0);
-  const currentExperience = experience[activeExperience];
-  const currentSkillGroup = skillGroups[activeSkillGroup];
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveExperience(index => (index + 1) % experience.length);
-    }, 5200);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  const showSkillGroup = index => {
-    setActiveSkillGroup(index);
-  };
-
-
-  const showPreviousExperience = () => {
-    setActiveExperience(index => (index - 1 + experience.length) % experience.length);
-  };
-
-  const showNextExperience = () => {
-    setActiveExperience(index => (index + 1) % experience.length);
-  };
+  const [activeNode, setActiveNode] = useState(platformNodes[1]);
+  const [poseFrame, setPoseFrame] = useState(2);
+  const currentPose = poseFrames[poseFrame];
 
   return (
-    <main className="portfolio-page grain-field">
-      <section className="hero-section" id="home">
-        <div className="hero-glow hero-glow-one" />
-        <div className="hero-glow hero-glow-two" />
-        <div className="hero-orbit" aria-hidden="true">
-          <span className="orbit-dot dot-one">GraphQL</span>
-          <span className="orbit-dot dot-two">Vision</span>
-          <span className="orbit-dot dot-three">Kafka</span>
-          <span className="orbit-dot dot-four">Python</span>
-        </div>
-
-        <div className="portfolio-container hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">Software engineer · federated backend systems · computer vision builder</p>
-            <h1>
-              Useful software, clean systems, sharper feedback loops.
-            </h1>
-            <p className="hero-intro">
-              I'm Christian. I build Python-first backend systems, federated GraphQL services, event-driven retail platforms and full-stack tools — with a strong applied computer vision streak through JudgeFit and image validation pipelines.
-            </p>
-            <div className="hero-actions">
-              <a className="button primary" href="#projects">Explore the work</a>
-              <a className="button secondary" href="#skills">See the toolkit</a>
-            </div>
-          </div>
-
-          <aside className="hero-card creative-pass" aria-label="Profile summary">
-            <p>Python-primary software engineer blending federated backend architecture, cloud-native delivery, frontend product work and applied computer vision.</p>
-            <div className="signal-list">
-              <span>Mallorca / Remote</span>
-              <span>FastAPI · GraphQL · Kafka</span>
-              <span>Next.js · React · Apollo</span>
-              <span>OpenCV · MediaPipe · YOLO</span>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="signal-strip" aria-label="Expertise highlights">
-        <div className="portfolio-container signal-grid">
-          {signalCards.map(item => (
-            <article className="signal-card" key={item.title}>
-              <span>{item.number}</span>
-              <h2>{item.title}</h2>
-              <p>{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="portfolio-section skills-tab-section" id="skills">
-        <div className="portfolio-container">
-          <div className="skills-tabs-layout" aria-live="polite">
-            <div className="skills-panel-stack">
-              <div className="skills-tab-rail" aria-label="Skill group timeline">
-                {skillGroups.map((group, index) => (
-                  <button
-                    type="button"
-                    className={index === activeSkillGroup ? "active" : ""}
-                    key={group.title}
-                    onClick={() => showSkillGroup(index)}
-                    aria-label={`Show ${group.title} skills`}
-                    aria-current={index === activeSkillGroup ? "true" : undefined}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    {group.title}
-                  </button>
-                ))}
-              </div>
-
-              <div className="skills-overview-card compact-skills-card">
-                <div className="skills-card-copy">
-                <p className="eyebrow">Skills & expertise</p>
-                <h2>Less generic résumé, more working toolkit.</h2>
-                <p className="skills-section-context">
-                  Pick a toolkit area to update the overview — from languages, to backend systems, to cloud delivery, to applied computer vision.
-                </p>
-                <p className="eyebrow toolkit-focus-label">Toolkit in focus</p>
-                <h3>{currentSkillGroup.title}</h3>
-                <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
-              </div>
-
-                <div className="skills-card-visual">
-                <div className="skills-pin-orb" aria-hidden="true">
-                  <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
-                </div>
-                <div className="skill-cloud icon-skill-cloud compact-skill-cloud">
-                  {currentSkillGroup.skills.map(skill => (
-                    <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
-                  ))}
-                </div>
-                </div>
+    <main className="cockpit-page" id="home">
+      <div className="scanline" aria-hidden="true" />
+      <section className="cockpit-hero">
+        <div className="cockpit-shell">
+          <div className="hero-grid cockpit-grid">
+            <div className="hero-copy-panel">
+              <p className="system-label">Christian M-R · Python backend/platform engineer</p>
+              <h1>Federated systems. Full-stack delivery. Computer vision edge.</h1>
+              <p className="hero-lede">
+                I build Python-first backend platforms, GraphQL service boundaries, event-driven retail workflows, and React interfaces — with JudgeFit as the proof that the technical range goes beyond ordinary CRUD.
+              </p>
+              <div className="hero-actions">
+                <a className="cockpit-button primary" href="#enterprise-graph">Inspect platform graph</a>
+                <a className="cockpit-button" href="#judgefit">Run JudgeFit shell</a>
               </div>
             </div>
+
+            <aside className="status-board" aria-label="Profile telemetry">
+              <div className="status-board-header">
+                <span>candidate.signal</span>
+                <strong>LIVE</strong>
+              </div>
+              <div className="metric-grid">
+                <div><span>Primary</span><strong>Python backend</strong></div>
+                <div><span>Platform</span><strong>GraphQL · Kafka</strong></div>
+                <div><span>Delivery</span><strong>K8s · GitOps</strong></div>
+                <div><span>Edge</span><strong>Computer vision</strong></div>
+              </div>
+              <div className="radar" aria-hidden="true">
+                <span className="radar-dot dot-a" />
+                <span className="radar-dot dot-b" />
+                <span className="radar-dot dot-c" />
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
-      <section className="portfolio-section muted-section" id="experience">
-        <div className="portfolio-container">
-          <div className="section-heading marquee-heading">
-            <p className="eyebrow">Experience</p>
-            <h2>From customer operations to retail platform engineering.</h2>
-          </div>
-          <div className="experience-showcase" aria-live="polite">
-            <div className="experience-stage">
-              <article className="timeline-card experience-slide" key={`${currentExperience.company}-${currentExperience.role}`}>
-                <div className="timeline-meta">{currentExperience.period}</div>
-                <div>
-                  <h3>{currentExperience.role}</h3>
-                  <p className="company-name">{currentExperience.company}</p>
-                  <p>{currentExperience.summary}</p>
-                  <div className="tag-row icon-tag-row">
-                    {currentExperience.tags.map(tag => (
-                      <span key={tag}><strong>{skillIcons[tag] || "•"}</strong>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div className="experience-controls" aria-label="Experience slideshow controls">
-              <button type="button" onClick={showPreviousExperience} aria-label="Show previous experience">
-                ←
-              </button>
-              <div className="experience-dots">
-                {experience.map((item, index) => (
-                  <button
-                    type="button"
-                    className={index === activeExperience ? "active" : ""}
-                    key={item.company}
-                    onClick={() => setActiveExperience(index)}
-                    aria-label={`Show ${item.company} experience`}
-                    aria-current={index === activeExperience ? "true" : undefined}
-                  />
-                ))}
-              </div>
-              <button type="button" onClick={showNextExperience} aria-label="Show next experience">
-                →
-              </button>
-            </div>
-          </div>
+      <section className="ticker-strip" aria-label="Technical focus areas">
+        <div className="ticker-track">
+          {toolkit.concat(toolkit).map((item, index) => <span key={`${item}-${index}`}>{item}</span>)}
         </div>
       </section>
 
-      <section className="portfolio-section" id="projects">
-        <div className="portfolio-container">
-          <div className="section-heading project-heading">
-            <div>
-              <p className="eyebrow">Selected projects</p>
-              <h2>A small gallery of practical builds.</h2>
-            </div>
+      <section className="cockpit-section" id="enterprise-graph">
+        <div className="cockpit-shell section-grid">
+          <div className="section-copy sticky-copy">
+            <p className="system-label">01 · enterprise platform work</p>
+            <h2>Enterprise platform map.</h2>
             <p>
-              Scoped to current strengths: federated backend work, event-driven retail platforms, computer vision experiments, and full-stack delivery.
+              Click a node to inspect the backend/platform capability behind the graph.
             </p>
+            <div className="detail-card active-node-card">
+              <p className="system-label">Selected node</p>
+              <h3>{activeNode.label}</h3>
+              <p>{activeNode.summary}</p>
+              <div className="chip-row">
+                {activeNode.stack.map(item => <span key={item}>{item}</span>)}
+              </div>
+            </div>
           </div>
-          <div className="project-grid">
-            {projects.map((project, index) => (
-              <article className={`project-card project-card-${index + 1}`} key={project.title}>
-                <div className="project-visual" aria-hidden="true">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+
+          <div className="graph-console" aria-label="Interactive federated service graph">
+            <div className="console-topbar">
+              <span>federation.map</span>
+              <span>schema contracts · async flows · deployment lanes</span>
+            </div>
+            <svg className="service-graph" viewBox="0 0 100 100" role="img" aria-label="Service graph connecting gateway, services, Kafka, and GitOps delivery">
+              {graphEdges.map(edge => {
+                const line = edgeLine(edge);
+                return <line className="graph-edge" key={edge.join("-")} x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} />;
+              })}
+              {platformNodes.map(node => (
+                <g
+                  className={`graph-node ${node.type} ${activeNode.id === node.id ? "active" : ""}`}
+                  key={node.id}
+                  onClick={() => setActiveNode(node)}
+                  onKeyPress={() => setActiveNode(node)}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <circle cx={node.x} cy={node.y} r="5.3" />
+                  <text x={node.x} y={node.y + 10}>{node.label}</text>
+                </g>
+              ))}
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section className="cockpit-section case-section" id="experience">
+        <div className="cockpit-shell">
+          <div className="section-heading-row">
+            <p className="system-label">02 · case studies</p>
+            <h2>Short signal. Expandable proof.</h2>
+          </div>
+          <div className="case-grid">
+            {caseStudies.map(item => (
+              <article className="case-card" key={item.title}>
+                <p className="system-label">{item.kicker}</p>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+                <div className="chip-row">
+                  {item.tags.map(tag => <span key={tag}>{tag}</span>)}
                 </div>
-                <p className="project-type">{project.type}</p>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <p className="project-impact">{project.impact}</p>
-                {project.links ? (
-                  <div className="project-links">
-                    {project.links.map(link => (
-                      <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                ) : null}
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="portfolio-section contact-section" id="contact">
-        <div className="portfolio-container contact-card">
-          <div>
-            <p className="eyebrow">Contact</p>
-            <h2>Need someone who can ship backend logic and still care about the user journey?</h2>
+      <section className="cockpit-section" id="judgefit">
+        <div className="cockpit-shell section-grid reverse-grid">
+          <div className="judge-console">
+            <div className="console-topbar">
+              <span>judgefit.air_squat.v1</span>
+              <span>{currentPose.label}</span>
+            </div>
+            <div className="pose-stage">
+              <svg viewBox="0 0 100 100" className="pose-skeleton" role="img" aria-label="Generated air squat pose skeleton">
+                <PoseLine from="head" to="chest" points={currentPose.points} />
+                <PoseLine from="chest" to="hip" points={currentPose.points} />
+                <PoseLine from="leftShoulder" to="rightShoulder" points={currentPose.points} />
+                <PoseLine from="leftShoulder" to="chest" points={currentPose.points} />
+                <PoseLine from="rightShoulder" to="chest" points={currentPose.points} />
+                <PoseLine from="hip" to="leftKnee" points={currentPose.points} />
+                <PoseLine from="hip" to="rightKnee" points={currentPose.points} />
+                <PoseLine from="leftKnee" to="leftAnkle" points={currentPose.points} />
+                <PoseLine from="rightKnee" to="rightAnkle" points={currentPose.points} />
+                {Object.keys(currentPose.points).map(point => <PoseDot key={point} name={point} points={currentPose.points} />)}
+              </svg>
+              <div className="verdict-panel">
+                <span>Verdict</span>
+                <strong>{currentPose.verdict}</strong>
+                <p>Hip angle {currentPose.hip}° · knee angle {currentPose.knee}° · depth {currentPose.depth}</p>
+              </div>
+            </div>
+            <div className="pose-controls" aria-label="Air squat frame controls">
+              {poseFrames.map((frame, index) => (
+                <button
+                  type="button"
+                  className={poseFrame === index ? "active" : ""}
+                  key={frame.label}
+                  onClick={() => setPoseFrame(index)}
+                >
+                  {frame.label}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="contact-links">
-            {contactLinks.map(link => (
-              <a href={link.href} key={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-                {link.label}
-              </a>
-            ))}
+
+          <div className="section-copy">
+            <p className="system-label">03 · computer vision differentiator</p>
+            <h2>A mini-demo shell recruiters can understand without CrossFit context.</h2>
+            <p>
+              V1 uses generated CrossFit-style air squat pose data: enough technical judging logic to feel credible, no heavy upload/video backend yet. It tells the story: detect movement, measure standards, return useful feedback.
+            </p>
+            <div className="detail-grid">
+              <div><span>Input</span><strong>Pose landmarks</strong></div>
+              <div><span>Logic</span><strong>Hip/knee angles</strong></div>
+              <div><span>Output</span><strong>Rep verdict</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cockpit-section contact-section" id="contact">
+        <div className="cockpit-shell contact-console">
+          <div>
+            <p className="system-label">Contact</p>
+            <h2>Backend credibility, product range, and a weirdly useful computer-vision streak.</h2>
+          </div>
+          <div className="contact-link-stack">
+            {links.map(link => <a href={link.href} key={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}
           </div>
         </div>
       </section>
