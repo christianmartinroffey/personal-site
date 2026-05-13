@@ -234,9 +234,6 @@ export const Home = () => {
           </div>
 
           <aside className="hero-card creative-pass" aria-label="Profile summary">
-            <p className="card-kicker">focus map</p>
-            <div className="profile-mark llama-mark">🦙</div>
-            <h2>Christian Martin-Roffey</h2>
             <p>Python-primary software engineer blending federated backend architecture, cloud-native delivery, frontend product work and applied computer vision.</p>
             <div className="signal-list">
               <span>Mallorca / Remote</span>
