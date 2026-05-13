@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: raspberry-pi-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Raspberry Pi
+    runs-on:
+      - self-hosted
+      - linux
+      - ARM64
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Deploy local Raspberry Pi service
+        run: scripts/deploy-pi.sh
