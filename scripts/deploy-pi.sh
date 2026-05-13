@@ -49,8 +49,11 @@ else
 
   pkill -f "$APP_DIR/serve_static.py" 2>/dev/null || true
 
-  env -u RUNNER_TRACKING_ID PORT="$PORT" nohup /usr/bin/python3 "$APP_DIR/serve_static.py" >> "$LOG_FILE" 2>&1 &
-  echo $! > "$PID_FILE"
+  (
+    exec 9>&-
+    env -u RUNNER_TRACKING_ID PORT="$PORT" nohup /usr/bin/python3 "$APP_DIR/serve_static.py" >> "$LOG_FILE" 2>&1 &
+    echo $! > "$PID_FILE"
+  )
 fi
 
 log "Deployment complete: $(git rev-parse --short HEAD)"
