@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/home.css";
 
 const skillGroups = [
@@ -284,7 +284,6 @@ export const Home = () => {
   const [activeSkillGroup, setActiveSkillGroup] = useState(0);
   const currentExperience = experience[activeExperience];
   const currentSkillGroup = skillGroups[activeSkillGroup];
-  const skillsSectionRef = useRef(null);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -294,43 +293,10 @@ export const Home = () => {
     return () => window.clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const updateActiveSkillGroup = () => {
-      const section = skillsSectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const scrollableDistance = Math.max(rect.height - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
-      const nextIndex = Math.round(progress * (skillGroups.length - 1));
-
-      setActiveSkillGroup(nextIndex);
-    };
-
-    updateActiveSkillGroup();
-    window.addEventListener("scroll", updateActiveSkillGroup, { passive: true });
-    window.addEventListener("resize", updateActiveSkillGroup);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveSkillGroup);
-      window.removeEventListener("resize", updateActiveSkillGroup);
-    };
-  }, []);
-
   const showSkillGroup = index => {
-    const section = skillsSectionRef.current;
     setActiveSkillGroup(index);
-
-    if (!section) return;
-
-    const scrollableDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
-    const progress = index / Math.max(skillGroups.length - 1, 1);
-
-    window.scrollTo({
-      top: section.offsetTop + scrollableDistance * progress,
-      behavior: "smooth"
-    });
   };
+
 
   const showPreviousExperience = () => {
     setActiveExperience(index => (index - 1 + experience.length) % experience.length);
@@ -391,11 +357,11 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="portfolio-section skills-scroll-section" id="skills" ref={skillsSectionRef}>
+      <section className="portfolio-section skills-tab-section" id="skills">
         <div className="portfolio-container">
-          <div className="skills-transition-stage" aria-live="polite">
-            <div className="skills-sticky-stack">
-              <div className="skills-progress-rail" aria-label="Skill group timeline">
+          <div className="skills-tabs-layout" aria-live="polite">
+            <div className="skills-panel-stack">
+              <div className="skills-tab-rail" aria-label="Skill group timeline">
                 {skillGroups.map((group, index) => (
                   <button
                     type="button"
@@ -411,19 +377,19 @@ export const Home = () => {
                 ))}
               </div>
 
-              <div className="skills-pin-card compact-skills-card">
-              <div className="skills-card-copy">
+              <div className="skills-overview-card compact-skills-card">
+                <div className="skills-card-copy">
                 <p className="eyebrow">Skills & expertise</p>
                 <h2>Less generic résumé, more working toolkit.</h2>
                 <p className="skills-section-context">
-                  Scroll the toolkit and the focus shifts by discipline — from languages, to backend systems, to cloud delivery, to applied computer vision.
+                  Pick a toolkit area to update the overview — from languages, to backend systems, to cloud delivery, to applied computer vision.
                 </p>
                 <p className="eyebrow toolkit-focus-label">Toolkit in focus</p>
                 <h3>{currentSkillGroup.title}</h3>
                 <p>{skillGroupSummaries[currentSkillGroup.title]}</p>
               </div>
 
-              <div className="skills-card-visual">
+                <div className="skills-card-visual">
                 <div className="skills-pin-orb" aria-hidden="true">
                   <span>{skillIcons[currentSkillGroup.title] || "•"}</span>
                 </div>
@@ -432,7 +398,7 @@ export const Home = () => {
                     <span key={skill}><strong>{skillIcons[skill] || "•"}</strong>{skill}</span>
                   ))}
                 </div>
-              </div>
+                </div>
               </div>
             </div>
           </div>
