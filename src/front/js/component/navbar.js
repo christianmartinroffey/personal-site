@@ -3,8 +3,8 @@ import "../../styles/home.css";
 
 export const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.localStorage.getItem("portfolio-theme") === "dark";
+    if (typeof window === "undefined") return true;
+    return window.localStorage.getItem("portfolio-theme") !== "light";
   });
 
   const darkOnClick = () => {
@@ -182,9 +182,9 @@ export const Navbar = () => {
       <div className="navbar-nav">
       <div className="me-auto"></div>
         <a className="nav-link color-black" aria-current="page" href="/">Home</a>
-        <a className="nav-link" href="/#skills">Skills & Expertise </a>
-        <a className="nav-link" href="/#experience">Experience</a>
-        <a className="nav-link" href="/#projects">Projects </a>
+        <a className="nav-link" href="/#enterprise-graph">Platform Graph</a>
+        <a className="nav-link" href="/#experience">Case Studies</a>
+        <a className="nav-link" href="/#judgefit">JudgeFit</a>
         <a className="nav-link" href="/#contact" >Contact</a>
       </div>
 
