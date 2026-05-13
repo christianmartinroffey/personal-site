@@ -34,6 +34,23 @@ log "Building production bundle"
 npm run build
 
 log "Restarting $SERVICE_NAME"
-systemctl --user restart "$SERVICE_NAME"
+if systemctl --user restart "$SERVICE_NAME"; then
+  log "Restarted via systemd user service"
+else
+  log "systemctl --user is unavailable; restarting local Python server directly"
+
+  PID_FILE="$APP_DIR/.portfolio.pid"
+  LOG_FILE="$APP_DIR/.portfolio.log"
+  PORT="${PORT:-8080}"
+
+  if [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    kill "$(cat "$PID_FILE")"
+  fi
+
+  pkill -f "$APP_DIR/serve_static.py" 2>/dev/null || true
+
+  PORT="$PORT" nohup /usr/bin/python3 "$APP_DIR/serve_static.py" >> "$LOG_FILE" 2>&1 &
+  echo $! > "$PID_FILE"
+fi
 
 log "Deployment complete: $(git rev-parse --short HEAD)"
