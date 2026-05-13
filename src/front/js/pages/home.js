@@ -384,6 +384,22 @@ export const Home = () => {
       <section className="portfolio-section skills-scroll-section" id="skills">
         <div className="portfolio-container">
           <div className="skills-transition-stage" aria-live="polite">
+            <div className="skills-progress-rail" aria-label="Skill group timeline">
+              {skillGroups.map((group, index) => (
+                <button
+                  type="button"
+                  className={index === activeSkillGroup ? "active" : ""}
+                  key={group.title}
+                  onClick={() => showSkillGroup(index)}
+                  aria-label={`Show ${group.title} skills`}
+                  aria-current={index === activeSkillGroup ? "true" : undefined}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {group.title}
+                </button>
+              ))}
+            </div>
+
             <div className="skills-pin-card compact-skills-card">
               <div className="skills-card-copy">
                 <p className="eyebrow">Skills & expertise</p>
@@ -408,32 +424,16 @@ export const Home = () => {
               </div>
             </div>
 
-            <div className="skills-scroll-steps" aria-label="Skill scroll transition triggers">
+            <div className="skills-scroll-steps" aria-hidden="true">
               {skillGroups.map((group, index) => (
                 <div
-                  className={`skill-scroll-step ${index === activeSkillGroup ? "active" : ""}`}
+                  className="skill-scroll-step"
                   data-index={index}
                   key={group.title}
                   ref={node => (skillRefs.current[index] = node)}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{group.title}</strong>
-                </div>
+                />
               ))}
             </div>
-          </div>
-
-          <div className="skills-dots" aria-label="Skill group shortcuts">
-            {skillGroups.map((group, index) => (
-              <button
-                type="button"
-                className={index === activeSkillGroup ? "active" : ""}
-                key={group.title}
-                onClick={() => showSkillGroup(index)}
-                aria-label={`Show ${group.title} skills`}
-                aria-current={index === activeSkillGroup ? "true" : undefined}
-              />
-            ))}
           </div>
         </div>
       </section>
