@@ -49,7 +49,7 @@ else
 
   pkill -f "$APP_DIR/serve_static.py" 2>/dev/null || true
 
-  PORT="$PORT" nohup /usr/bin/python3 "$APP_DIR/serve_static.py" >> "$LOG_FILE" 2>&1 &
+  env -u RUNNER_TRACKING_ID PORT="$PORT" nohup /usr/bin/python3 "$APP_DIR/serve_static.py" >> "$LOG_FILE" 2>&1 &
   echo $! > "$PID_FILE"
 fi
 
