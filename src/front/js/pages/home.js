@@ -229,6 +229,11 @@ export const Home = () => {
               <span>federation.map</span>
               <span>schema contracts · async flows · deployment lanes</span>
             </div>
+            <div className="graph-detail-dock" aria-live="polite">
+              <p className="system-label">Inspecting</p>
+              <h3>{activeNode.label}</h3>
+              <p>{activeNode.summary}</p>
+            </div>
             <svg className="service-graph" viewBox="0 0 100 100" role="img" aria-label="Service graph connecting gateway, services, Kafka, and GitOps delivery">
               {graphEdges.map(edge => {
                 const line = edgeLine(edge);
