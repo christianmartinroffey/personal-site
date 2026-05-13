@@ -13,9 +13,9 @@ Runs on:
 Steps:
 
 1. Check out the repo
-2. Install Node.js 16, matching `package.json`
-3. Install dependencies with `npm ci`
-4. Build the production bundle with `npm run build`
+2. Install Bun
+3. Install dependencies with `bun install --frozen-lockfile`
+4. Build the production bundle with `bun run build`
 5. Save the generated `public/` folder as a workflow artifact
 
 If the build fails, deployment does not run.
@@ -43,8 +43,8 @@ That script:
 1. Fetches latest `main` from GitHub
 2. Checks out `main` in the Raspberry Pi app directory
 3. Resets the local checkout to `origin/main`
-4. Installs dependencies with `npm ci`
-5. Builds the site with `npm run build`
+4. Installs dependencies with `bun install --frozen-lockfile`
+5. Builds the site with `bun run build`
 6. Restarts `personal-site.service`
 
 ## Raspberry Pi app location
